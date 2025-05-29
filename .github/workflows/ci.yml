@@ -7,7 +7,7 @@ on:
     branches: [ main ]
 
 jobs:
-  test:
+  glados-verification:
     runs-on: ubuntu-latest
     defaults:
       run:
