@@ -23,8 +23,7 @@ if (!user) {
     document.body.insertAdjacentHTML(
         "afterbegin",
         `<p style="position: absolute; top: 1rem; right: 1rem; font-size: 0.9rem;">
-      Welcome, <strong>${user}</strong>
-      &mdash;
+      Welcome, <strong>${user}</strong>.
       <a href="#" id="logout">Log out</a>
     </p>`
     );
