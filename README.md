@@ -1,6 +1,6 @@
 # ASH: Aperture Science Handheld ... (Portal Device)
 
-A modular team-based web application built by students.
+Een modulaire team-based web applicatie voor en door learners.
 
 ## 💡 Teams
 
