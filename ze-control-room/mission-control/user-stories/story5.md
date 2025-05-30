@@ -1,5 +1,3 @@
-### 📘
-
 ## 🧩 Story: Groeperen van stories
 
 **Als een** gebruiker
@@ -15,6 +13,7 @@ De gebruiker kan vlot een story toewijzen aan een bestaand project of sprint. Zo
 * [ ] Er is een knop ADD TO met dropdown. Keuze project of sprint. 
 * [ ] Als je kiest voor project krijg je daarna een drop down uit de te kiezen projecten of een nieuw project aanmaken.
 * [ ] Als je kiest voor sprint krijg je daarna een drop down uit de te kiezen sprints of een nieuwe sprint aanmaken.
+* [ ] Hoe testen?
 
 ### 🧮 Estimate
 In ideale dagen: **1 dag**.
