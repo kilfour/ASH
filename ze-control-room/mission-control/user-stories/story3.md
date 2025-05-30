@@ -3,9 +3,9 @@
    
 ### ENGLISH
 
-**As a** Select filters for tasks, with three categories
+**As a** Aplication User
 **I want** See and analyse tasks according to their priority
-**So that** allocate tasks and monitor their fulfilment
+**So that** I can allocate tasks and monitor their fulfilment
 
 #### 📝 Beschrijving
 

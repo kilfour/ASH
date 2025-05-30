@@ -1,23 +1,18 @@
-## 🧩 Story: 3. Filteren of sorteren op status
-   De lijst van stories moet filterbaar of sorteerbaar zijn op basis van de status.
+### 📘 XP User Story Template
 
-**As a** Select filters for tasks, with three categories
-**I want** See and analyse tasks according to their priority
-**So that** allocate tasks and monitor their fulfilment
+Gebruik deze template om user stories in XP-stijl vast te leggen in Markdown. Elke story is een startpunt voor een gesprek, geen volledige specificatie.
+
+---
+
+## 🧩 Story: \[Korte titel hier invullen]
+
+**As a** \[gebruikersrol]
+**I want** \[een specifiek doel]
+**So that** \[voordeel of reden]
 
 ### 📝 Beschrijving
 
-- Create a filter for tasks, with three categories:
-
-*New*
-
-*inProgress*
-
-*Done*
-
-- Make functions that will filter tasks, when selecting one or another filter (multiple filters are possible)
-
-- Show all tasks to be filtered on the page
+Voeg 1–2 zinnen toe waarin je de gebruikersbehoefte iets verder uitlegt. Blijf gefocust op het perspectief van de gebruiker.
 
 ### ✅ Acceptatiecriteria
 
