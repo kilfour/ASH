@@ -14,7 +14,7 @@ Een zoekfunctie schrijven om door onze entries te filteren en bepaalde resultate
 * [ ] Zoeken naar titels
 * [ ] Zoeken naar termen in de inhoud
 * [ ] Zoeken op datum
-* [ ] Een error weergeven als geen gepaste entry beschikbaar is
+* [ ] Een boodschap weergeven als geen gepaste entry beschikbaar is
 
 ### 🧮 Estimate
 In ideale tijd: **4 UUR**.

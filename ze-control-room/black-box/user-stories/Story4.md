@@ -13,6 +13,7 @@ Gebruikers willen controle over reed geplaatste posts door deze te kunnen bewerk
 * [ ] Bij het openen van posts krijg ik de optie om deze te bewerken of verwijderen
 * [ ] Indien de post bewerkt wordt moeten de aanpassingen opgeslagen worden.
 * [ ] Indien de post verwijderd wordt moet de volledige post verwijderd worden.
+* [ ] Verwijderde posts archiveren (SOFT DELETE).
 
 ### 🧮 Estimate
 
@@ -20,4 +21,3 @@ In ideale dagen: 2 dagen
 
 ### 🔍 Notities / Open Vragen
 
-* Verwijderde posts bewaren in een archief/prullenbak?

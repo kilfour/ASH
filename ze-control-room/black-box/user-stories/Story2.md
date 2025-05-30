@@ -11,13 +11,11 @@ Gebruikers willen snel toegang hebben tot de nieuwste inhoud of updates. Daarom 
 ### ✅ Acceptatiecriteria
 
 * [ ] De lijstweergave toont standaard de nieuwste entry bovenaan
-* [ ] Gebruikers kunnen door de lijst scrollen en eenvoudig oudere items vinden
-* [ ] (optioneel) Indien gewenst kan de gebruiker handmatig sorteeropties aanpassen (bijvoorbeeld oudste eerst, nieuwste eerst)
+* [ ] Paginatie om door de lijst te bladeren
 
 ### 🧮 Estimate
 
-In ideale dagen: 2 dagen
+In ideale dagen: 3 dagen
 
 ### 🔍 Notities / Open Vragen
 
-* 

@@ -20,5 +20,3 @@ In ideale dagen: 2 dagen
 
 🔍 Notities / Open Vragen
 
-* Moet er validatie zijn voor lege titel of inhoud?
-* Zijn er beperkingen op de lengte van de titel of inhoud?

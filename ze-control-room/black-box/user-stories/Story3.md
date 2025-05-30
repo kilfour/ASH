@@ -19,4 +19,4 @@ In ideale dagen: 2 dagen
 
 ### 🔍 Notities / Open Vragen
 
-* Is er een eenvoudige manier om de detailweergave te tonen (bijvoorbeeld modaal versus nieuwe pagina)?
+* Mockup tonen
