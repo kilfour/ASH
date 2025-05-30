@@ -6,4 +6,7 @@
   - titel max 150
 
 2. **Overzicht Tags**
-   Lijst en hoeveel keer gebruikt.
+   Lijst en hoeveel keer gebruikt. Mogelijkheid om ongebruikte tags te verwijderen
+
+2. **Overzicht Verwijderde posts**
+   Mogelijkheid om effectief te verwijderen (HARD DELETE)
