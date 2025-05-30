@@ -1,8 +1,8 @@
 nr      | titel                       | est. time | dev        | status | real time |
 --------|-----------------------------|-----------|------------|--------|-----------|  
- 1      |       NewStory              |    2.5    |            |        |           |
- 3      | Filter Story                |    1      |            |        |           |
- 6      |  Team members               |    2      |            |        |           |
+ 1      | NewStory                    |    2.5    |            |        |           |
+ 3      | FilterStory                 |    1      |            |        |           |
+ 6      | Teammembers                 |    2      |            |        |           |
  7      | DashBoard                   |    2      |            |        |           |
- 2      |     status                  |    1,5    |            |        |           |
- 4      |      deadlines              |    3      |            |        |           |
+ 2      | Status                      |    1,5    |            |        |           |
+ 4      | Deadlines                   |    3      |            |        |           |
