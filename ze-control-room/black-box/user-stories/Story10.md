@@ -6,7 +6,7 @@
 
 ### 📝 Beschrijving
 
-We willen oude versies van entries kunnen restoren?
+We willen oude versies van entries kunnen restoren
 
 ### ✅ Acceptatiecriteria
 
