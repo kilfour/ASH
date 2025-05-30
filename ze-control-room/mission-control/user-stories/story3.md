@@ -23,9 +23,9 @@
 
 #### ✅ Acceptatiecriteria
 
-* [ ] create a status object, with categories `const Status = {};`
-* [ ] Create a filter that will select the status object from the list and change it to the desired one. 
-* [ ] alternatieve oplossing, filters opslaan als een array
+* [ ] When filters are selected, the list of stories will be updated
+* [ ] User can select multiple filters
+* [ ] Optional - filtering of stories does not work immediately, you need to refresh the list. (For less dynamic update)
 
 ### 🧮 Estimate
 In ideale dagen: **1**.
