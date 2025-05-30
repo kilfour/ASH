@@ -5,7 +5,7 @@ export function blackBoxFunction() {
 
 
 export function searchContent(str, searchstr){
-    return str.split(' ').some(word => word.toLowerCase() === zoekstr.toLowerCase());    
+    return str.split(' ').some(word => word.toLowerCase() === searchstr.toLowerCase());    
 }
 //The .some() method in JavaScript is used on arrays to check if at least one element satisfies a given condition.
 //It returns a boolean
