@@ -2,8 +2,6 @@
 
 Gebruik deze template om user stories in XP-stijl vast te leggen in Markdown. Elke story is een startpunt voor een gesprek, geen volledige specificatie.
 
----
-
 ## 🧩 Story: \[Korte titel hier invullen]
 
 **As a** \[gebruikersrol]
