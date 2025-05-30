@@ -21,4 +21,3 @@ In ideale dagen: **2**.
 
 ### 🔍 Notities / Open Vragen
 
-* welke implementatie? knop/selectie/symbolen/...

@@ -19,4 +19,5 @@ In ideale tijd: **1 UUR**.
 
 ### 🔍 Notities / Open Vragen
 
-* reflectie/techniek/idee, nog verdere tags/categorieen om toe te voegen?
+ik wil gewoon tags kunnen toevoegen in een tekstveld
+vb : input "ochtend werk plezant"

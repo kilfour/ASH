@@ -20,5 +20,5 @@ In ideale dagen: **4**.
 
 ### 🔍 Notities / Open Vragen
 
-* restricties op wat veranderd kan worden?
+* Story te groot/ uitsplitsen
 
