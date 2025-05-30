@@ -10,12 +10,11 @@ We willen properties kunnen toevoegen aan dagboekposts, die onze inhoud ordenen.
 
 ### ✅ Acceptatiecriteria
 
-* [ ] pre-set aantal properties kunnen definieren
-* [ ] properties aan entries geven
-* [ ] Op properties kunnen filteren (via dropdownmenu?).
+* [ ] veld om tags aan te kennen
+* [ ] Op tags kunnen filteren -> story6
 
 ### 🧮 Estimate
-In ideale tijd: **1 UUR**.
+In ideale tijd: **2 dagen**.
 
 ### 🔍 Notities / Open Vragen
 
