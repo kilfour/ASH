@@ -3,7 +3,7 @@
 1. **Dagboekpost validatie**
   - uniek titel hoeft niet
   - voor lege titel of inhoud verboden
-  - titel max 150
+  - titel max 150, inhoud onbeperkt
 
 2. **Overzicht Tags**
    Lijst en hoeveel keer gebruikt. Mogelijkheid om ongebruikte tags te verwijderen
