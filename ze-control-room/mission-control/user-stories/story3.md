@@ -9,23 +9,17 @@
 
 #### 📝 Beschrijving
 
-- Create a filter for tasks, with three categories:
+- Create a filter for stories, with three categories:
 
-*New*
+- Make functions that will filter stories, when selecting one or another filter (multiple filters are possible)
 
-*inProgress*
-
-*Done*
-
-- Make functions that will filter tasks, when selecting one or another filter (multiple filters are possible)
-
-- Show all tasks to be filtered on the page
+- Show all stories to be filtered on the page
 
 #### ✅ Acceptatiecriteria
 
 * [ ] When filters are selected, the list of stories will be updated
 * [ ] User can select multiple filters
-* [ ] Optional - filtering of stories does not work immediately, you need to refresh the list. (For less dynamic update)
+* [ ] Optional - filtering of stories does not work immediately, you need to refresh the list. (For less dynamic loading)
 
 ### 🧮 Estimate
 In ideale dagen: **1**.
