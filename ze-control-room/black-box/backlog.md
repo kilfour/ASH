@@ -1,6 +1,6 @@
 ## 🔸 Black Box Backlog
 
-1. **Dagboekpost kunnen aanmaken**
+1. **Dagboekpost validatie**
    Gebruikers moeten een notitie kunnen opslaan met een datum, titel en inhoud.
 
 2. **Lijstweergave in omgekeerde chronologische volgorde**

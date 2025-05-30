@@ -20,3 +20,5 @@ Een zoekfunctie schrijven om door onze entries te filteren en bepaalde resultate
 In ideale tijd: **4 UUR**.
 
 ### 🔍 Notities / Open Vragen
+
+Eerst story 5 uitwerken
