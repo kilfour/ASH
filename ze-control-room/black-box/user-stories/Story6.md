@@ -10,15 +10,13 @@ Een zoekfunctie schrijven om door onze entries te filteren en bepaalde resultate
 
 ### ✅ Acceptatiecriteria
 
-* [ ] Filteren op properties
+* [ ] Filteren op properties / Zoeken op tags
 * [ ] Zoeken naar titels
 * [ ] Zoeken naar termen in de inhoud
 * [ ] Zoeken op datum
 * [ ] Een boodschap weergeven als geen gepaste entry beschikbaar is
 
 ### 🧮 Estimate
-In ideale tijd: **4 UUR**.
+In ideale tijd: **2 dagen**.
 
 ### 🔍 Notities / Open Vragen
-
-Eerst story 5 uitwerken
