@@ -14,7 +14,7 @@ Je kan aanduiden of een story `Nieuw`, `In Progress`, of `Done` is. Dit kan je d
 
 ### ✅ Acceptatiecriteria
 
-Al deze criteria staan binnen het pop-upwindow van een nieuwe story te maken
+Al deze criteria staan binnen het pop-up form van een nieuwe story te maken
 * [ ] er zijn 3 checkmarks te zien met `Nieuw`, `In Progress`, of `Done`
 * [ ] de box `Nieuw` staat automatisch aangevinkt
 * [ ] bij het aantikken van een andere box, worden de andere boxes afgevinkt

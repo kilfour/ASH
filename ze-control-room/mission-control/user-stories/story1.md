@@ -15,11 +15,11 @@ De gebruiker wil een story kunnen aanmaken met een titel en een korte beschrijvi
 
 ### ✅ Acceptatiecriteria
 
-* [ ] Een add om een story aan te maken rechtsboven op de pagina
+* [ ] Een add knop om een story aan te maken rechtsboven op de pagina
 * [ ] Als er op add geknopt wordt, opent er een pop up window (interactie via js: event listeners etc)
-* [ ] binnen het pop up window: forms om een titel in te geven (font-size: 27pt)
-* [ ] binnen het pop up window: forms om een beschrijving (font-size: 18pt) in te geven (box height: 54pt)
-* [ ] binnen het pop up window: een delete knop om de story te verwijderen
+* [ ] binnen het pop up form: om een titel in te geven (font-size: 27pt)
+* [ ] binnen het pop up form: om een beschrijving (font-size: 18pt) in te geven (box height: 54pt)
+* [ ] binnen het pop up form: een delete knop om de story te verwijderen
 * [ ] Een edit knop om een gemaakte story nog aan te passen
 
 
