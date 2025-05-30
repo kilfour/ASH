@@ -3,7 +3,7 @@
    
 ### ENGLISH
 
-**As a** Aplication User
+**As a** Application User
 **I want** See and analyse tasks according to their priority
 **So that** I can allocate tasks and monitor their fulfilment
 
