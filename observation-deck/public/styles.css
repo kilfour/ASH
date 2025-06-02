@@ -139,3 +139,43 @@ tbody tr:nth-child(even) {
   transform: translateY(-3px);    /* lichte 'lift' */
   box-shadow: 0 8px 12px rgba(0, 0, 0, 0.2); /* diepere schaduw */
 }
+
+.dashboard {
+        border: 2px solid #000000;
+        max-width: 1000px;
+        margin: 20px;
+        padding: 20px;
+        font-family: Arial, Helvetica, sans-serif;
+}
+
+.status-item {
+        margin-top: 10px;
+        padding: 20px;
+        display: inline-block;
+        flex-wrap: wrap;
+        gap: 10px;
+}
+    /* .story-control-buttons {
+        text-align: right;
+    } */
+.overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(0, 0, 0, 0.5); /* серый полупрозрачный фон */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.popup {
+    background: #2a2a2a;
+    padding: 20px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
+}
+
+.hidden {
+    display: none;
+}
