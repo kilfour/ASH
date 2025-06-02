@@ -21,6 +21,7 @@ body {
   line-height: 1.6;
   background-color: #2a2a2a;
   color: #ffffff;
+  resize: none;
 }
 
 /* Header */
@@ -96,8 +97,57 @@ th {
 td {
   padding: 12px;
   border-top: 1px solid #000000;
+  color: #fff;
+  text-align: center;
 }
 
 tbody tr:nth-child(even) {
   background-color: #212020;
+}
+
+.portal-button {
+  display: inline-block;
+  padding: 20px 40px;           /* Adjust for size */
+  background: linear-gradient(180deg, #6cc6ff, #3d94ff);
+  color: white;
+  border: 2px solid #6cc6ff;
+  border-radius: 50% / 100%;    /* Makes it a vertical oval */
+  font-size: 16px;
+  text-align: center;
+  cursor: pointer;
+  box-shadow: 0 0 15px rgba(108, 198, 255, 0.5); /* Soft glow */
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.portal-button:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 20px rgba(108, 198, 255, 0.8);
+}
+.portal-button {
+  position: relative;
+  overflow: hidden;
+  z-index: 1;
+}
+
+.portal-button::before {
+  content: "";
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: conic-gradient(from 0deg, #6cc6ff, #3d94ff, #6cc6ff);
+  animation: spin 3s linear infinite;
+  z-index: 0;
+  opacity: 0.5;
+}
+
+.portal-button span {
+  position: relative;
+  z-index: 1;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
 }
