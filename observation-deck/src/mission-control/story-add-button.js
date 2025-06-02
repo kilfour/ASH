@@ -1,5 +1,5 @@
 import { storeUserStory } from "./localStorage.js"
-
+//  Alx:: TODO
 const el = {
     addBTN: document.getElementById('create-story-button'),
     overlay: document.getElementById('popup-overlay'),
@@ -9,6 +9,7 @@ const el = {
     desc: document.getElementById('story-description'),
     modal: document.getElementById('modal-confirm'),
 }
+
 
 const addStoryBtn = document.getElementById('create-story-button');
 const overlay = document.getElementById('popup-overlay');
