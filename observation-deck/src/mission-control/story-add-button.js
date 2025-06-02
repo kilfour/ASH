@@ -35,10 +35,7 @@ document.getElementById('modal-yes').onclick = () => {
 
 document.getElementById('modal-no').onclick = () => {
     document.getElementById('modal-confirm').classList.add('hidden');
-    closeStoryBtn.classList.remove('hidden')
-    saveStoryBtn.classList.remove('hidden')
-    storyDescription.classList.remove('hidden')
-    storyTitleName.classList.remove('hidden')
+    toggleElements([closeStoryBtn, saveStoryBtn, storyDescription, storyTitleName], 'remove')
 };
 
 saveStoryBtn.addEventListener('click', () => {
