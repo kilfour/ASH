@@ -6,4 +6,3 @@ Story 3 | Details bekijken            | 2D        |            |        |       
 Story 4 | bewerken of verwijderen     | 2D        |            |        |           |
 Story 7 | Markdown                    | 2D        |            |        |           |
 
-stories 7,8 en 9 nog laten keuren

@@ -6,3 +6,5 @@ nr      | titel                       | est. time | dev        | status | real t
  7      | DashBoard                   |    2      |            |        |           |
  2      | Status                      |    1,5    |            |        |           |
  4      | Deadlines                   |    3      |            |        |           |
+
+ stories 7,8 en 9 nog laten keuren
