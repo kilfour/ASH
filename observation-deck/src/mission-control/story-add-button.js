@@ -10,26 +10,29 @@ const saveStoryBtn = document.getElementById('save-story');
 const storyTitleName = document.getElementById('story-title-name')
 const storyDescription = document.getElementById('story-description');
 
+function toggleElements(elements, action) {
+    elements.forEach(el => el.classList[action]('hidden'));
+}
+
 addStoryBtn.addEventListener('click', () => {
     overlay.classList.remove('hidden');
 });
+
 closeStoryBtn.addEventListener('click', () => {
     document.getElementById('modal-confirm').classList.remove('hidden');
-    closeStoryBtn.classList.add('hidden')
-    saveStoryBtn.classList.add('hidden')
-    storyDescription.classList.add('hidden')
-    storyTitleName.classList.add('hidden')
+    toggleElements([
+        closeStoryBtn, saveStoryBtn, storyDescription, storyTitleName], 'add')
 });
 
 document.getElementById('modal-yes').onclick = () => {
     overlay.classList.add('hidden');
     document.getElementById('modal-confirm').classList.add('hidden');
-    closeStoryBtn.classList.remove('hidden')
-    saveStoryBtn.classList.remove('hidden')
     document.getElementById('story-title-name').value = '';
     document.getElementById('story-description').value = '';
-    storyDescription.classList.remove('hidden')
-    storyTitleName.classList.remove('hidden')
+
+    toggleElements(
+        [closeStoryBtn, saveStoryBtn, storyDescription, storyTitleName],
+         'remove')
 };
 
 document.getElementById('modal-no').onclick = () => {
