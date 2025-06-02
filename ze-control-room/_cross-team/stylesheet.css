@@ -42,3 +42,39 @@ nav a {
   margin: 0px auto;
 }
 
+ body {
+  background-color: #2a2a2a;
+    color: #ffffff;
+  font-family: sans-serif;;
+  margin: 0 auto;
+  width: 50vw;
+  justify-content: center;
+  padding: 40px;
+}
+
+table {
+  border-collapse: collapse;
+  width: 800px;
+  background-color: #2a2a2a;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+th {
+  background-color: #2a2a2a;
+  color: #ee8f00;
+  padding: 20px;
+  text-align: center;
+}
+
+td {
+  padding: 12px;
+  border-top: 1px solid #000000;
+}
+
+tbody tr:nth-child(even) {
+  background-color: #212020;
+}
+
+button:hover {
+  background-color: #d67a00;
+}
