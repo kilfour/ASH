@@ -24,6 +24,12 @@ function displayJournals(journals) {
 
 
 function showDetails(event){
+    // const prev1 = document.querySelectorAll("p.content");
+    // const prev2 = document.querySelectorAll("p.tags");
+    // console.log(prev1);
+    // prev1.style = "display: none";
+    // prev2.style = "display: none";
+
     const title = event.target; // the clicked <h2>
     console.log(event);
     const content = title.nextElementSibling;
