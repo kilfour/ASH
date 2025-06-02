@@ -1,0 +1,44 @@
+body {
+  font-family: sans-serif;
+  padding: 2rem;
+}
+
+button {
+  font-size: 1.8rem;
+}
+
+.klik {
+  margin-top: 2rem;
+  border: none;
+  border-radius: 10rem;
+  background-color: steelblue;
+  color: #fff;
+  padding: 1rem 2rem;
+  transition: all .2s;
+  
+}
+
+.klik:hover  {
+  background-color: rgb(105, 172, 228);
+  box-shadow: 0 1rem 2rem rgba(0,0,0,0.3); 
+  transform: translateY(-2px);
+}
+
+.klik:active {
+ 
+  box-shadow: 0 .5rem 1rem rgba(0,0,0,0.3); 
+  transform: translateY(0);
+}
+.klik:focus {
+  outline: none;
+}
+#uitkomst {
+  font-size: 36px;
+}
+
+.rood {
+  font-size: 36px;
+  color: rgb(0, 0, 255);
+  background-color: rgb(255, 0, 162);
+}
+
