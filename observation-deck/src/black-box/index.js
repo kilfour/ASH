@@ -1,10 +1,4 @@
-import {
-  journals,
-  addJournal,
-  deleteJournal,
-  searchJournal,
-  editJournal,
-} from "./modules/journalsState.js";
+import { journals, addJournal } from "./modules/journalsState.js";
 
 const formEl = document.querySelector(".journal");
 
