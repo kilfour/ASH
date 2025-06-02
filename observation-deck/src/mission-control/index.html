@@ -18,7 +18,7 @@
             background-color: #ffffff;
         }
         .dashboard {
-            border: 2px solid #333;
+            border: 2px solid #000000;
             max-width: 1000px;
             margin: 20px;
             padding: 20px;
@@ -31,6 +31,28 @@
             flex-wrap: wrap;
             gap: 10px;
         }
+        /* .story-control-buttons {
+            text-align: right;
+        } */
+        .overlay {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100vw;
+        height: 100vh;
+        background: rgba(0, 0, 0, 0.5); /* серый полупрозрачный фон */
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        }
+        .popup {
+        background: white;
+        padding: 20px;
+        box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
+        }
+        .hidden {
+        display: none;
+        }
     </style>
 </head>
 <title>Title</title>
@@ -38,22 +60,49 @@
     <div class="dashboard">DASHBOARD
         <div class="status">STATUS
             <div class="status-item">
-                <span class="status-name">NEW:</span>
-                <span class="status-value">12</span>
+                <span id="new">NEW:</span>
+                <span id="new-value">12</span>
             </div>
             <div class="status-item">
-                <span class="status-name">OPEN:</span>
-                <span class="status-value">7</span>
+                <span id="open">OPEN:</span>
+                <span id="oopen-value">7</span>
             </div>
             <div class="status-item">
-                <span class="status-name">IN PROGRESS:</span>
-                <span class="status-value">4</span>
+                <span id="inProgress">IN PROGRESS:</span>
+                <span id="inProgress-value">4</span>
             </div>
             <div class="status-item">
-                <span class="status-name">DONE:</span>
-                <span class="status-value">15</span>
+                <span id="done">DONE:</span>
+                <span id="done-value">15</span>
+                <button id="testbtn">test</button>
             </div>
         </div>
     </div>
+    <div class="story-control-buttons">
+    <button id="create-story-button">Add Story</button>
+</div>
+
+<!-- PopUp overlay-->
+<form id="story-form" class="hidden"></form>
+<div id="popup-overlay" class="overlay hidden">
+    <div class="popup">
+        <input type="text" id="story-title-name" placeholder="Title" />
+        <p/></p>
+        <textarea id="story-description" placeholder="Description"></textarea>
+        <div>
+            <button id="save-story">Save</button>
+            <button id="close-popup">Close</button>
+        </div>
+        <div id="modal-confirm" class="hidden modal">
+        <div class="modal-content">
+            <p>Are you sure you want to close?</p>
+            <button id="modal-yes">Yes</button>
+            <button id="modal-no">No</button>
+        </div>
+        </div>
+    </div>
+</div>
+</form>
+    <script type="module" src="./index.js"></script>
 </body>
 </html>
