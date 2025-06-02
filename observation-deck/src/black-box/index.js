@@ -12,11 +12,24 @@ function displayJournals(journals) {
     const html = `
         <div class=journal id=${id}>
           <h2 class="titel">${titel}</h2>
-          <p class="content">${content}<p>
-          <p class="tags">${tags.join(", ")}<p>`;
+          <p class="content" style = 'display: none'>${content}<p>
+          <p class="tags" style = 'display: none'>${tags.join(", ")}<p>`;
 
     journalsView.insertAdjacentHTML("afterbegin", html);
+    
   });
+}
+
+
+function showDetails(event){
+    const title = event.target; // the clicked <h2>
+    console.log(event);
+    const content = title.nextElementSibling;
+    const tags = content.nextElementSibling;
+
+    // Show both elements
+    content.style.display = "block";
+    tags.style.display = "block";
 }
 
 function upDateUi() {
@@ -38,6 +51,11 @@ formEl.addEventListener("submit", function (e) {
 
   addJournal(newJournal);
   upDateUi();
+});
+
+const t = document.querySelector(".journals");
+t.addEventListener("click",  function(e){
+    showDetails(e);
 });
 
 delButton.addEventListener('click', () => {

@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="/observation-deck/public/styles_mc.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    
+</head>
+<title>Title</title>
+<body>
+    <div class="dashboard">DASHBOARD
+        <div class="status">STATUS
+            <div class="status-item">
+                <span id="new">NEW:</span>
+                <span id="new-value">12</span>
+            </div>
+            <div class="status-item">
+                <span id="open">OPEN:</span>
+                <span id="oopen-value">7</span>
+            </div>
+            <div class="status-item">
+                <span id="inProgress">IN PROGRESS:</span>
+                <span id="inProgress-value">4</span>
+            </div>
+            <div class="status-item">
+                <span id="done">DONE:</span>
+                <span id="done-value">15</span>
+                <button id="testbtn">test</button>
+            </div>
+        </div>
+    </div>
+    <div class="story-control-buttons">
+    <button id="create-story-button">Add Story</button>
+</div>
+
+<!-- PopUp overlay-->
+<form id="story-form" class="hidden"></form>
+<div id="popup-overlay" class="overlay hidden">
+    <div class="popup">
+        <input type="text" id="story-title-name" placeholder="Title" />
+        <p/></p>
+        <textarea id="story-description" placeholder="Description"></textarea>
+        <div>
+            <button id="save-story">Save</button>
+            <button id="close-popup">Close</button>
+        </div>
+        <div id="modal-confirm" class="hidden modal">
+        <div class="modal-content">
+            <p>Are you sure you want to close?</p>
+            <button id="modal-yes">Yes</button>
+            <button id="modal-no">No</button>
+        </div>
+        </div>
+    </div>
+</div>
+</form>
+    <script type="module" src="../../src/mission-control/story-add-button.js"></script>
+</body>
+</html>
