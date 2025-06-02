@@ -9,15 +9,16 @@
  body {
   background-color: #2a2a2a;
     color: #ffffff;
-  font-family: sans-serif;
-  display: flex;
+  font-family: sans-serif;;
+  margin: 0 auto;
+  width: 50vw;
   justify-content: center;
   padding: 40px;
 }
 
 table {
   border-collapse: collapse;
-  width: 400px;
+  width: 800px;
   background-color: #2a2a2a;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
@@ -26,7 +27,7 @@ th {
   background-color: #2a2a2a;
   color: #ee8f00;
   padding: 20px;
-  text-align: left;
+  text-align: center;
 }
 
 td {
@@ -37,16 +38,25 @@ td {
 tbody tr:nth-child(even) {
   background-color: #212020;
 }
+
+button:hover {
+  background-color: #d67a00;
+}
+
+    
     </style>
+
+    <link rel="stylesheet" type="text/css" href=../Style>  
 </head>
 
 <body>
+    <h1>Mission Control Tabel</h1>
     <table>
         <thead>
             <tr>
-                <th>Naam</th>
-                <th>Leeftijd</th>
-                <th>Stad</th>
+                <th>Story name</th>
+                <th>Description</th>
+                <th>Project/ Sprint</th>
             </tr>
         </thead>
         <tbody>
@@ -56,9 +66,9 @@ tbody tr:nth-child(even) {
                 <td>Gent</td>
             </tr>
             <tr>
-                <td>Emma</td>
-                <td>25</td>
-                <td>Brugge</td>
+                <td>Jennifer</td>
+                <td>22</td>
+                <td>Ronse</td>
             </tr>
             <tr>
                 <td>Jan</td>
@@ -66,7 +76,11 @@ tbody tr:nth-child(even) {
                 <td>Antwerpen</td>
             </tr>
         </tbody>
+        
     </table>
+       <div class="center">
+        <button class="button">Klik mij</button>
+       </div>
 </body>
 
 </html>
