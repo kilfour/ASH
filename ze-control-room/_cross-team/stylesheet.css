@@ -96,7 +96,11 @@ th {
 td {
   padding: 12px;
   border-top: 1px solid #000000;
+<<<<<<< HEAD
   color: #fff;
+=======
+  text-align: center;
+>>>>>>> d39948f1e51cbe1e0f25eba3a03c80669ef903ea
 }
 
 tbody tr:nth-child(even) {
