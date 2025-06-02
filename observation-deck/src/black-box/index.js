@@ -27,13 +27,13 @@ function showDetails(event){
     const title = event.target; // the clicked <h2>
     console.log(event);
     const content = title.nextElementSibling;
-    const tags = content.nextElementSibling;
+    const tags = content.nextElementSibling.nextElementSibling;
     currentID = title.parentElement.attributes.id.textContent;
-    console.log(currentID);
 
     // Show both elements
     content.style.display = "block";
     tags.style.display = "block";
+    
 }
 
 function upDateUi() {
