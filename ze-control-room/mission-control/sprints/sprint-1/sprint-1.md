@@ -1,7 +1,7 @@
 nr      | titel                       | est. time | dev        | status | real time |
 --------|-----------------------------|-----------|------------|--------|-----------|  
  1.1    | NewStory                    |    2.5    | Alex       |        |           |
- 1.2    | ListStories                 |           |            |        |           |
+ 1.2    | ListStories                 |           | Milad      |        |           |
  2      | Status                      |    1,5    | Abigail    |        |           |
  3      | FilterStory                 |    1      | Naomi      |        |           |
  4      | Deadlines                   |    3      | Milad      |        |           |
