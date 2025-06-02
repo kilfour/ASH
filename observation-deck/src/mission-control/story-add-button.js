@@ -1,7 +1,5 @@
 import { storeUserStory } from "./localStorage.js"
 
-document.getElementById("testbtn").addEventListener("click", () => console.log('test'))
-
 
 const addStoryBtn = document.getElementById('create-story-button');
 const overlay = document.getElementById('popup-overlay');
