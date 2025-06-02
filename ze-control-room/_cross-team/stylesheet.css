@@ -1,8 +1,5 @@
 /* Universal Styles */
 
-body {
-    background-color: #2a2a2a;
-}
 
 /* Navigation */
 
@@ -32,7 +29,7 @@ nav a {
 }
 
 .header h1 {
-  color: #009ece;
+      color: #009ece;
   font-family: sans-serif;
   font-size: 50px;
   font-weight: 300;
@@ -42,15 +39,13 @@ nav a {
   margin: 0px auto;
 }
 
- body {
-  background-color: #2a2a2a;
-    color: #ffffff;
-  font-family: sans-serif;;
-  margin: 0 auto;
-  width: 50vw;
-  justify-content: center;
-  padding: 40px;
+/* Body */
+
+body {
+    background-color: #2a2a2a;
 }
+
+/* Table */
 
 table {
   border-collapse: collapse;
@@ -74,6 +69,8 @@ td {
 tbody tr:nth-child(even) {
   background-color: #212020;
 }
+
+/* Button */
 
 button:hover {
   background-color: #d67a00;
