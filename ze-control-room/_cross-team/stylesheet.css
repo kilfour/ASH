@@ -1,0 +1,44 @@
+/* Universal Styles */
+
+body {
+    background-color: #2a2a2a;
+}
+
+/* Navigation */
+
+nav {
+  text-align: center;
+}
+
+nav span {
+  display: block;
+  font-size: 16px;
+  font-weight: 100px;
+  letter-spacing: 2px;
+  margin: 10px 0px;
+}
+
+nav a {
+    font-family: sans-serif;
+    color: #EE8F00;
+}
+
+/* Header */
+
+.header {
+    background-position: center;
+    background-size: cover;
+    height: 100px;
+}
+
+.header h1 {
+  color: #009ece;
+  font-family: sans-serif;
+  font-size: 50px;
+  font-weight: 300;
+  text-align: center;
+  line-height: 40px;
+  padding: 20px;
+  margin: 0px auto;
+}
+
