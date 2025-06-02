@@ -1,6 +1,8 @@
-import { journals, addJournal } from "./modules/journalsState.js";
+import { getJournals, addJournal, removeJournal } from "./modules/journalsState.js";
 
 const formEl = document.querySelector(".journal");
+const delButton = document.querySelector(".btn-delete");
+
 
 function displayJournals(journals) {
   const journalsView = document.querySelector(".journals");
@@ -31,7 +33,7 @@ function showDetails(event){
 }
 
 function upDateUi() {
-  displayJournals(journals);
+  displayJournals(getJournals());
 }
 upDateUi();
 
@@ -56,11 +58,11 @@ t.addEventListener("click",  function(e){
     showDetails(e);
 });
 
+delButton.addEventListener('click', () => {
+  removeJournal("23254687612");  //moet de ID van de geselecteerde entry nemen
+  upDateUi();
+})
 
-
-// export function blackBoxFunction() {
-//     return true;
-// }
 
 // export function searchContent(str, searchstr){
 //     return str.split(' ').some(word => word.toLowerCase().includes(searchstr.toLowerCase()));
