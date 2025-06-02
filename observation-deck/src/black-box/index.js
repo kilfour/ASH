@@ -74,6 +74,7 @@ delButton.addEventListener('click', () => {
 })
 
 
+
 // export function searchContent(str, searchstr){
 //     return str.split(' ').some(word => word.toLowerCase().includes(searchstr.toLowerCase()));
 // }
