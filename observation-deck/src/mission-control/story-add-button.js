@@ -1,3 +1,5 @@
+import { storeUserStory } from "./localStorage.js"
+
 document.getElementById("testbtn").addEventListener("click", () => console.log('test'))
 
 
@@ -38,7 +40,6 @@ document.getElementById('modal-no').onclick = () => {
     storyTitleName.classList.remove('hidden')
 };
 
-const stories = [];
 saveStoryBtn.addEventListener('click', () => {
     const title = document.getElementById('story-title-name').value.trim(); // deleting spaces in start and end of string avoiding
     const description = document.getElementById('story-description').value.trim();
@@ -48,9 +49,8 @@ saveStoryBtn.addEventListener('click', () => {
             title: title,
             description: description
         };
-        stories.push(story);
-        console.log(story);
-        console.log(stories);
+  
+        storeUserStory(story);
         overlay.classList.add('hidden');
         document.getElementById('story-title-name').value = '';
         document.getElementById('story-description').value = '';
