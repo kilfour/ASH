@@ -1,4 +1,4 @@
-nr      | titel                       | est. time | dev        | status     | real time |
+nr      | titel                       | est. time | dev        | status  | real time |
 --------|-----------------------------|-----------|------------|---------|-----------|  
  1.1    | NewStory                    |    2.5    | Alex       | Doing   |           |
  1.2    | ListStories                 |    1      | Milad      |         |           |
