@@ -1,4 +1,4 @@
-import { storeUserStory } from "./localStorage.js"
+import { storeUserStory } from "./Storage/localStorage"
 /**
  * Object with popup elements 
  */
@@ -43,7 +43,7 @@ el.modalYes.onclick = () => {
 
     toggleElements(
         [el.closeBTN, el.saveBTN, el.desc, el.title],
-         'remove')
+        'remove')
 };
 
 el.modalNo.onclick = () => {
@@ -60,7 +60,7 @@ el.saveBTN.addEventListener('click', () => {
             title: title,
             description: description
         };
-  
+
         storeUserStory(story);
         el.overlay.classList.add('hidden');
         resetStory();

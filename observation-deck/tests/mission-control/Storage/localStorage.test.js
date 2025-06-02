@@ -1,5 +1,5 @@
 import { describe, it, expect, beforeEach } from 'vitest';
-import { storeUserStory } from '../../src/mission-control/localStorage.js'
+import { storeUserStory } from '../../../src/mission-control/Storage/localStorage'
 
 
 describe("storeUserStory", () => {
