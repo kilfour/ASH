@@ -21,6 +21,7 @@ body {
   line-height: 1.6;
   background-color: #2a2a2a;
   color: #ffffff;
+  resize: none;
 }
 
 /* Header */
@@ -46,37 +47,6 @@ header h1 {
   margin: 0px auto;
 }
 
-/* Navigation Buttons */
-
-nav {
-  text-align: center;
-}
-
-nav button {
-  padding: 10px 20px; /* adjust as needed */
-  background-color: #3498db; /* example color */
-  color: white;
-  border: none;
-  border-radius: 50px; /* makes the button oval */
-  cursor: pointer;
-}
-
-nav button a {
-  font-family: sans-serif;
-  font-size: large;
-  font-weight: 600;
-  color: #fff;
-  text-decoration: none;
-}
-
-nav button:hover {
-  background-color: #009ece;
-}
-
-nav button:hover a {
-  color: #000;
-}
-
 /* Table */
 
 table {
@@ -96,8 +66,61 @@ th {
 td {
   padding: 12px;
   border-top: 1px solid #000000;
+  color: #fff;
+  text-align: center;
 }
 
 tbody tr:nth-child(even) {
   background-color: #212020;
+}
+
+/* Navigation Buttons */
+
+.main-buttons {
+  text-align: center;
+}
+
+.portal-button-blue {
+  padding: 10px 20px;
+  background-color: #009ece;
+  color: white;
+  border: none;
+  border-radius: 50px;
+  cursor: pointer;
+  font-family: sans-serif;
+  font-size: 20px;
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.portal-button-blue:hover {
+  box-shadow: 0 0 20px #009ece;
+  transition: box-shadow 0.3s ease;
+}
+
+.portal-button-blue:active {
+  box-shadow: 0 0 20px #ee8f00;
+}
+
+.portal-button-orange {
+  margin: 20px;
+  padding: 10px 20px;
+  background-color: #ee8f00;
+  color: white;
+  border: none;
+  border-radius: 50px;
+  cursor: pointer;
+  font-family: sans-serif;
+  font-size: larger;
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.portal-button-orange:hover {
+  box-shadow: 0 0 20px #ee8f00;
+  transition: box-shadow 0.3s ease;
+}
+
+.portal-button-orange:active {
+  box-shadow: 0 0 20px #009ece;
 }
