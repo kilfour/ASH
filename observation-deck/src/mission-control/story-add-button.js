@@ -1,5 +1,7 @@
 import { storeUserStory } from "./localStorage.js"
-
+/**
+ * Object with popup elements 
+ */
 const el = {
     addBTN: document.getElementById('create-story-button'),
     overlay: document.getElementById('popup-overlay'),
@@ -8,8 +10,13 @@ const el = {
     title: document.getElementById('story-title-name'),
     desc: document.getElementById('story-description'),
     modal: document.getElementById('modal-confirm'),
+    modalYes: document.getElementById('modal-yes'),
+    modalNo: document.getElementById('modal-no')
 };
 
+/**
+ *  Functions to toggle elements in the DOM
+ */
 function toggleElements(elements, action) {
     elements.forEach(el => el.classList[action]('hidden'));
 };
@@ -29,7 +36,7 @@ el.closeBTN.addEventListener('click', () => {
         el.closeBTN, el.saveBTN, el.desc, el.title], 'add')
 });
 
-document.getElementById('modal-yes').onclick = () => {
+el.modalYes.onclick = () => {
     el.overlay.classList.add('hidden');
     el.modal.classList.add('hidden');
     resetStory();
@@ -39,13 +46,13 @@ document.getElementById('modal-yes').onclick = () => {
          'remove')
 };
 
-document.getElementById('modal-no').onclick = () => {
+el.modalNo.onclick = () => {
     el.modal.classList.add('hidden');
     toggleElements([el.closeBTN, el.saveBTN, el.desc, el.title], 'remove')
 };
 
 el.saveBTN.addEventListener('click', () => {
-    const title = el.title.value.trim(); // .trim() is deleting spaces in start and end of string avoiding
+    const title = el.title.value.trim(); // .trim() removes spaces at the beginning and end of a line, avoiding them
     const description = el.desc.value.trim();
 
     if (title && description) {
