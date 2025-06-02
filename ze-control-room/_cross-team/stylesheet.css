@@ -82,7 +82,7 @@ nav button:hover a {
 
 table {
   border-collapse: collapse;
-  width: 800px;
+  width: 1500px;
   background-color: #2a2a2a;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
@@ -103,4 +103,39 @@ td {
 
 tbody tr:nth-child(even) {
   background-color: #212020;
+}
+
+.table-button-wrapper {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+
+.table-button-wrapper table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.button {
+  margin-left: 80px;
+  height: fit-content;
+  padding: 10px 40px; /* adjust as needed */
+  background-color: #0154fa; /* example color */
+  color: white;
+  border: none;
+  border-radius: 200px; /* makes the button oval */
+  cursor: pointer;
+  transition: all 0.3s ease;      /* animatie smooth */
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  -webkit-user-select: none; /* Safari */
+  -moz-user-select: none;    /* Firefox */
+  -ms-user-select: none;     /* Internet Explorer/Edge */
+  user-select: none; 
+}
+
+
+.button:hover {
+  background-color: #2980b9;      /* andere kleur bij hover */
+  transform: translateY(-3px);    /* lichte 'lift' */
+  box-shadow: 0 8px 12px rgba(0, 0, 0, 0.2); /* diepere schaduw */
 }
