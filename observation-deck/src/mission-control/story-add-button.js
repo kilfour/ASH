@@ -11,15 +11,23 @@ addStoryBtn.addEventListener('click', () => {
 });
 closeStoryBtn.addEventListener('click', () => {
     document.getElementById('modal-confirm').classList.remove('hidden');
+    closeStoryBtn.classList.add('hidden')
+    saveStoryBtn.classList.add('hidden')
 });
 
 document.getElementById('modal-yes').onclick = () => {
     overlay.classList.add('hidden');
     document.getElementById('modal-confirm').classList.add('hidden');
+    closeStoryBtn.classList.remove('hidden')
+    saveStoryBtn.classList.remove('hidden')
+    document.getElementById('story-title-name').value = '';
+    document.getElementById('story-description').value = '';
 };
 
 document.getElementById('modal-no').onclick = () => {
     document.getElementById('modal-confirm').classList.add('hidden');
+    closeStoryBtn.classList.remove('hidden')
+    saveStoryBtn.classList.remove('hidden')
 };
 
 const stories = [];
