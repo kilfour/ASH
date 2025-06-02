@@ -12,7 +12,7 @@ Kunnen zien welke tags gebruikt worden en hoeveel keer.
 
 * [ ] Lijst van tags weergeven
 * [ ] Hoeveelheid van bepaalde tag weergeven.
-* [ ] Totaal aantal gebruikte tagsals fun fact?
+* [ ] Totaal aantal gebruikte tags als fun fact?
 
 ### 🧮 Estimate
 In ideale tijd: **2 dagen**.

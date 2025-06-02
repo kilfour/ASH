@@ -22,6 +22,18 @@ function addJournal(journal) {
   state.journals.push(journal);
 }
 
-export const { journals } = state;
+function removeJournal(id) {
+  state.journals = state.journals.filter((journal) => journal.id !== id);
+}
 
-export { addJournal };
+function editJournal() {
+  //neemt de geselecteerde journal, vult de input velden met de huidige info, gebruiker edit het waarna de submit de huidige journal moet aanpassen
+}
+
+function getJournals() {  
+  return state.journals;
+}
+
+//export const { journals } = state;  -> leest maar 1 keer de state in, als je dus een entry delete komt er geen wijziging aan de UI, vandaar getJournals()
+
+export { addJournal, removeJournal, getJournals,  };
