@@ -36,4 +36,4 @@ function getJournals() {
 
 //export const { journals } = state;  -> leest maar 1 keer de state in, als je dus een entry delete komt er geen wijziging aan de UI, vandaar getJournals()
 
-export { addJournal, removeJournal, getJournals,  };
+export { addJournal, removeJournal, getJournals, editJournal };
