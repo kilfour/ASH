@@ -114,7 +114,7 @@ formEl.addEventListener("submit", function (e) {
 
   const newJournal = {
     ...data,
-    id: "123455667",  //ID moet nog randomised worden
+    id: crypto.randomUUID(),
     tags: [data.tags.split(",")],
   };
 
