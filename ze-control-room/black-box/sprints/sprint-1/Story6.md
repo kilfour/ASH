@@ -10,11 +10,11 @@ Een zoekfunctie schrijven om door onze entries te filteren en bepaalde resultate
 
 ### ✅ Acceptatiecriteria
 
-* [ ] Filteren op properties / Zoeken op tags
-* [ ] Zoeken naar titels
-* [ ] Zoeken naar termen in de inhoud
+* [X] Filteren op properties / Zoeken op tags
+* [X] Zoeken naar titels
+* [X] Zoeken naar termen in de inhoud
 * [ ] Zoeken op datum
-* [ ] Een boodschap weergeven als geen gepaste entry beschikbaar is
+* [X] Een boodschap weergeven als geen gepaste entry beschikbaar is
 
 ### 🧮 Estimate
 In ideale tijd: **2 dagen**.

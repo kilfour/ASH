@@ -1,4 +1,4 @@
-import { getJournals, addJournal, removeJournal, editJournal } from "./modules/journalsState.js";
+import { getJournals, addJournal, removeJournal, editJournal, getDeleted } from "./modules/journalsState.js";
 
 const formEl = document.querySelector(".journal");  //G, alles in 1 object steken of apart laten?
 const journalList = document.querySelector(".journals");
@@ -81,6 +81,7 @@ function bevatTrefTag(journal, treftag){
       }
   } catch(err) {
     document.querySelector(".error").textContent = err.message;
+    //style(document.querySelector(".error"), "inline-block");
   }
 }
 
@@ -113,7 +114,7 @@ formEl.addEventListener("submit", function (e) {
 
   const newJournal = {
     ...data,
-    id: "123455667",
+    id: "123455667",  //ID moet nog randomised worden
     tags: [data.tags.split(",")],
   };
 
@@ -131,6 +132,7 @@ delButton.addEventListener('click', () => {  //G, remove journal via ID, zet ID 
   style(errArea, "none");
   currentID = "";
   upDateUi();
+  console.log(getDeleted());
 });
 
 searchfield1.addEventListener("submit", function(e){
@@ -147,7 +149,10 @@ searchfield1.addEventListener("submit", function(e){
 
 searchfield2.addEventListener("submit", function(e){
   e.preventDefault("");
+
   document.querySelector(".error").textContent = "";
+  //style(document.querySelector(".error"), "none");
+
   const treftag = document.getElementById("searchfield2").value;
 
   const zoekjournals = zoekTrefTagInJournals(getJournals(), treftag);
@@ -176,7 +181,8 @@ cancelEdit.addEventListener('click', () => {  //G, hidden editArea, terug naar d
 
 submitEdit.addEventListener("submit", function (e) {  //G, sumbit form, edit journal entry, hide edit menus
   e.preventDefault();
-  console.log("hello");
+
+  editJournal(currentID, e);
 
   style(editArea, "none");
   style(errArea, "none");

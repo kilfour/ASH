@@ -19,7 +19,7 @@ function storeStories(stories){
  * 
  */
 
-function getStories() {
+export function getStories() {
     let stories = localStorage.getItem(LOCAL_STORAGE_KEY); // here we get the data from localStorage
     if ( stories === null ) {
         stories = []; // if we don't have any data in localStorage, we set it to an empty array
@@ -33,4 +33,16 @@ export function storeUserStory(userStory) {
     let stories = getStories();     // here we get stories from localStorage an object
     stories.push(userStory);        // add that array to the stiries array
     storeStories(stories);          // and store it in localStorage as a string
+}
+
+export function updateUserStory(index, updatedStory) {
+    const stories = getStories();
+    stories[index] = updatedStory;
+    storeStories(stories);
+}
+
+export function deleteUserStory(index) {
+    const stories = getStories();
+    stories.splice(index, 1);
+    storeStories(stories);
 }

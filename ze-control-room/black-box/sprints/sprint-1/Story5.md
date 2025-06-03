@@ -10,8 +10,8 @@ We willen properties kunnen toevoegen aan dagboekposts, die onze inhoud ordenen.
 
 ### ✅ Acceptatiecriteria
 
-* [ ] veld om tags aan te kennen
-* [ ] Op tags kunnen filteren -> story6
+* [X] veld om tags aan te kennen
+* [X] Op tags kunnen filteren -> story6
 
 ### 🧮 Estimate
 In ideale tijd: **2 dagen**.
