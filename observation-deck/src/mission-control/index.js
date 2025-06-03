@@ -45,6 +45,10 @@ el.closeBTN.addEventListener('click', () => {
 //     ...
 // }
 el.modalYes.onclick = () => {
+<<<<<<< HEAD:observation-deck/src/mission-control/story-add-button.js
+    toggleElements([el.overlay, el.modal], 'add')
+    resetStory();
+=======
     el.overlay.classList.add('hidden'); // MME: wrap this in a simple hide(element) function
     el.modal.classList.add('hidden');   // 'cause you're using it all over the place
     resetStory();                       // 
@@ -52,6 +56,7 @@ el.modalYes.onclick = () => {
     //    => tells me how it works (i only need to see this once)
     // hide(el.overlay)
     //    => tells me what it does, always usefull
+>>>>>>> 529127842f379e1fc98e91a39aee49a4c3303f86:observation-deck/src/mission-control/index.js
 
     toggleElements(
         [el.closeBTN, el.saveBTN, el.desc, el.title],
