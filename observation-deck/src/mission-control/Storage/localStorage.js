@@ -34,3 +34,15 @@ export function storeUserStory(userStory) {
     stories.push(userStory);        // add that array to the stiries array
     storeStories(stories);          // and store it in localStorage as a string
 }
+
+export function updateUserStory(index, updatedStory) {
+    const stories = getStories();
+    stories[index] = updatedStory;
+    storeStories(stories);
+}
+
+export function deleteUserStory(index) {
+    const stories = getStories();
+    stories.splice(index, 1);
+    storeStories(stories);
+}
