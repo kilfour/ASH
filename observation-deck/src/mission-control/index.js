@@ -1,4 +1,6 @@
-import { storeUserStory } from "./Storage/localStorage.js"
+import { storeUserStory, getStories, updateUserStory, deleteUserStory } from "./Storage/localStorage.js"
+
+import { renderStories } from "./Render/renderStories.js";
 /**
  * Object with popup elements 
  */
@@ -11,7 +13,8 @@ const el = { // MME: el could use a better name, 'elements' for instance
     desc: document.getElementById('story-description'),
     modal: document.getElementById('modal-confirm'),
     modalYes: document.getElementById('modal-yes'),
-    modalNo: document.getElementById('modal-no')
+    modalNo: document.getElementById('modal-no'),
+    editIndex: document.getElementById('edit-index'),
 };
 
 /**
@@ -24,7 +27,20 @@ function toggleElements(elements, action) {
 function resetStory() {
     el.title.value = '';
     el.desc.value = '';
+    el.editIndex.value = '';
 };
+function openFormForEdit(index) {
+    const story = getStories()[index];
+    el.title.value = story.title;
+    el.desc.value = story.description;
+    el.editIndex.value = index;
+    el.overlay.classList.remove('hidden');
+}
+
+function onDeleteStory(index) {
+    deleteUserStory(index);
+    renderStories(openFormForEdit, onDeleteStory);
+}
 
 el.addBTN.addEventListener('click', () => {
     el.overlay.classList.remove('hidden');
@@ -66,6 +82,7 @@ el.modalNo.onclick = () => {
 el.saveBTN.addEventListener('click', () => {
     const title = el.title.value.trim(); // .trim() removes spaces at the beginning and end of a line, avoiding them
     const description = el.desc.value.trim();
+    const index = el.editIndex.value;
 
     if (title && description) {
         const story = {               // MME: move creating a story, validation and above trim etc, 
@@ -73,7 +90,11 @@ el.saveBTN.addEventListener('click', () => {
             description: description
         };
 
-        storeUserStory(story);
+        if (index === "") {
+            storeUserStory(story);
+        } else {
+            updateUserStory(parseInt(index), story);
+}
         el.overlay.classList.add('hidden');
         resetStory();
     }
