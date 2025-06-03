@@ -67,7 +67,6 @@ function showDetails(event) {
 }
 
 function bevatTrefwoord(journal, trefwoord){
-  console.log(trefwoord);
   return journal.titel.split(" ").some(word => word.toLowerCase().includes(trefwoord.toLowerCase())) ||
          journal.content.split(" ").some(word => word.toLowerCase().includes(trefwoord.toLowerCase()));
 }
