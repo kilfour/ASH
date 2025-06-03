@@ -19,3 +19,6 @@ In ideale dagen: 3 dagen
 
 ### 🔍 Notities / Open Vragen
 
+MME: Rejected:
+  - Geen Paginatie
+

@@ -1,3 +1,5 @@
+import { getBuildStatusWidget } from "./vitrification-bay/build-status-widget.js"
+
 const user = localStorage.getItem("user");
 
 // --------------------------------------------------------------------------------
@@ -33,3 +35,6 @@ if (!user) {
         location.reload();
     });
 }
+
+let widget = await getBuildStatusWidget();
+document.getElementById("build-status").innerHTML = widget;
