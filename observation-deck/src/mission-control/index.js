@@ -10,6 +10,7 @@ import { getUserStory } from "./Entities/userStory.js";
  * UI elements
  */
 const elements = {
+  storyForm: document.getElementById("story-editing"),
   addBTN: document.getElementById("create-story-button"),
   overlay: document.getElementById("popup-overlay"),
   closeBTN: document.getElementById("close-popup"),
@@ -52,6 +53,7 @@ function onAddButtonClick() {
 }
 
 function onCloseButtonClick() {
+  hide(elements.storyForm);
   show(elements.modal);
   toggleElements(formElements, "add");
 }
