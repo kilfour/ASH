@@ -37,8 +37,7 @@ el.closeBTN.addEventListener('click', () => {
 });
 
 el.modalYes.onclick = () => {
-    el.overlay.classList.add('hidden');
-    el.modal.classList.add('hidden');
+    toggleElements([el.overlay, el.modal], 'add')
     resetStory();
 
     toggleElements(
