@@ -59,7 +59,7 @@ function onCloseButtonClick() {
 function onModalYesClick() {
   hide(elements.overlay);
   hide(elements.modal);
-  toggleElements(formElements, "add");
+  toggleElements(formElements, "remove");
   resetStory();
 }
 
