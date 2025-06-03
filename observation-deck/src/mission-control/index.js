@@ -22,8 +22,12 @@ const elements = {
   editIndex: document.getElementById("edit-index"),
 };
 
+const formElements = [elements.closeBTN, elements.saveBTN, elements.desc, elements.title];
 const show = (el) => el.classList.remove("hidden");
 const hide = (el) => el.classList.add("hidden");
+const toggleElements = (el, action) => {
+    el.forEach(el => el.classList[action]('hidden'));
+}; 
 
 function resetStory() {
  elements.title.value = "";
@@ -49,16 +53,19 @@ function onAddButtonClick() {
 
 function onCloseButtonClick() {
   show(elements.modal);
+  toggleElements(formElements, "add");
 }
 
 function onModalYesClick() {
   hide(elements.overlay);
   hide(elements.modal);
+  toggleElements(formElements, "remove");
   resetStory();
 }
 
 function onModalNoClick() {
   hide(elements.modal);
+  toggleElements(formElements, "remove");
 }
 
 function onSaveButtonClick() {
