@@ -1,18 +1,17 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-    <h1>Mission Control</h1>
     <link rel="stylesheet" href="../styles.css">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script defer type="module" src="../../src/mission-control/index.js"></script>
+    <script defer type="module" src="../../src/mission-control/Storage/filterstory.js"></script>
     <title>Document</title>
-
 </head>
-<title>Title</title>
 
 <body>
+    <h1>Mission Control</h1>
+
     <div class="dashboard">DASHBOARD
         <div class="status">STATUS
             <div class="status-item">
@@ -34,8 +33,7 @@
         </div>
     </div>
 
-
-    <!-- PopUp overlay-->
+    <!-- PopUp overlay -->
     <form id="story-form"> 
         <div id="popup-overlay" class="overlay hidden">
             <div class="popup">
@@ -43,18 +41,8 @@
                 <p></p>
                 <textarea id="story-description" placeholder="Description"></textarea>
                 <div>
-                    <button type="button"id="save-story">Save</button> <!-- type="button" don't refresh page-->
-                    <button type="button"id="close-popup">Close</button> <!-- be default type="submit" refresh page after pressing-->
-                
-                <div id="formStatus">
-                    <input type="radio" name="status" id="status1" form="story-form" checked>
-                    <label for="status1">Nieuw</label>
-            
-                    <input type="radio" name="status" id="status2" form="story-form"  >
-                    <label for="status2">In Progress</label>
-            
-                    <input type="radio" name="status" id="status3" form="story-form" >
-                    <label for="status3">Done</label>
+                    <button type="button" id="save-story">Save</button>
+                    <button type="button" id="close-popup">Close</button>
                 </div>
 
                 <div id="modal-confirm" class="hidden">
@@ -68,10 +56,8 @@
         </div>
     </form>
 
-
     <div class="header">
         <!-- MME: Malformed Html -->
-        </header>
         <div class="table-button-wrapper">
             <table>
                 <thead>
@@ -81,34 +67,19 @@
                         <th>Project/ Sprint</th>
                     </tr>
                 </thead>
-                <tbody>
-                    <tr>
-                        <td>Mark</td>
-                        <td>37</td>
-                        <td>Gent</td>
-                    </tr>
-                    <tr>
-                        <td>Jennifer</td>
-                        <td>22</td>
-                        <td>Ronse</td>
-                    </tr>
-                    <tr>
-                        <td>Jan</td>
-                        <td>40</td>
-                        <td>Antwerpen</td>
-                    </tr>
+                <tbody id="story-table-body">
+                    <!-- Stories worden hier toegevoegd -->
                 </tbody>
-
             </table>
+
             <div class="center">
                 <button id="create-story-button" class="button">Add story</button>
             </div>
 
+            <input type="hidden" id="edit-index" />
+        </div>
+    </div>
 
-
-
-
-<script src="/observation-deck/src/mission-control/status.js"></script>
+    <script src="/observation-deck/src/mission-control/status.js"></script>
 </body>
-
 </html>
