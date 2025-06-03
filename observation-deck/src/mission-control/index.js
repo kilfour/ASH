@@ -1,11 +1,5 @@
-<<<<<<< HEAD
-import { storeUserStory, getStories, updateUserStory, deleteUserStory } from "./Storage/localStorage.js"
-
-import { renderStories } from "./Render/renderStories.js";
-=======
 import { storeUserStory } from "./Storage/localStorage.js"
 import { getUserStory } from "./Entities/userStory.js"
->>>>>>> 322f72afae8abc95d825c80488c9764fed8d9d64
 /**
  * UI elements
  */
@@ -36,14 +30,8 @@ const toggleElements = (el, action) => {
 };
 
 function resetStory() {
-<<<<<<< HEAD
-    el.title.value = '';
-    el.desc.value = '';
-    el.editIndex.value = '';
-=======
     elements.title.value = '';
     elements.desc.value = '';
->>>>>>> 322f72afae8abc95d825c80488c9764fed8d9d64
 };
 function openFormForEdit(index) {
     const story = getStories()[index];
@@ -82,31 +70,13 @@ function onModalNoClick() {
 function onSaveButtonClick() {
     const story = getUserStory(elements.title, elements.desc)
 
-<<<<<<< HEAD
-el.saveBTN.addEventListener('click', () => {
-    const title = el.title.value.trim(); // .trim() removes spaces at the beginning and end of a line, avoiding them
-    const description = el.desc.value.trim();
-    const index = el.editIndex.value;
-=======
     if (!story) return;
->>>>>>> 322f72afae8abc95d825c80488c9764fed8d9d64
 
     storeUserStory(story);
     hide(elements.overlay);
     resetStory();
 }
 
-<<<<<<< HEAD
-        if (index === "") {
-            storeUserStory(story);
-        } else {
-            updateUserStory(parseInt(index), story);
-}
-        el.overlay.classList.add('hidden');
-        resetStory();
-    }
-});
-=======
 /** 
  * Key Binding
  */
@@ -115,5 +85,4 @@ elements.closeBTN.onclick = onCloseButtonClick;
 elements.modalYes.onclick = onModalYesClick;
 elements.modalNo.onclick = onModalNoClick;
 elements.saveBTN.onclick = onSaveButtonClick;
->>>>>>> 322f72afae8abc95d825c80488c9764fed8d9d64
 
