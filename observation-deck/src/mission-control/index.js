@@ -10,7 +10,6 @@ import { getUserStory } from "./Entities/userStory.js";
  * UI elements
  */
 const elements = {
-  storyForm: document.getElementById("story-editing"),
   addBTN: document.getElementById("create-story-button"),
   overlay: document.getElementById("popup-overlay"),
   closeBTN: document.getElementById("close-popup"),
@@ -21,10 +20,16 @@ const elements = {
   modalYes: document.getElementById("modal-yes"),
   modalNo: document.getElementById("modal-no"),
   editIndex: document.getElementById("edit-index"),
+  formStatus: document.getElementById("formStatus")
 };
 
 const show = (el) => el.classList.remove("hidden");
 const hide = (el) => el.classList.add("hidden");
+const formStory = [elements.saveBTN, elements.closeBTN, elements.desc, elements.title, elements.formStatus]
+
+const toggleElements = (el, action) => {
+    el.forEach(el => el.classList[action]('hidden'));
+};
 
 function resetStory() {
   elements.title.value = "";
@@ -37,8 +42,8 @@ function onAddButtonClick() {
 }
 
 function onCloseButtonClick() {
-  hide(elements.storyForm);
   show(elements.modal);
+  toggleElements(formStory, 'add');
 }
 
 function onModalYesClick() {
@@ -48,6 +53,7 @@ function onModalYesClick() {
 }
 
 function onModalNoClick() {
+  toggleElements(formStory, 'remove');
   hide(elements.modal);
 }
 
