@@ -219,3 +219,47 @@ tbody tr:nth-child(even) {
   border-left-color: #ef4444;
   background-color: #7f1d1d;
 }
+
+/* voor 3-puntjes dropdown menu */
+
+.actions-menu {
+  position: relative;
+  display: inline-block;
+}
+
+.actions-menu button {
+  background: none;
+  border: none;
+  color: white;
+  font-size: 20px;
+  cursor: pointer;
+}
+
+.actions-dropdown {
+  position: absolute;
+  top: 100%;
+  right: 0;
+  background-color: #444;
+  border: 1px solid #666;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+  z-index: 10;
+}
+
+.actions-dropdown.hidden {
+  display: none;
+}
+
+.actions-dropdown button {
+  display: block;
+  padding: 10px;
+  background: none;
+  border: none;
+  width: 100%;
+  text-align: left;
+  color: white;
+  cursor: pointer;
+}
+
+.actions-dropdown button:hover {
+  background-color: #666;
+}

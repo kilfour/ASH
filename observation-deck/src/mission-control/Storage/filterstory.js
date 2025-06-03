@@ -29,10 +29,10 @@
     //   }
     // });
 
-// //Optioneel: initiale filter toepassen bij laden
-// //   document.addEventListener('DOMContentLoaded', filterStories);
+// Optioneel: initiale filter toepassen bij laden
+//   document.addEventListener('DOMContentLoaded', filterStories);
 
-// VOLLEDIG NIEUWE INPUT WAARBIJ DE OPTIES WEL IN EEN DROP DOWN ZITTEN
+// // VOLLEDIG NIEUWE INPUT WAARBIJ DE OPTIES WEL IN EEN DROP DOWN ZITTEN
 
 // Create label
 // const label = document.createElement('label');
@@ -83,21 +83,21 @@
 
 /* When the user clicks on the button,
 toggle between hiding and showing the dropdown content */
-function myFunction() {
-  document.getElementById("myDropdown").classList.toggle("show");
-}
+// function myFunction() {
+//   document.getElementById("myDropdown").classList.toggle("show");
+// }
 
-function filterFunction() {
-  const input = document.getElementById("myInput");
-  const filter = input.value.toUpperCase();
-  const div = document.getElementById("myDropdown");
-  const a = div.getElementsByTagName("a");
-  for (let i = 0; i < a.length; i++) {
-    txtValue = a[i].textContent || a[i].innerText;
-    if (txtValue.toUpperCase().indexOf(filter) > -1) {
-      a[i].style.display = "";
-    } else {
-      a[i].style.display = "none";
-    }
-  }
-}
+// function filterFunction() {
+//   const input = document.getElementById("myInput");
+//   const filter = input.value.toUpperCase();
+//   const div = document.getElementById("myDropdown");
+//   const a = div.getElementsByTagName("a");
+//   for (let i = 0; i < a.length; i++) {
+//     txtValue = a[i].textContent || a[i].innerText;
+//     if (txtValue.toUpperCase().indexOf(filter) > -1) {
+//       a[i].style.display = "";
+//     } else {
+//       a[i].style.display = "none";
+//     }
+//   }
+// }
