@@ -1,17 +1,27 @@
-// Al deze criteria staan binnen het **pop-up form: een nieuwe story maken**
-// * [ ] er zijn 3 checkmarks te zien met `Nieuw`, `In Progress`, of `Done`
-// * [ ] de box `Nieuw` staat automatisch aangevinkt
-// * [ ] bij het aantikken van een andere box, worden de andere boxes afgevinkt
+ //POGING 2:hideform als er op close gedrukt: WERKT NIET
 
- //hideform als er op close gedrukt
+//  function hideForm (){
+//   document.querySelector("#close-popup").addEventListener("click", () => {
+//     const form = document.querySelector("#formStatus");
+//     form.style.display = 'none';
+//   });
+// }
+// hideForm();
+
+//POGING3: hideform via classlist toggle als er op close gedrukt wordt
+
+ function hideForm (){
   document.querySelector("#close-popup").addEventListener("click", () => {
     const form = document.querySelector("#formStatus");
-    form.style.display = 'none';
+    form.classList.toggle("visible");
   });
+}
+hideForm(); //fout: form in form =nesten= mag niet 
+// DUS form weghalen en linken aan pop-up form???
 
 
 
-// wanneer #modal-confirm hidden is: hide form
+// POGING1: wanneer #modal-confirm hidden is: hide form
 // import { storeUserStory } from "./Storage/localStorage.js"
 
 // function hideForm() {
