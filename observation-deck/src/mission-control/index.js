@@ -12,7 +12,8 @@ const elements = {
     desc: document.getElementById('story-description'),
     modal: document.getElementById('modal-confirm'),
     modalYes: document.getElementById('modal-yes'),
-    modalNo: document.getElementById('modal-no')
+    modalNo: document.getElementById('modal-no'),
+    editIndex: document.getElementById('edit-index'),
 };
 
 /**
@@ -32,6 +33,18 @@ function resetStory() {
     elements.title.value = '';
     elements.desc.value = '';
 };
+function openFormForEdit(index) {
+    const story = getStories()[index];
+    el.title.value = story.title;
+    el.desc.value = story.description;
+    el.editIndex.value = index;
+    el.overlay.classList.remove('hidden');
+}
+
+function onDeleteStory(index) {
+    deleteUserStory(index);
+    renderStories(openFormForEdit, onDeleteStory);
+}
 
 function onAddButtonClick() {
     show(elements.overlay);

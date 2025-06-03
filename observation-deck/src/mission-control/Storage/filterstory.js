@@ -1,6 +1,10 @@
+    function toggleDropdown() {
+      document.getElementById("filterDropdown").classList.toggle("show");
+    }
 
     function filterStories() {
-      const checkboxes = document.querySelectorAll('.filters input[type="checkbox"]');
+      const checkboxes = document.querySelectorAll('.dropdown-content[type="checkbox"]');
+
       const selectedStatuses = Array.from(checkboxes)
                                     .filter(checkbox => checkbox.checked)
                                     .map(checkbox => checkbox.value);
@@ -17,34 +21,26 @@
       });
     }
 
+    // Sluit dropdown als je buiten klikt
+    window.addEventListener('click', function(e) {
+      if (!e.target.matches('.dropdown-button')) {
+        const dropdowns = document.getElementsByClassName("dropdown");
+        Array.from(dropdowns).forEach(dd => dd.classList.remove('show'));
+      }
+    });
+
 //Optioneel: initiale filter toepassen bij laden
-    document.addEventListener('DOMContentLoaded', filterStories);
+//   document.addEventListener('DOMContentLoaded', filterStories);
 
 
-<!DOCTYPE html>
-<html lang="nl">
-<head>
-  <meta charset="UTF-8">
-  <title>Checkbox Filter</title>
-  <style>
-    body {
-      font-family: Arial, sans-serif;
-      padding: 20px;
-    }
-    #task-list li {
-      margin: 5px 0;
-    }
-    .filters label {
-      margin-right: 15px;
-    }
-  </style>
 
-</head>
-<body>
+{/* <body>
 
   <h2>Filter op status</h2>
 
-  <div class="filters">
+  <div class="filters" id="filterDropdown">
+    <button class="dropdown-button" onclick="toggleDropdown()">Filter status ▾</button>
+    <div class="dropdown-content"></div>
     <label><input type="checkbox" value="new" onchange="filterStories()" checked> New</label>
     <label><input type="checkbox" value="in progress" onchange="filterStories()" checked> In Progress</label>
     <label><input type="checkbox" value="done" onchange="filterStories()" checked> Done</label>
@@ -53,8 +49,9 @@
   <ul id="stories-list"> 
     <li data-status="new">Taak 1 - New</li>
     <li data-status="in progress">Taak 2 - In Progress</li>
-    <li data-status="done">Taak 3 - Done</li>
-    <li data-status="in progress">Taak 4 - In Progress</li>
+
   </ul>
 </body>
-</html>
+
+
+ */}

@@ -2,17 +2,18 @@
 <html lang="en">
 
 <head>
-    <h1>Mission Control</h1>
+    
     <link rel="stylesheet" href="../styles.css">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script defer type="module" src="../../src/mission-control/index.js"></script>
-    <title>Document</title>
+    <script defer type="module" src="../../src/mission-control/Storage/filterstory.js"></script>
+    <title>Mission Control</title>
 
 </head>
-<title>Title</title>
 
 <body>
+    <h1>Mission Control</h1>
     <div class="dashboard">DASHBOARD
         <div class="status">STATUS
             <div class="status-item">
@@ -60,7 +61,7 @@
 
     <div class="header">
         <!-- MME: Malformed Html -->
-        </header>
+        
         <div class="table-button-wrapper">
             <table>
                 <thead>
@@ -70,29 +71,16 @@
                         <th>Project/ Sprint</th>
                     </tr>
                 </thead>
-                <tbody>
-                    <tr>
-                        <td>Mark</td>
-                        <td>37</td>
-                        <td>Gent</td>
-                    </tr>
-                    <tr>
-                        <td>Jennifer</td>
-                        <td>22</td>
-                        <td>Ronse</td>
-                    </tr>
-                    <tr>
-                        <td>Jan</td>
-                        <td>40</td>
-                        <td>Antwerpen</td>
-                    </tr>
-                </tbody>
+                    <tbody id="story-table-body">
+  
+                    </tbody>
 
             </table>
             <div class="center">
                 <button id="create-story-button" class="button">Add story</button>
             </div>
 
+            <input type="hidden" id="edit-index" />
 
 
 
