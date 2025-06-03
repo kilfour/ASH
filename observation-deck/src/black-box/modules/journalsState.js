@@ -24,18 +24,32 @@ function addJournal(journal) {
   state.journals.push(journal);
 }
 
-function removeJournal(id) {
+function removeJournal(id) {  //G, journal met ID = currentID toevoegen aan deleted, verwijderen van journal list
+  const Delete = state.journals.filter((journal) => journal.id === id);
+  state.deleted.push(Delete[0]);
   state.journals = state.journals.filter((journal) => journal.id !== id);
 }
 
-function editJournal() {
-  //neemt de geselecteerde journal, vult de input velden met de huidige info, gebruiker edit het waarna de submit de huidige journal moet aanpassen
+function editJournal(currentID, event) {
+  //Current journal is journal met zelfde ID als currentID
+  const currJournal = state.journals.filter((journal) => journal.id === currentID);
+  
+  //zet de form om naar object
+  const formData = new FormData(event.target);
+  const data = Object.fromEntries(formData);
+  
+  //edit journal data
+  currJournal[0].titel = data.titel;
+  currJournal[0].content = data.content;
+  currJournal[0].tags = [data.tags.split(",")];
 }
 
-function getJournals() {  
+function getJournals() {  //G, export const { journals } = state;  -> leest maar 1 keer de state in, als je dus een entry delete komt er geen wijziging aan de UI, vandaar getJournals()
   return state.journals;
 }
 
-//export const { journals } = state;  -> leest maar 1 keer de state in, als je dus een entry delete komt er geen wijziging aan de UI, vandaar getJournals()
+function getDeleted() {  //G, testing
+  return state.deleted;
+}
 
-export { addJournal, removeJournal, getJournals, editJournal };
+export { addJournal, removeJournal, getJournals, editJournal, getDeleted };

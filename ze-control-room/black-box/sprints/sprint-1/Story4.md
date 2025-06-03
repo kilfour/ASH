@@ -11,9 +11,9 @@ Gebruikers willen controle over reed geplaatste posts door deze te kunnen bewerk
 ### ✅ Acceptatiecriteria
 
 * [X] Bij het openen van posts krijg ik de optie om deze te bewerken of verwijderen
-* [ ] Indien de post bewerkt wordt moeten de aanpassingen opgeslagen worden.
+* [X] Indien de post bewerkt wordt moeten de aanpassingen opgeslagen worden.
 * [X] Indien de post verwijderd wordt moet de volledige post verwijderd worden.
-* [ ] Verwijderde posts archiveren (SOFT DELETE).
+* [X] Verwijderde posts archiveren (SOFT DELETE).
 
 ### 🧮 Estimate
 
