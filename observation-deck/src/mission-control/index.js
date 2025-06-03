@@ -116,6 +116,7 @@ function addStoryRow(story, index) {
     elements.desc.value = s.description;
     elements.editIndex.value = index;
     show(elements.overlay);
+    toggleElements(formStory, 'remove'); // ALX:: for now this line must be here, becuase if you want edit form, we must remove .hidden class from elements
   };
 
   row.querySelector(".delete-btn").onclick = () => {
