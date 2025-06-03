@@ -45,7 +45,19 @@
                 <div>
                     <button type="button"id="save-story">Save</button> <!-- type="button" don't refresh page-->
                     <button type="button"id="close-popup">Close</button> <!-- be default type="submit" refresh page after pressing-->
+
+                <form id="formStatus">
+                    <input type="radio" name="status" checked>
+                    <label for="status">Nieuw</label>
+            
+                    <input type="radio" name="status" >
+                    <label for="status">In Progress</label>
+            
+                    <input type="radio" name="status">
+                    <label for="status">Done</label>
+                </form>
                 </div>
+
                 <div id="modal-confirm" class="hidden">
                     <div class="modal-content">
                         <p>Are you sure you want to close?</p>
