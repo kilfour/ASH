@@ -10,7 +10,7 @@ Gebruikers willen snel toegang hebben tot de nieuwste inhoud of updates. Daarom 
 
 ### ✅ Acceptatiecriteria
 
-* [ ] De lijstweergave toont standaard de nieuwste entry bovenaan
+* [X] De lijstweergave toont standaard de nieuwste entry bovenaan
 * [ ] Paginatie om door de lijst te bladeren
 
 ### 🧮 Estimate

@@ -24,11 +24,15 @@ function displayJournals(journals) {
 
 
 function showDetails(event){
-    // const prev1 = document.querySelectorAll("p.content");
-    // const prev2 = document.querySelectorAll("p.tags");
-    // console.log(prev1);
-    // prev1.style = "display: none";
-    // prev2.style = "display: none";
+    const prev1 = document.querySelectorAll("p.content");
+    const prev2 = document.querySelectorAll("p.tags");
+    prev1.forEach(el => {
+      el.style.display = "none";
+    });
+
+    prev2.forEach(el => {
+      el.style.display = "none";
+    });
 
     const title = event.target; // the clicked <h2>
     console.log(event);
@@ -69,9 +73,10 @@ t.addEventListener("click",  function(e){
 });
 
 delButton.addEventListener('click', () => {
-  removeJournal(currentID);  //moet de ID van de geselecteerde entry nemen
+  removeJournal(currentID);
   upDateUi();
 })
+
 
 
 // export function searchContent(str, searchstr){
