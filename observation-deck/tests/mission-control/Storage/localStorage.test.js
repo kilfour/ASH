@@ -12,3 +12,4 @@ describe("storeUserStory", () => {
         expect(stories[0].description).toBe('description');
     });
 });
+
