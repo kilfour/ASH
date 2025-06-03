@@ -81,7 +81,7 @@ function bevatTrefTag(journal, treftag){
       }
   } catch(err) {
     document.querySelector(".error").textContent = err.message;
-    style(document.querySelector(".error"), "block");
+    //style(document.querySelector(".error"), "inline-block");
   }
 }
 
@@ -150,7 +150,7 @@ searchfield2.addEventListener("submit", function(e){
   e.preventDefault("");
 
   document.querySelector(".error").textContent = "";
-  style(document.querySelector(".error"), "none");
+  //style(document.querySelector(".error"), "none");
 
   const treftag = document.getElementById("searchfield2").value;
 
