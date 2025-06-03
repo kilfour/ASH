@@ -73,7 +73,7 @@ t.addEventListener("click",  function(e){
 });
 
 delButton.addEventListener('click', () => {
-  removeJournal(currentID);  //moet de ID van de geselecteerde entry nemen
+  removeJournal(currentID);
   upDateUi();
 })
 
