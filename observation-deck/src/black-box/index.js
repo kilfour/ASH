@@ -2,6 +2,7 @@ import { getJournals, addJournal, removeJournal, editJournal } from "./modules/j
 
 const formEl = document.querySelector(".journal");
 const delButton = document.querySelector(".btn-delete");
+const searchfield = document.querySelector(".searchbar");
 
 let currentID = ""; //voor deletes
 
@@ -51,6 +52,24 @@ function upDateUi() {
 }
 upDateUi();
 
+
+function bevatTrefwoord(journal, trefwoord){
+  return journal.titel.split(" ").some(word => word.toLowerCase().includes(trefwoord.toLowerCase())) ||
+         journal.content.split(" ").some(word => word.toLowerCase().includes(trefwoord.toLowerCase())) ||
+         journal.tags.some(word => word.toLowerCase().includes(trefwoord.toLowerCase()));
+}
+
+function zoekTrefwoordInJournals(journals, trefwoord){
+  let result = [];
+  for (let x of journals){
+    if(bevatTrefwoord(x, trefwoord)){
+      result.push(x);
+    }
+  }
+  return result;
+}
+
+
 formEl.addEventListener("submit", function (e) {
   e.preventDefault("");
 
@@ -75,7 +94,20 @@ t.addEventListener("click",  function(e){
 delButton.addEventListener('click', () => {
   removeJournal(currentID);  //moet de ID van de geselecteerde entry nemen
   upDateUi();
-})
+});
+
+searchfield.addEventListener("submit", function(e){
+  e.preventDefault("");
+
+  const trefwoord = document.querySelector(".searchfield")
+
+  const zoekjournals = zoekTrefwoordInJournals(getJournals(), trefwoord);
+  console.log(trefwoord);
+  console.log(zoekjournals);
+  displayJournals(zoekjournals);
+
+});
+
 
 
 

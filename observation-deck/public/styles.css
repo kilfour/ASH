@@ -45,6 +45,7 @@ header h1 {
   line-height: 40px;
   padding: 20px;
   margin: 0px auto;
+  
 }
 
 /* Navigation Buttons */
@@ -146,6 +147,7 @@ tbody tr:nth-child(even) {
         margin: 20px;
         padding: 20px;
         font-family: Arial, Helvetica, sans-serif;
+        text-align: center;
 }
 
 .status-item {
@@ -153,7 +155,9 @@ tbody tr:nth-child(even) {
         padding: 20px;
         display: inline-block;
         flex-wrap: wrap;
+        justify-content: center;
         gap: 10px;
+
 }
 
 .overlay {

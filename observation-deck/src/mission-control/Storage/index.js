@@ -1,4 +1,4 @@
-import { storeUserStory } from "./Storage/localStorage"
+import { storeUserStory } from "./Storage/localStorage.js"
 /**
  * Object with popup elements 
  */
