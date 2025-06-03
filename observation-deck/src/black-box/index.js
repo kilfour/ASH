@@ -1,12 +1,30 @@
 import { getJournals, addJournal, removeJournal, editJournal } from "./modules/journalsState.js";
 
-const formEl = document.querySelector(".journal");
+const formEl = document.querySelector(".journal");  //G, alles in 1 object steken of apart laten?
+const journalList = document.querySelector(".journals");
 const delButton = document.querySelector(".btn-delete");
 const searchfield1 = document.querySelector(".searchbar-content");
 const searchfield2 = document.querySelector(".searchbar-tags");
+const editButton = document.querySelector(".btn-edit");
+const editArea = document.querySelector(".EditArea");
+const errArea = document.querySelector(".ErrorArea");
+const errmsg = document.querySelector(".Errormsg");
+const submitEdit = document.querySelector(".edit");
+const cancelEdit = document.querySelector(".btn-edit-cancel");
+const editTitle = document.querySelector(".editTitle");
+const editContent = document.querySelector(".editContent");
+const editTags = document.querySelector(".editTags");
 
-let currentID = ""; //voor deletes
+let currentID = "";
 
+
+function upDateUi() {
+  displayJournals(getJournals());
+} upDateUi();
+
+function style(place, state) {  //G, zet de display state, vooral "block" of "none"
+  place.style.display = state;
+}
 
 function displayJournals(journals) {
   const journalsView = document.querySelector(".journals");
@@ -24,35 +42,29 @@ function displayJournals(journals) {
   });
 }
 
-
-function showDetails(event){
+function showDetails(event) {
+    //G, iedere journal hidden 
     const prev1 = document.querySelectorAll("p.content");
     const prev2 = document.querySelectorAll("p.tags");
-    prev1.forEach(el => {
-      el.style.display = "none";
-    });
-
-    prev2.forEach(el => {
-      el.style.display = "none";
-    });
+    prev1.forEach(el => { el.style.display = "none"; });
+    prev2.forEach(el => { el.style.display = "none"; });
+    style(editArea, "none");
+    style(errArea, "none");
 
     const title = event.target; // the clicked <h2>
     
     const content = title.nextElementSibling;
     const tags = content.nextElementSibling.nextElementSibling;
-    currentID = title.parentElement.attributes.id.textContent;
+
+    currentID = title.parentElement.attributes.id.textContent; //G, ID wordt opgeslagen voor gebruik
+    editTitle.value = title.textContent;  //G, journal info als edit initial value
+    editContent.value = content.textContent;
+    editTags.value = tags.textContent;
 
     // Show both elements
-    content.style.display = "block";
-    tags.style.display = "block";
-    
+    style(content, "block");
+    style(tags, "block");
 }
-
-function upDateUi() {
-  displayJournals(getJournals());
-}
-upDateUi();
-
 
 function bevatTrefwoord(journal, trefwoord){
   console.log(trefwoord);
@@ -93,7 +105,7 @@ function zoekTrefTagInJournals(journals, treftag){
   return result;
 }
 
-
+//maakt nieuwe journal
 formEl.addEventListener("submit", function (e) {
   e.preventDefault("");
 
@@ -110,13 +122,15 @@ formEl.addEventListener("submit", function (e) {
   upDateUi();
 });
 
-const t = document.querySelector(".journals");
-t.addEventListener("click",  function(e){
+journalList.addEventListener("click",  function(e){
     showDetails(e);
 });
 
-delButton.addEventListener('click', () => {
-  removeJournal(currentID);  //moet de ID van de geselecteerde entry nemen
+delButton.addEventListener('click', () => {  //G, remove journal via ID, zet ID op niks voor edit errmsg
+  removeJournal(currentID);
+  style(editArea, "none");
+  style(errArea, "none");
+  currentID = "";
   upDateUi();
 });
 
@@ -144,6 +158,31 @@ searchfield2.addEventListener("submit", function(e){
 
 });
 
+
+editButton.addEventListener('click', () => {  //G, haalt het edit menu of geeft error
+  if(currentID === ""){
+    style(errArea, "block");
+    style(editArea, "none");
+    errmsg.textContent = "Geen Journal Selected"
+  } else { 
+    style(editArea, "block");
+    style(errArea, "none");
+  }
+})
+
+cancelEdit.addEventListener('click', () => {  //G, hidden editArea, terug naar detail display
+  style(editArea, "none");
+  style(errArea, "none");
+})
+
+submitEdit.addEventListener("submit", function (e) {  //G, sumbit form, edit journal entry, hide edit menus
+  e.preventDefault();
+  console.log("hello");
+
+  style(editArea, "none");
+  style(errArea, "none");
+  upDateUi();
+});
 
 
 
