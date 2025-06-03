@@ -1,8 +1,9 @@
 import { storeUserStory } from "./Storage/localStorage.js"
+import { getUserStory } from "./Entities/userStory.js"
 /**
- * Object with popup elements 
+ * UI elements
  */
-const el = { // MME: el could use a better name, 'elements' for instance
+const elements = {
     addBTN: document.getElementById('create-story-button'),
     overlay: document.getElementById('popup-overlay'),
     closeBTN: document.getElementById('close-popup'),
@@ -17,65 +18,58 @@ const el = { // MME: el could use a better name, 'elements' for instance
 /**
  *  Functions to toggle elements in the DOM
  */
-function toggleElements(elements, action) {
-    elements.forEach(el => el.classList[action]('hidden'));
+
+
+const show = element => element.classList.remove('hidden');
+const hide = element => element.classList.add('hidden');
+
+const formElements = [elements.closeBTN, elements.saveBTN, elements.desc, elements.title]
+const toggleElements = (el, action) => {
+    el.forEach(el => el.classList[action]('hidden'));
 };
 
 function resetStory() {
-    el.title.value = '';
-    el.desc.value = '';
+    elements.title.value = '';
+    elements.desc.value = '';
 };
 
-el.addBTN.addEventListener('click', () => {
-    el.overlay.classList.remove('hidden');
-});
+function onAddButtonClick() {
+    show(elements.overlay);
+}
 
-el.closeBTN.addEventListener('click', () => {
-    el.modal.classList.remove('hidden');
-    toggleElements([el.closeBTN, el.saveBTN, el.desc, el.title], 'add')
-});
+function onCloseButtonClick() {
+    toggleElements(formElements, 'add')
+    show(elements.modal);
+}
 
-// ------------------------------------------------------------------------
-// -- MME: Move the event handlers into functions
-// Like so:
-// el.modalYes.onclick = onModalYesClick;
-// 
-// function onModalYesClick() {
-//     el.overlay.classList.add('hidden');
-//     ...
-// }
-el.modalYes.onclick = () => {
-    el.overlay.classList.add('hidden'); // MME: wrap this in a simple hide(element) function
-    el.modal.classList.add('hidden');   // 'cause you're using it all over the place
-    resetStory();                       // 
-    // el.overlay.classList.add('hidden');
-    //    => tells me how it works (i only need to see this once)
-    // hide(el.overlay)
-    //    => tells me what it does, always usefull
+function onModalYesClick() {
+    hide(elements.overlay);
+    hide(elements.modal);
+    resetStory();                
+    toggleElements(formElements, 'remove')
+}
 
-    toggleElements(
-        [el.closeBTN, el.saveBTN, el.desc, el.title],
-        'remove')
-};
+function onModalNoClick() {
+    hide(elements.modal);
+    toggleElements(formElements, 'remove')
+}
 
-el.modalNo.onclick = () => {
-    el.modal.classList.add('hidden');
-    toggleElements([el.closeBTN, el.saveBTN, el.desc, el.title], 'remove')
-};
+function onSaveButtonClick() {
+    const story = getUserStory(elements.title, elements.desc)
 
-el.saveBTN.addEventListener('click', () => {
-    const title = el.title.value.trim(); // .trim() removes spaces at the beginning and end of a line, avoiding them
-    const description = el.desc.value.trim();
+    if (!story) return;
 
-    if (title && description) {
-        const story = {               // MME: move creating a story, validation and above trim etc, 
-            title: title,             // to it's own testable module: ./Entities/userStory.js for example
-            description: description
-        };
+    storeUserStory(story);
+    hide(elements.overlay);
+    resetStory();
+}
 
-        storeUserStory(story);
-        el.overlay.classList.add('hidden');
-        resetStory();
-    }
-});
+/** 
+ * Key Binding
+ */
+elements.addBTN.onclick = onAddButtonClick;
+elements.closeBTN.onclick = onCloseButtonClick;
+elements.modalYes.onclick = onModalYesClick;
+elements.modalNo.onclick = onModalNoClick;
+elements.saveBTN.onclick = onSaveButtonClick;
 
