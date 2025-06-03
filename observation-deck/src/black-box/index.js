@@ -3,6 +3,8 @@ import { getJournals, addJournal, removeJournal, editJournal } from "./modules/j
 const formEl = document.querySelector(".journal");  //G, alles in 1 object steken of apart laten?
 const journalList = document.querySelector(".journals");
 const delButton = document.querySelector(".btn-delete");
+const searchfield1 = document.querySelector(".searchbar-content");
+const searchfield2 = document.querySelector(".searchbar-tags");
 const editButton = document.querySelector(".btn-edit");
 const editArea = document.querySelector(".EditArea");
 const errArea = document.querySelector(".ErrorArea");
@@ -40,7 +42,6 @@ function displayJournals(journals) {
   });
 }
 
-
 function showDetails(event) {
     //G, iedere journal hidden 
     const prev1 = document.querySelectorAll("p.content");
@@ -51,7 +52,7 @@ function showDetails(event) {
     style(errArea, "none");
 
     const title = event.target; // the clicked <h2>
-    console.log(event);
+    
     const content = title.nextElementSibling;
     const tags = content.nextElementSibling.nextElementSibling;
 
@@ -63,6 +64,41 @@ function showDetails(event) {
     // Show both elements
     style(content, "block");
     style(tags, "block");
+}
+
+function bevatTrefwoord(journal, trefwoord){
+  console.log(trefwoord);
+  return journal.titel.split(" ").some(word => word.toLowerCase().includes(trefwoord.toLowerCase())) ||
+         journal.content.split(" ").some(word => word.toLowerCase().includes(trefwoord.toLowerCase())); /* ||
+         journal.tags.some(word => word.toLowerCase().includes(trefwoord.toLowerCase())); */
+}
+
+function bevatTrefTag(journal, treftag){
+  if(treftag.startsWith("#")){
+    return journal.tags.some(word => word.toLowerCase().includes(treftag.toLowerCase()));
+  } else {
+    throw new Error("Tags moeten starten met #");
+  }
+}
+
+function zoekTrefwoordInJournals(journals, trefwoord){
+  let result = [];
+  for (let x of journals){
+    if(bevatTrefwoord(x, trefwoord)){
+      result.push(x);
+    }
+  }
+  return result;
+}
+
+function zoekTrefTagInJournals(journals, treftag){
+  let result = [];
+  for (let x of journals){
+    if(bevatTrefTag(x, treftag)){
+      result.push(x);
+    }
+  }
+  return result;
 }
 
 //maakt nieuwe journal
@@ -92,7 +128,32 @@ delButton.addEventListener('click', () => {  //G, remove journal via ID, zet ID 
   style(errArea, "none");
   currentID = "";
   upDateUi();
-})
+});
+
+searchfield1.addEventListener("submit", function(e){
+  e.preventDefault("");
+
+  const trefwoord = document.getElementById("searchfield1").value;
+
+  const zoekjournals = zoekTrefwoordInJournals(getJournals(), trefwoord);
+  console.log(trefwoord);
+  console.log(zoekjournals);
+  displayJournals(zoekjournals);
+
+});
+
+searchfield2.addEventListener("submit", function(e){
+  e.preventDefault("");
+
+  const treftag = document.getElementById("searchfield2").value;
+
+  const zoekjournals = zoekTrefTagInJournals(getJournals(), treftag);
+  console.log(treftag);
+  console.log(zoekjournals);
+  displayJournals(zoekjournals);
+
+});
+
 
 editButton.addEventListener('click', () => {  //G, haalt het edit menu of geeft error
   if(currentID === ""){

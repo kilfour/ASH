@@ -20,3 +20,6 @@ In ideale dagen: 2 dagen
 
 🔍 Notities / Open Vragen
 
+MME: Rejected 
+ - page reload en story is weg.
+ - datum ?
