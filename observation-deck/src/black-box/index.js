@@ -62,10 +62,14 @@ function bevatTrefwoord(journal, trefwoord){
 }
 
 function bevatTrefTag(journal, treftag){
-  if(treftag.startsWith("#")){
-    return journal.tags.some(word => word.toLowerCase().includes(treftag.toLowerCase()));
-  } else {
-    throw new Error("Tags moeten starten met #");
+  try {
+      if(treftag.startsWith("#")){
+        return journal.tags.some(word => word.toLowerCase().includes(treftag.toLowerCase()));
+      } else {
+        throw new Error("Tags moeten starten met #"); 
+      }
+  } catch(err) {
+    document.querySelector(".error").textContent = err.message;
   }
 }
 
@@ -130,7 +134,7 @@ searchfield1.addEventListener("submit", function(e){
 
 searchfield2.addEventListener("submit", function(e){
   e.preventDefault("");
-
+  document.querySelector(".error").textContent = "";
   const treftag = document.getElementById("searchfield2").value;
 
   const zoekjournals = zoekTrefTagInJournals(getJournals(), treftag);
