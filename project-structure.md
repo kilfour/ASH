@@ -16,9 +16,9 @@ ASH/
 │   │   ├── @aperture-core/           # Shared utilities/components
 │   │   │   └── util.js              
 │   │   ├── black-box/                # Journal (Team Orange)
-│   │   │   └── index.js
+│   │   │   └── index.js              # Entry point for black-box.html
 │   │   ├── mission-control/          # Story Tracker (Team Blue)
-│   │   │   └── index.js
+│   │   │   └── index.js              # Entry point for mission-control.html
 │   │   └── main.js                   # JS for index.html
 │   ├── tests/                        # Unit tests
 │   │   ├── @aperture-core/          

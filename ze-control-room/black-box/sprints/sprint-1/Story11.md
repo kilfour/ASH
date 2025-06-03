@@ -18,3 +18,8 @@ In ideale tijd: **2 dagen**.
 
 ### 🔍 Notities / Open Vragen
 
+prullenmand
+
+- edit journal state -> add deleted: []
+- edit remove journal -> add deleted journal to deleted state
+- edit local storage

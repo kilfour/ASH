@@ -19,3 +19,6 @@ Mijn Dagboek entries valideren zodat ik niet-unieke titels kan hebben, alsook de
 In ideale tijd: **2 dagen**.
 
 ### 🔍 Notities / Open Vragen
+
+- "required" properties
+- "max length" properties
