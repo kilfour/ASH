@@ -44,7 +44,18 @@
                     <button type="button" id="save-story">Save</button>
                     <button type="button" id="close-popup">Close</button>
                 </div>
-
+            
+                 <div id="formStatus">
+                    <input type="radio" name="status" id="status1" form="story-form" checked>
+                    <label for="status1">Nieuw</label>
+            
+                    <input type="radio" name="status" id="status2" form="story-form"  >
+                    <label for="status2">In Progress</label>
+            
+                    <input type="radio" name="status" id="status3" form="story-form" >
+                    <label for="status3">Done</label>
+                </div>
+                
                 <div id="modal-confirm" class="hidden">
                     <div class="modal-content">
                         <p>Are you sure you want to close?</p>
