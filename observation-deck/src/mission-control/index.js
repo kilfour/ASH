@@ -1,119 +1,144 @@
-<<<<<<< HEAD
-import { storeUserStory, getStories, updateUserStory, deleteUserStory } from "./Storage/localStorage.js"
+import {
+  storeUserStory,
+  getStories,
+  deleteUserStory,
+  updateUserStory
+} from "./Storage/localStorage.js";
+import { getUserStory } from "./Entities/userStory.js";
 
-import { renderStories } from "./Render/renderStories.js";
-=======
-import { storeUserStory } from "./Storage/localStorage.js"
-import { getUserStory } from "./Entities/userStory.js"
->>>>>>> 322f72afae8abc95d825c80488c9764fed8d9d64
 /**
  * UI elements
  */
 const elements = {
-    addBTN: document.getElementById('create-story-button'),
-    overlay: document.getElementById('popup-overlay'),
-    closeBTN: document.getElementById('close-popup'),
-    saveBTN: document.getElementById('save-story'),
-    title: document.getElementById('story-title-name'),
-    desc: document.getElementById('story-description'),
-    modal: document.getElementById('modal-confirm'),
-    modalYes: document.getElementById('modal-yes'),
-    modalNo: document.getElementById('modal-no'),
-    editIndex: document.getElementById('edit-index'),
+  addBTN: document.getElementById("create-story-button"),
+  overlay: document.getElementById("popup-overlay"),
+  closeBTN: document.getElementById("close-popup"),
+  saveBTN: document.getElementById("save-story"),
+  title: document.getElementById("story-title-name"),
+  desc: document.getElementById("story-description"),
+  modal: document.getElementById("modal-confirm"),
+  modalYes: document.getElementById("modal-yes"),
+  modalNo: document.getElementById("modal-no"),
+  editIndex: document.getElementById("edit-index"),
 };
 
-/**
- *  Functions to toggle elements in the DOM
- */
-
-
-const show = element => element.classList.remove('hidden');
-const hide = element => element.classList.add('hidden');
-
-const formElements = [elements.closeBTN, elements.saveBTN, elements.desc, elements.title]
-const toggleElements = (el, action) => {
-    el.forEach(el => el.classList[action]('hidden'));
-};
+const show = (el) => el.classList.remove("hidden");
+const hide = (el) => el.classList.add("hidden");
 
 function resetStory() {
-<<<<<<< HEAD
-    el.title.value = '';
-    el.desc.value = '';
-    el.editIndex.value = '';
-=======
-    elements.title.value = '';
-    elements.desc.value = '';
->>>>>>> 322f72afae8abc95d825c80488c9764fed8d9d64
-};
-function openFormForEdit(index) {
-    const story = getStories()[index];
-    el.title.value = story.title;
-    el.desc.value = story.description;
-    el.editIndex.value = index;
-    el.overlay.classList.remove('hidden');
-}
-
-function onDeleteStory(index) {
-    deleteUserStory(index);
-    renderStories(openFormForEdit, onDeleteStory);
+  elements.title.value = "";
+  elements.desc.value = "";
+  elements.editIndex.value = "";
 }
 
 function onAddButtonClick() {
-    show(elements.overlay);
+  show(elements.overlay);
 }
 
 function onCloseButtonClick() {
-    toggleElements(formElements, 'add')
-    show(elements.modal);
+  show(elements.modal);
 }
 
 function onModalYesClick() {
-    hide(elements.overlay);
-    hide(elements.modal);
-    resetStory();                
-    toggleElements(formElements, 'remove')
+  hide(elements.overlay);
+  hide(elements.modal);
+  resetStory();
 }
 
 function onModalNoClick() {
-    hide(elements.modal);
-    toggleElements(formElements, 'remove')
+  hide(elements.modal);
 }
 
 function onSaveButtonClick() {
-    const story = getUserStory(elements.title, elements.desc)
+  const story = getUserStory(elements.title, elements.desc);
+  if (!story) return;
 
-<<<<<<< HEAD
-el.saveBTN.addEventListener('click', () => {
-    const title = el.title.value.trim(); // .trim() removes spaces at the beginning and end of a line, avoiding them
-    const description = el.desc.value.trim();
-    const index = el.editIndex.value;
-=======
-    if (!story) return;
->>>>>>> 322f72afae8abc95d825c80488c9764fed8d9d64
+  const index = elements.editIndex.value;
 
+  if (index === "") {
     storeUserStory(story);
-    hide(elements.overlay);
-    resetStory();
+    const stories = getStories();
+    addStoryRow(stories[stories.length - 1], stories.length - 1);
+  } else {
+    updateUserStory(Number(index), story);
+    updateRow(Number(index), story);
+    elements.editIndex.value = "";
+  }
+
+  hide(elements.overlay);
+  resetStory();
 }
 
-<<<<<<< HEAD
-        if (index === "") {
-            storeUserStory(story);
-        } else {
-            updateUserStory(parseInt(index), story);
-}
-        el.overlay.classList.add('hidden');
-        resetStory();
+/**
+ * ➕ Rijen toevoegen
+ */
+function addStoryRow(story, index) {
+  const tbody = document.getElementById("story-table-body");
+
+  const row = document.createElement("tr");
+  row.setAttribute("data-index", index);
+  row.innerHTML = `
+    <td>${story.title}</td>
+    <td>${story.description}</td>
+    <td>—</td>
+    <td>
+      <div class="actions-menu">
+        <button class="dots-button">⋮</button>
+        <div class="actions-dropdown hidden">
+          <button class="edit-btn">Wijzigen</button>
+          <button class="delete-btn">Verwijderen</button>
+        </div>
+      </div>
+    </td>
+  `;
+
+  const dropdown = row.querySelector(".actions-dropdown");
+  row.querySelector(".dots-button").onclick = () => {
+    dropdown.classList.toggle("hidden");
+  };
+
+  row.querySelector(".edit-btn").onclick = () => {
+    const s = getStories()[index];
+    elements.title.value = s.title;
+    elements.desc.value = s.description;
+    elements.editIndex.value = index;
+    show(elements.overlay);
+  };
+
+  row.querySelector(".delete-btn").onclick = () => {
+    if (confirm("Verhaal verwijderen?")) {
+      deleteUserStory(index);
+      row.remove();
     }
+  };
+
+  tbody.appendChild(row);
+}
+
+/**
+ * 🔁 Rijen updaten
+ */
+function updateRow(index, story) {
+  const row = document.querySelector(`tr[data-index='${index}']`);
+  if (row) {
+    row.children[0].textContent = story.title;
+    row.children[1].textContent = story.description;
+  }
+}
+
+/**
+ * Initieel laden
+ */
+window.addEventListener("DOMContentLoaded", () => {
+  const stories = getStories();
+  stories.forEach((story, index) => addStoryRow(story, index));
 });
-=======
-/** 
- * Key Binding
+
+/**
+ * Key Bindings
  */
 elements.addBTN.onclick = onAddButtonClick;
 elements.closeBTN.onclick = onCloseButtonClick;
 elements.modalYes.onclick = onModalYesClick;
 elements.modalNo.onclick = onModalNoClick;
 elements.saveBTN.onclick = onSaveButtonClick;
->>>>>>> 322f72afae8abc95d825c80488c9764fed8d9d64
-

@@ -19,7 +19,7 @@ function storeStories(stories){
  * 
  */
 
-function getStories() {
+export function getStories() {
     let stories = localStorage.getItem(LOCAL_STORAGE_KEY); // here we get the data from localStorage
     if ( stories === null ) {
         stories = []; // if we don't have any data in localStorage, we set it to an empty array
