@@ -181,3 +181,39 @@ tbody tr:nth-child(even) {
 .hidden {
     display: none;
 }
+.options-container {
+  position: relative;
+  display: inline-block;
+}
+
+.options-button {
+  background: none;
+  border: none;
+  font-size: 18px;
+  color: white;
+  cursor: pointer;
+}
+
+.options-menu {
+  position: absolute;
+  right: 0;
+  background-color: #3a3a3a;
+  border: 1px solid #555;
+  padding: 5px;
+  z-index: 1000;
+}
+
+.options-menu button {
+  display: block;
+  width: 100%;
+  background: none;
+  border: none;
+  color: white;
+  text-align: left;
+  padding: 5px 10px;
+  cursor: pointer;
+}
+
+.options-menu.hidden {
+  display: none;
+}
