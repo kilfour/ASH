@@ -23,6 +23,8 @@ const elements = {
   formStatus: document.getElementById("formStatus")
 };
 
+
+///////////// DON'T TOUCH /////////
 const show = (el) => el.classList.remove("hidden");
 const hide = (el) => el.classList.add("hidden");
 const formStory = [elements.saveBTN, elements.closeBTN, elements.desc, elements.title, elements.formStatus]
@@ -30,6 +32,8 @@ const formStory = [elements.saveBTN, elements.closeBTN, elements.desc, elements.
 const toggleElements = (el, action) => {
     el.forEach(el => el.classList[action]('hidden'));
 };
+///////////// DON'T TOUCH /////////
+
 
 function resetStory() {
   elements.title.value = "";
@@ -39,6 +43,7 @@ function resetStory() {
 
 function onAddButtonClick() {
   show(elements.overlay);
+  toggleElements(formStory, 'remove');
 }
 
 function onCloseButtonClick() {
