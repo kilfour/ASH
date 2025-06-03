@@ -45,17 +45,16 @@
                 <div>
                     <button type="button"id="save-story">Save</button> <!-- type="button" don't refresh page-->
                     <button type="button"id="close-popup">Close</button> <!-- be default type="submit" refresh page after pressing-->
-
-                <form id="formStatus">
-                    <input type="radio" name="status" checked>
-                    <label for="status">Nieuw</label>
+                
+                <div id="formStatus">
+                    <input type="radio" name="status" id="status1" form="story-form" checked>
+                    <label for="status1">Nieuw</label>
             
-                    <input type="radio" name="status" >
-                    <label for="status">In Progress</label>
+                    <input type="radio" name="status" id="status2" form="story-form"  >
+                    <label for="status2">In Progress</label>
             
-                    <input type="radio" name="status">
-                    <label for="status">Done</label>
-                </form>
+                    <input type="radio" name="status" id="status3" form="story-form" >
+                    <label for="status3">Done</label>
                 </div>
 
                 <div id="modal-confirm" class="hidden">
