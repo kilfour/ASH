@@ -85,10 +85,49 @@ function bevatTrefTag(journal, treftag){
   }
 }
 
+function highlightTrefwoord(journal, trefwoord){
+  const query = trefwoord.trim().toLowerCase();
+  const t = document.querySelector("h2.titel");
+  const torigin = t.textContent;
+  const c = document.querySelector("p.content");
+  const corigin = c.textContent;
+  if(query === ""){  //to reset
+    t.innerHTML = torigin;
+    c.innerHTML = corigin;
+    return;
+  }
+
+  const twords = torigin.split(/(\s+)/); //split and keep spaces
+  const cwords = corigin.split(/(\s+)/);
+  const HLtwords = twords
+          .map(word => {
+            if(word.toLowerCase().includes(query)){
+              return `<span class="highlighted">${word}</span>`;
+            }
+            return word;
+          })
+          .join("");
+  const HLcwords = cwords
+          .map(word => {
+            if(word.toLowerCase().includes(query)){
+              return `<span class="highlighted">${word}</span>`;
+            }
+            return word;
+          })
+          .join("");
+  console.log(HLtwords);
+  console.log(HLcwords);
+  t.innerHTML = HLtwords;
+  c.innerHTML = HLcwords;
+  console.log(t);
+  console.log(c);
+}
+
 function zoekTrefwoordInJournals(journals, trefwoord){
   let result = [];
   for (let x of journals){
     if(bevatTrefwoord(x, trefwoord)){
+      highlightTrefwoord(x, trefwoord);
       result.push(x);
     }
   }
@@ -137,11 +176,9 @@ delButton.addEventListener('click', () => {  //G, remove journal via ID, zet ID 
 searchfield1.addEventListener("submit", function(e){
   e.preventDefault("");
 
-  const trefwoord = document.getElementById("searchfield1").value;
+  const trefwoord = document.getElementById("searchfield1").value.trim();
 
   const zoekjournals = zoekTrefwoordInJournals(getJournals(), trefwoord);
-  console.log(trefwoord);
-  console.log(zoekjournals);
   displayJournals(zoekjournals);
 
 });
@@ -155,8 +192,6 @@ searchfield2.addEventListener("submit", function(e){
   const treftag = document.getElementById("searchfield2").value;
 
   const zoekjournals = zoekTrefTagInJournals(getJournals(), treftag);
-  console.log(treftag);
-  console.log(zoekjournals);
   displayJournals(zoekjournals);
 
 });

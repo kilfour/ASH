@@ -219,3 +219,8 @@ tbody tr:nth-child(even) {
   border-left-color: #ef4444;
   background-color: #7f1d1d;
 }
+
+.highlighted{
+  background-color: yellow;
+  font-weight: bold;
+}
