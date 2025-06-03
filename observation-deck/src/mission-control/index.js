@@ -26,9 +26,21 @@ const show = (el) => el.classList.remove("hidden");
 const hide = (el) => el.classList.add("hidden");
 
 function resetStory() {
-  elements.title.value = "";
+ elements.title.value = "";
   elements.desc.value = "";
   elements.editIndex.value = "";
+  
+function openFormForEdit(index) {
+    const story = getStories()[index];
+    el.title.value = story.title;
+    el.desc.value = story.description;
+    el.editIndex.value = index;
+    el.overlay.classList.remove('hidden');
+}
+
+function onDeleteStory(index) {
+    deleteUserStory(index);
+    renderStories(openFormForEdit, onDeleteStory);
 }
 
 function onAddButtonClick() {
@@ -54,6 +66,7 @@ function onSaveButtonClick() {
   if (!story) return;
 
   const index = elements.editIndex.value;
+    if (!story) return;
 
   if (index === "") {
     storeUserStory(story);
