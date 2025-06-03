@@ -51,6 +51,25 @@ function upDateUi() {
 }
 upDateUi();
 
+
+function bevatTrefwoord(journal, trefwoord){
+  return journal.titel.toLowerCase().includes(trefwoord.toLowerCase()) ||
+         journal.content.split(" ").some(word => word.toLowerCase().includes(trefwoord.toLowerCase())) ||
+         journal.tags.some(word => word.toLowerCase().includes(trefwoord.toLowerCase()));
+}
+
+function zoekTrefwoordInJournals(journals, trefwoord){
+  let result = [];
+  for (let x of journals){
+    if(bevatTrefwoord(x, trefwoord)){
+      result.push(x);
+    }
+  }
+  return result;
+}
+
+
+
 formEl.addEventListener("submit", function (e) {
   e.preventDefault("");
 
@@ -73,9 +92,10 @@ t.addEventListener("click",  function(e){
 });
 
 delButton.addEventListener('click', () => {
-  removeJournal(currentID);
+  removeJournal(currentID);  //moet de ID van de geselecteerde entry nemen
   upDateUi();
 })
+
 
 
 
