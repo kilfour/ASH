@@ -17,5 +17,7 @@ We willen oude versies van entries kunnen ophalen en bekijken
 In ideale dagen: **2**.
 
 ### 🔍 Notities / Open Vragen
+TBA -> misschien teveel voor het project
 
-
+- library van key:values aanmaken "versions", bij elke aanpassing/aanmaking -> value (journal object) toevoegen aan key (unieke ID van journal)
+- display journals aanpassen dat het de laatste value van "versions" toont
