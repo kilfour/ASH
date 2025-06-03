@@ -263,3 +263,8 @@ tbody tr:nth-child(even) {
 .actions-dropdown button:hover {
   background-color: #666;
 }
+
+.highlighted{
+  background-color: yellow;
+  font-weight: bold;
+}
