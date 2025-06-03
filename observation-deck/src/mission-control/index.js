@@ -29,7 +29,7 @@ function resetStory() {
  elements.title.value = "";
   elements.desc.value = "";
   elements.editIndex.value = "";
-  
+}
 function openFormForEdit(index) {
     const story = getStories()[index];
     el.title.value = story.title;
