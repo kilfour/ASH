@@ -17,3 +17,5 @@ We willen oude versies van entries kunnen restoren
 In ideale dagen: **3**.
 
 ### 🔍 Notities / Open Vragen
+
+TBA -> misschien teveel voor het project

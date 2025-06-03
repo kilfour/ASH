@@ -16,6 +16,8 @@ const journalData = [
 
 const state = {
   journals: journalData || [],
+  deleted: [],
+  versions: []
 };
 
 function addJournal(journal) {

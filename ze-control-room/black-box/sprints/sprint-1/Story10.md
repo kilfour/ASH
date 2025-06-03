@@ -12,9 +12,12 @@ Kunnen zien welke tags gebruikt worden en hoeveel keer.
 
 * [ ] Lijst van tags weergeven
 * [ ] Hoeveelheid van bepaalde tag weergeven.
-* [ ] Totaal aantal gebruikte tags als fun fact?
+* [ ] Totaal aantal gebruikte tags als fun fact
 
 ### 🧮 Estimate
 In ideale tijd: **2 dagen**.
 
 ### 🔍 Notities / Open Vragen
+
+- array van tags in state bijhouden
+- function schrijven die berekend hoeveel keer elke unieke tag in die array voorkomt
