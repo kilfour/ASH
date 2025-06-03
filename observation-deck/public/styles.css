@@ -33,7 +33,7 @@ header {
 }
 
 header a {
-    text-decoration: none;
+  text-decoration: none;
 }
 
 header h1 {
@@ -45,7 +45,7 @@ header h1 {
   line-height: 40px;
   padding: 20px;
   margin: 0px auto;
-  
+
 }
 
 /* Navigation Buttons */
@@ -55,11 +55,14 @@ nav {
 }
 
 nav button {
-  padding: 10px 20px; /* adjust as needed */
-  background-color: #3498db; /* example color */
+  padding: 10px 20px;
+  /* adjust as needed */
+  background-color: #3498db;
+  /* example color */
   color: white;
   border: none;
-  border-radius: 50px; /* makes the button oval */
+  border-radius: 50px;
+  /* makes the button oval */
   cursor: pointer;
 }
 
@@ -120,67 +123,79 @@ tbody tr:nth-child(even) {
 .button {
   margin-left: 80px;
   height: fit-content;
-  padding: 10px 40px; /* adjust as needed */
-  background-color: #0154fa; /* example color */
+  padding: 10px 40px;
+  /* adjust as needed */
+  background-color: #0154fa;
+  /* example color */
   color: white;
   border: none;
-  border-radius: 200px; /* makes the button oval */
+  border-radius: 200px;
+  /* makes the button oval */
   cursor: pointer;
-  transition: all 0.3s ease;      /* animatie smooth */
+  transition: all 0.3s ease;
+  /* animatie smooth */
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-  -webkit-user-select: none; /* Safari */
-  -moz-user-select: none;    /* Firefox */
-  -ms-user-select: none;     /* Internet Explorer/Edge */
-  user-select: none; 
+  -webkit-user-select: none;
+  /* Safari */
+  -moz-user-select: none;
+  /* Firefox */
+  -ms-user-select: none;
+  /* Internet Explorer/Edge */
+  user-select: none;
 }
 
 
 .button:hover {
-  background-color: #2980b9;      /* andere kleur bij hover */
-  transform: translateY(-3px);    /* lichte 'lift' */
-  box-shadow: 0 8px 12px rgba(0, 0, 0, 0.2); /* diepere schaduw */
+  background-color: #2980b9;
+  /* andere kleur bij hover */
+  transform: translateY(-3px);
+  /* lichte 'lift' */
+  box-shadow: 0 8px 12px rgba(0, 0, 0, 0.2);
+  /* diepere schaduw */
 }
 
 .dashboard {
-        border: 2px solid #000000;
-        max-width: 1000px;
-        margin: 20px;
-        padding: 20px;
-        font-family: Arial, Helvetica, sans-serif;
-        text-align: center;
+  border: 2px solid #000000;
+  max-width: 1000px;
+  margin: 20px;
+  padding: 20px;
+  font-family: Arial, Helvetica, sans-serif;
+  text-align: center;
 }
 
 .status-item {
-        margin-top: 10px;
-        padding: 20px;
-        display: inline-block;
-        flex-wrap: wrap;
-        justify-content: center;
-        gap: 10px;
+  margin-top: 10px;
+  padding: 20px;
+  display: inline-block;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 10px;
 
 }
 
 .overlay {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100vw;
-    height: 100vh;
-    background: rgba(0, 0, 0, 0.5); /* gray overlay behind popup */
-    display: flex;
-    justify-content: center;
-    align-items: center;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.5);
+  /* gray overlay behind popup */
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .popup {
-    background: #2a2a2a;
-    padding: 20px;
-    box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
+  background: #2a2a2a;
+  padding: 20px;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
 }
 
 .hidden {
-    display: none;
+  display: none;
 }
+<<<<<<< HEAD
 .options-container {
   position: relative;
   display: inline-block;
@@ -216,4 +231,29 @@ tbody tr:nth-child(even) {
 
 .options-menu.hidden {
   display: none;
+=======
+
+.notification {
+  display: block;
+  font-size: 1rem;
+  color: white;
+  padding: 1rem 1.5rem;
+  border-radius: 0.75rem;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
+  max-width: 400px;
+  margin: 1.5rem auto;
+  border-left: 6px solid;
+  transition: transform 0.2s ease, opacity 0.2s ease;
+  text-decoration: none;
+}
+
+.build-success {
+  border-left-color: #22c55e;
+  background-color: #064e3b;
+}
+
+.build-failed {
+  border-left-color: #ef4444;
+  background-color: #7f1d1d;
+>>>>>>> 322f72afae8abc95d825c80488c9764fed8d9d64
 }

@@ -1,6 +1,6 @@
 nr      | titel                       | est. time | dev        | status  | real time |
 --------|-----------------------------|-----------|------------|---------|-----------|  
- 1.1    | NewStory                    |    2.5    | Alex       | Doing   |           |
+ 1.1    | NewStory                    |    2.5    | Alex       | Done    |           |
  1.2    | ListStories                 |    1      | Milad      | Doing   |           |
  2      | Status                      |    1,5    | Abigail    | Doing   |           |
  3      | FilterStory                 |    1      | Naomi      | Doing   |           |
