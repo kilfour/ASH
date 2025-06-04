@@ -5,7 +5,7 @@
     - then second commit, and so on
   - same thing at 16:00
 
-2. make more modules
+2. make more modules, per feature.
 
 3. Be not afraid to ask if you are confused, eachother, coach always available, chatgpt last
 
