@@ -1,4 +1,5 @@
-import { html, htmlList } from '../_utils/fabrication_facility';
+import { html, htmlList } from '../_utils/fabrication-facility';
+import { styled } from '../_utils/synthetic-sheen';
 
 const teamOrange = ['Laurens', 'Benny', 'Mathias', 'Michael'];
 const teamBlue = ['Alex', 'Milad', 'Abigail', 'Naomi'];
