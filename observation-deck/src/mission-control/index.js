@@ -20,7 +20,8 @@ const elements = {
   modalYes: document.getElementById("modal-yes"),
   modalNo: document.getElementById("modal-no"),
   editIndex: document.getElementById("edit-index"),
-  formStatus: document.getElementById("formStatus")
+  formStatus: document.getElementById("formStatus"),
+  newStatus: document.getElementById("status1")
 };
 
 
@@ -44,6 +45,7 @@ function resetStory() {
 function onAddButtonClick() {
   show(elements.overlay);
   toggleElements(formStory, 'remove');
+  elements.newStatus.checked = true;
 }
 
 function onCloseButtonClick() {
