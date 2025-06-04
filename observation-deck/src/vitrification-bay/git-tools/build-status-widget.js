@@ -1,4 +1,4 @@
-import { fetchLatestBuildStatus } from "../git-api/git-actions-api.js"
+import { fetchLatestBuildStatus } from "./git-actions-api.js"
 
 export async function getBuildStatusWidget() {
     try {

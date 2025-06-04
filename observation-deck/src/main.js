@@ -1,4 +1,4 @@
-import { getBuildStatusWidget } from "./vitrification-bay/widgets/build-status-widget.js"
+import { getBuildStatusWidget } from "./vitrification-bay/git-tools/build-status-widget"
 
 const user = localStorage.getItem("user");
 
