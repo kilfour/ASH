@@ -74,7 +74,7 @@ function bevatTrefwoord(journal, trefwoord){
 function bevatTrefTag(journal, treftag){
   try {
       if(treftag.startsWith("#")){
-        return journal.tags.some(word => word.toLowerCase().includes(treftag.toLowerCase()));
+        return journal.tags.some(word => String(word).toLowerCase().includes(treftag.toLowerCase()));
       } else {
         throw new Error("Tags moeten starten met #"); 
       }
@@ -83,6 +83,7 @@ function bevatTrefTag(journal, treftag){
     //style(document.querySelector(".error"), "inline-block");
   }
 }
+
 
 function highlightTrefwoord(journal, trefwoord){
   const query = trefwoord.trim().toLowerCase();
