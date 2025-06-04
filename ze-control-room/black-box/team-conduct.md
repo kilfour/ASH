@@ -5,3 +5,5 @@
   - Teveel ongevraagde functionaliteit.
 
 3. Modulaire structuur. Per feature.
+
+modulair->tests
