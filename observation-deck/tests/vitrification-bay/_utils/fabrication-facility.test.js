@@ -1,5 +1,5 @@
 import { describe, it, expect } from 'vitest';
-import { __only_for_test as sut } from "../../../src/vitrification-bay/_utils/fabrication_facility"
+import { __only_for_test as sut } from "../../../src/vitrification-bay/_utils/fabrication-facility"
 
 describe("parseArguments", () => {
     it('returns the first argument as attribute object', () => {
