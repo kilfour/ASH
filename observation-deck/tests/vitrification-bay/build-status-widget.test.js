@@ -1,5 +1,5 @@
 import { describe, it, expect, beforeEach } from 'vitest';
-import { __only_for_test as sut } from "../../src/vitrification-bay/build-status-widget.js"
+import { __only_for_test as sut } from "../../src/vitrification-bay/widgets/build-status-widget.js"
 
 describe("responseToObject", () => {
     it('transforms response to object', () => {
