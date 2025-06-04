@@ -80,54 +80,15 @@ function bevatTrefTag(journal, treftag){
       }
   } catch(err) {
     document.querySelector(".error").textContent = err.message;
-    //style(document.querySelector(".error"), "inline-block");
   }
 }
 
-
-function highlightTrefwoord(journal, trefwoord){
-  const query = trefwoord.trim().toLowerCase();
-  const t = document.querySelector("h2.titel");
-  const torigin = t.textContent;
-  const c = document.querySelector("p.content");
-  const corigin = c.textContent;
-  if(query === ""){  //to reset
-    t.innerHTML = torigin;
-    c.innerHTML = corigin;
-    return;
-  }
-
-  const twords = torigin.split(/(\s+)/); //split and keep spaces
-  const cwords = corigin.split(/(\s+)/);
-  const HLtwords = twords
-          .map(word => {
-            if(word.toLowerCase().includes(query)){
-              return `<span class="highlighted">${word}</span>`;
-            }
-            return word;
-          })
-          .join("");
-  const HLcwords = cwords
-          .map(word => {
-            if(word.toLowerCase().includes(query)){
-              return `<span class="highlighted">${word}</span>`;
-            }
-            return word;
-          })
-          .join("");
-  console.log(HLtwords);
-  console.log(HLcwords);
-  t.innerHTML = HLtwords;
-  c.innerHTML = HLcwords;
-  console.log(t);
-  console.log(c);
-}
 
 function zoekTrefwoordInJournals(journals, trefwoord){
   let result = [];
   for (let x of journals){
     if(bevatTrefwoord(x, trefwoord)){
-      highlightTrefwoord(x, trefwoord);
+      //highlightTrefwoord(x, trefwoord);
       result.push(x);
     }
   }
@@ -226,22 +187,42 @@ submitEdit.addEventListener("submit", function (e) {  //G, sumbit form, edit jou
 
 
 
-// export function searchContent(str, searchstr){
-//     return str.split(' ').some(word => word.toLowerCase().includes(searchstr.toLowerCase()));
-// }
-//The .some() method in JavaScript is used on arrays to check if at least one element satisfies a given condition.
-//It returns a boolean
+/*
+function highlightTrefwoord(journal, trefwoord){
+  const query = trefwoord.trim().toLowerCase();
+  const t = document.querySelector("h2.titel");
+  const torigin = t.textContent;
+  const c = document.querySelector("p.content");
+  const corigin = c.textContent;
+  if(query === ""){  //to reset
+    t.innerHTML = torigin;
+    c.innerHTML = corigin;
+    return;
+  }
 
-/*   DIT IS DE LANGE VERSIE VAN DE CODE HIERBOVEN VOOR DE DUIDELIJKHEID
-
-function searchContent(str, searchstr){
-    const splitted = str.split(' ');
-    let result = false;
-    for (let i=0; i<splitted.length-1;i++){
-        if(splitted[i].includes(searchstr)){
-            result = true;
-        }
-    }
-    return result;
+  const twords = torigin.split(/(\s+)/); //split and keep spaces
+  const cwords = corigin.split(/(\s+)/);
+  const HLtwords = twords
+          .map(word => {
+            if(word.toLowerCase().includes(query)){
+              return `<span class="highlighted">${word}</span>`;
+            }
+            return word;
+          })
+          .join("");
+  const HLcwords = cwords
+          .map(word => {
+            if(word.toLowerCase().includes(query)){
+              return `<span class="highlighted">${word}</span>`;
+            }
+            return word;
+          })
+          .join("");
+  console.log(HLtwords);
+  console.log(HLcwords);
+  t.innerHTML = HLtwords;
+  c.innerHTML = HLcwords;
+  console.log(t);
+  console.log(c);
 }
-*/
+  */
