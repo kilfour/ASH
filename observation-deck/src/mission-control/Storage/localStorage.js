@@ -46,3 +46,10 @@ export function deleteUserStory(index) {
     stories.splice(index, 1);
     storeStories(stories);
 }
+
+export default {
+    getStories,
+    storeUserStory,
+    updateUserStory,
+    deleteUserStory
+}
