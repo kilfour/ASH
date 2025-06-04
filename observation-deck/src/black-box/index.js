@@ -38,53 +38,53 @@ function displayJournals(journals) {
           <p class="tags" style = 'display: none'>${tags.join(", ")}<p>`;
 
     journalsView.insertAdjacentHTML("afterbegin", html);
-    
+
   });
 }
 
 function showDetails(event) {
-    //G, iedere journal hidden 
-    const prev1 = document.querySelectorAll("p.content");
-    const prev2 = document.querySelectorAll("p.tags");
-    prev1.forEach(el => { el.style.display = "none"; });
-    prev2.forEach(el => { el.style.display = "none"; });
-    style(editArea, "none");
-    style(errArea, "none");
+  //G, iedere journal hidden 
+  const prev1 = document.querySelectorAll("p.content");
+  const prev2 = document.querySelectorAll("p.tags");
+  prev1.forEach(el => { el.style.display = "none"; });
+  prev2.forEach(el => { el.style.display = "none"; });
+  style(editArea, "none");
+  style(errArea, "none");
 
-    const title = event.target; // the clicked <h2>
-    
-    const content = title.nextElementSibling;
-    const tags = content.nextElementSibling.nextElementSibling;
+  const title = event.target; // the clicked <h2>
 
-    currentID = title.parentElement.attributes.id.textContent; //G, ID wordt opgeslagen voor gebruik
-    editTitle.value = title.textContent;  //G, journal info als edit initial value
-    editContent.value = content.textContent;
-    editTags.value = tags.textContent;
+  const content = title.nextElementSibling;
+  const tags = content.nextElementSibling.nextElementSibling;
 
-    // Show both elements
-    style(content, "block");
-    style(tags, "block");
+  currentID = title.parentElement.attributes.id.textContent; //G, ID wordt opgeslagen voor gebruik
+  editTitle.value = title.textContent;  //G, journal info als edit initial value
+  editContent.value = content.textContent;
+  editTags.value = tags.textContent;
+
+  // Show both elements
+  style(content, "block");
+  style(tags, "block");
 }
 
-function bevatTrefwoord(journal, trefwoord){
+function bevatTrefwoord(journal, trefwoord) {
   return journal.titel.split(" ").some(word => word.toLowerCase().includes(trefwoord.toLowerCase())) ||
-         journal.content.split(" ").some(word => word.toLowerCase().includes(trefwoord.toLowerCase()));
+    journal.content.split(" ").some(word => word.toLowerCase().includes(trefwoord.toLowerCase()));
 }
 
-function bevatTrefTag(journal, treftag){
+function bevatTrefTag(journal, treftag) {
   try {
-      if(treftag.startsWith("#")){
-        return journal.tags.some(word => String(word).toLowerCase().includes(treftag.toLowerCase()));
-      } else {
-        throw new Error("Tags moeten starten met #"); 
-      }
-  } catch(err) {
+    if (treftag.startsWith("#")) {
+      return journal.tags.some(word => String(word).toLowerCase().includes(treftag.toLowerCase()));
+    } else {
+      throw new Error("Tags moeten starten met #");
+    }
+  } catch (err) {
     document.querySelector(".error").textContent = err.message;
   }
 }
 
 
-function zoekTrefwoordInJournals(journals, trefwoord){
+function zoekTrefwoordInJournals(journals, trefwoord) {
   let result = [];
   for (let x of journals){
     if(bevatTrefwoord(x, trefwoord)){
@@ -95,10 +95,10 @@ function zoekTrefwoordInJournals(journals, trefwoord){
   return result;
 }
 
-function zoekTrefTagInJournals(journals, treftag){
+function zoekTrefTagInJournals(journals, treftag) {
   let result = [];
-  for (let x of journals){
-    if(bevatTrefTag(x, treftag)){
+  for (let x of journals) {
+    if (bevatTrefTag(x, treftag)) {
       result.push(x);
     }
   }
@@ -122,8 +122,8 @@ formEl.addEventListener("submit", function (e) {
   upDateUi();
 });
 
-journalList.addEventListener("click",  function(e){
-    showDetails(e);
+journalList.addEventListener("click", function (e) {
+  showDetails(e);
 });
 
 delButton.addEventListener('click', () => {  //G, remove journal via ID, zet ID op niks voor edit errmsg
@@ -135,7 +135,7 @@ delButton.addEventListener('click', () => {  //G, remove journal via ID, zet ID 
   console.log(getDeleted());
 });
 
-searchfield1.addEventListener("submit", function(e){
+searchfield1.addEventListener("submit", function (e) {
   e.preventDefault("");
 
   const trefwoord = document.getElementById("searchfield1").value.trim();
@@ -145,7 +145,7 @@ searchfield1.addEventListener("submit", function(e){
 
 });
 
-searchfield2.addEventListener("submit", function(e){
+searchfield2.addEventListener("submit", function (e) {
   e.preventDefault("");
 
   document.querySelector(".error").textContent = "";
@@ -160,11 +160,11 @@ searchfield2.addEventListener("submit", function(e){
 
 
 editButton.addEventListener('click', () => {  //G, haalt het edit menu of geeft error
-  if(currentID === ""){
+  if (currentID === "") {
     style(errArea, "block");
     style(editArea, "none");
     errmsg.textContent = "Geen Journal Selected"
-  } else { 
+  } else {
     style(editArea, "block");
     style(errArea, "none");
   }
