@@ -1,13 +1,8 @@
-import {
-  storeUserStory,
-  getStories,
-  deleteUserStory,
-  updateUserStory
-} from "./Storage/localStorage.js";
+import {   storeUserStory, getStories, deleteUserStory, updateUserStory } from "./Storage/localStorage.js";
 import { getUserStory } from "./Entities/userStory.js";
-import elements, { formStory } from "./UI/domElements.js"
-import { show, hide, toggleElements} from "./UI/uiHelpers.js"
-import { onAddButtonClick, onCloseButtonClick, onModalYesClick, onModalNoClick, resetStory }from "./UI/eventHandelers.js"
+import elements, { formStory } from "./UI/UserStoryForm/domElements.js"
+import { show, hide, toggleElements} from "./UI/UserStoryForm/uiHelpers.js"
+import { onAddButtonClick, onCloseButtonClick, onModalYesClick, onModalNoClick, resetStory }from "./UI/UserStoryForm/eventHandelers.js"
 
 
 
