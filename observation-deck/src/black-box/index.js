@@ -14,7 +14,6 @@ const cancelEdit = document.querySelector(".btn-edit-cancel");
 const editTitle = document.querySelector(".editTitle");
 const editContent = document.querySelector(".editContent");
 const editTags = document.querySelector(".editTags");
-const delDeleted = document.querySelector(".btn-delete-deleted");
 const delAllDeleted = document.querySelector(".btn-delete-all");
 
 let currentID = "";
