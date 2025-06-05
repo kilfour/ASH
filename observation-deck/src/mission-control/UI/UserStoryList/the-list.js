@@ -47,6 +47,7 @@ function storyEdit(index) {
     elements.editIndex.value = index;
     show(elements.overlay);
     toggleElements(formStory, 'remove'); 
+    hide(document.querySelector(".actions-dropdown"));
 }
 
 function dropButtons(row) {
@@ -83,7 +84,8 @@ export function addStoryRow(story, index) {
 }
 
 export function onSaveButtonClick() {
-  const story = getUserStory(elements.title, elements.desc);
+  const statusStory = document.querySelector('input[name="status"]:checked').value;
+  const story = getUserStory(elements.title, elements.desc, statusStory);
   if (!story) return;
 
   const index = elements.editIndex.value;

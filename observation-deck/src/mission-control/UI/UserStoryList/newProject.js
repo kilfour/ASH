@@ -1,22 +1,21 @@
 import { hide } from "../UserStoryForm/uiHelpers.js";
 
 //projectkiezer verbergen
-const closeProjectBTN = document.getElementById("closeBTN");
+const closeProjectBTN = document.getElementById("close-popup");
 closeProjectBTN.addEventListener("click",hideProject);
 function hideProject (){
     const project = document.querySelector("#chooseProject");
     hide(project);
   };
 
-hideProject();
 
-
-// * [ ] in forms: optie om projectnaam (uit localstorage) te kunnen kiezen
+// * [x] in forms: optie om projectnaam (uit localstorage) te kunnen kiezen
 // * [ ] in list: project tonen bij juiste story naast description (via local storage)
 
 //als er geklikt wordt, wordt het inputveld zichtbaar
 const createProjectBTN = document.querySelector("#project-button");
 createProjectBTN.addEventListener("click",inputveld);
+const inputVeld = document.querySelector("#inputVeld");
 function inputveld(){
     inputVeld.classList.toggle("hidden"); //werkt niet
 }
@@ -46,10 +45,12 @@ saveProjectnames();
 // tonen van projectnamen op
 
 //bij klikken save en close > ook sluiten van inputveld EN NIEUWPROJECN
-closeProjectBTN.addEventListener("click",closeProject)
+const closeProjectVeldBTN = document.getElementById("closeBTN");
+closeProjectVeldBTN.addEventListener("click",closeProject)
 saveProjectBTN.addEventListener("click", closeProject)
 function closeProject(){
-    hide.inputVeld; 
+    const inputVeld = document.querySelector("#inputVeld");
+    hide(inputVeld); 
 }
 
 
