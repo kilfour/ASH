@@ -149,7 +149,6 @@ taglistButton.addEventListener('click', () => {
   upDateUi();
 });
 
-
 /*
 function highlightTrefwoord(journal, trefwoord){
   const query = trefwoord.trim().toLowerCase();

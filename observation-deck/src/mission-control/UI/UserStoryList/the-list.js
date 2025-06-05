@@ -41,11 +41,13 @@ function storyDelete(index, row) {
 }
 
 function storyEdit(index) {
+    console.log(index)
     const s = getStories()[index];
     elements.title.value = s.title;
     elements.desc.value = s.description;
     elements.editIndex.value = index;
     show(elements.overlay);
+    hide(document.querySelector(".actions-dropdown"));
     toggleElements(formStory, 'remove'); 
 }
 
