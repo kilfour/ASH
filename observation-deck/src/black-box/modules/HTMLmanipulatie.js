@@ -79,7 +79,8 @@ export function calcTagCount(journals){
   let result = [];
   journals.forEach(x => result.push(x.tags));
 
-  const flattened = result.flat();
+  let flattened = result.flat();
+  //flattened = flattened.map(x => x.trim()); // to remove leading or lagging spaces from the tags
 
   let uniquetags = [...new Set(flattened)];
 

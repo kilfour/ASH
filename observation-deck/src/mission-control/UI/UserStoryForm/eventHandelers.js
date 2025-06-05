@@ -1,5 +1,5 @@
 import elements, {formStory} from './domElements.js'
-import { hide, show, toggleElements} from './uiHelpers.js'
+import { hide, show, toggleElements } from './uiHelpers.js'
 
 function onAddButtonClick() {
   show(elements.overlay);
@@ -12,12 +12,6 @@ function onCloseButtonClick() {
   toggleElements(formStory, 'add');
 }
 
-function toggle(element){
-  if(element.classList.contains("hidden"))
-    show(elements);
-  else
-    hide(elements);
-}
 function onModalYesClick() {
   hide(elements.overlay);
   hide(elements.modal);
@@ -40,6 +34,5 @@ export {
     onCloseButtonClick,
     onModalYesClick,
     onModalNoClick,
-    resetStory,
-    toggle
+    resetStory
 }
