@@ -1,6 +1,5 @@
 import { fetchLatestBuildStatus } from "./git-actions-api.js"
-import { html, htmlList } from '../_utils/fabrication-facility';
-import { styled } from '../_utils/synthetic-sheen';
+import { html, htmlList, styled } from '../_utils/fabrication-facility';
 
 export async function getBuildStatusWidget() {
     try {

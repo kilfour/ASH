@@ -16,10 +16,7 @@ export function html(tag, ...args) {
     return node;
 }
 
-export function styled(tag, styleObj, htmlFn) {
-    const html = htmlFn ?? globalThis.html;
-    if (!html) throw new Error("No html() available in styled()");
-
+export function styled(tag, styleObj) {
     const className = generateReadableClassName(styleObj);
 
     if (!insertedStyles.has(className)) {
