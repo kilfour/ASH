@@ -85,14 +85,14 @@ export function calcTagCount(journals){
   let uniquetags = [...new Set(flattened)];
 
   let endresult = [];
-  for(let i=0; i<uniquetags.length-1;i++){
+  for(let i=0; i<uniquetags.length;i++){
     let count = 0;
-    for(let j=0; j<flattened.length-1;j++){
+    for(let j=0; j<flattened.length;j++){
       if(flattened[j]===uniquetags[i]){
         count += 1;
       }
     }
-    endresult.push([uniquetags[i], count]);
+    endresult.push([uniquetags[i], count]);  //G, tag toegevoegd, maar kan later niet verwijdered worden
   }
   return endresult;
 }
