@@ -1,0 +1,1 @@
+const addStoryBTN = document.getElementById("create-story-button");

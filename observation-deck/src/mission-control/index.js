@@ -1,14 +1,9 @@
-import {
-  storeUserStory,
-  getStories,
-  deleteUserStory,
-  updateUserStory
-} from "./Storage/localStorage.js";
+import {   storeUserStory, getStories, deleteUserStory, updateUserStory } from "./Storage/localStorage.js";
 import { getUserStory } from "./Entities/userStory.js";
-import elements, { formStory } from "./UI/domElements.js"
-import { show, hide, toggleElements} from "./UI/uiHelpers.js"
-import { onAddButtonClick, onCloseButtonClick, onModalYesClick, onModalNoClick, resetStory }from "./UI/eventHandelers.js"
-
+import elements, { formStory } from "./UI/UserStoryForm/domElements.js"
+import { show, hide, toggleElements} from "./UI/UserStoryForm/uiHelpers.js"
+import { onAddButtonClick, onCloseButtonClick, onModalYesClick, onModalNoClick, resetStory }from "./UI/UserStoryForm/eventHandelers.js"
+import {onOpenFilterClicked} from "./UI/UserStoryList/filter.js"
 
 
 function onSaveButtonClick() {
@@ -105,3 +100,19 @@ elements.closeBTN.onclick = onCloseButtonClick;
 elements.modalYes.onclick = onModalYesClick;
 elements.modalNo.onclick = onModalNoClick;
 elements.saveBTN.onclick = onSaveButtonClick;
+
+document.getElementById("open-filter").addEventListener('click', onOpenFilterClicked)
+
+
+// status verbergen
+function hideForm (){
+  document.querySelector("#close-popup").addEventListener("click", () => {
+    const form = document.querySelector("#formStatus");
+    hide(form);
+    // form.classList.toggle("visible");
+  });
+}
+hideForm();
+
+// const show = (el) => el.classList.remove("hidden");
+// const hide = (el) => el.classList.add("hidden");
