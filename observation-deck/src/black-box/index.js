@@ -1,4 +1,4 @@
-import { getJournals, addJournal, removeJournal, editJournal, getDeleted } from "./modules/journalsState.js";
+import { getJournals, addJournal, removeJournal, editJournal, getDeleted, deleteJournals } from "./modules/journalsState.js";
 
 const formEl = document.querySelector(".journal");  //G, alles in 1 object steken of apart laten?
 const journalList = document.querySelector(".journals");
@@ -14,20 +14,23 @@ const cancelEdit = document.querySelector(".btn-edit-cancel");
 const editTitle = document.querySelector(".editTitle");
 const editContent = document.querySelector(".editContent");
 const editTags = document.querySelector(".editTags");
+const delDeleted = document.querySelector(".btn-delete-deleted");
+const delAllDeleted = document.querySelector(".btn-delete-all");
 
 let currentID = "";
 
 
 function upDateUi() {
-  displayJournals(getJournals());
+  displayJournals(getJournals(), "journals");
+  displayJournals(getDeleted(), "deletedJournals")
 } upDateUi();
 
 function style(place, state) {  //G, zet de display state, vooral "block" of "none"
   place.style.display = state;
 }
 
-function displayJournals(journals) {
-  const journalsView = document.querySelector(".journals");
+function displayJournals(journals, locatie) {
+  const journalsView = document.querySelector(`.${locatie}`);
   journalsView.innerHTML = "";
 
   journals.forEach(function ({ id, titel, content, tags }) {
@@ -132,7 +135,6 @@ delButton.addEventListener('click', () => {  //G, remove journal via ID, zet ID 
   style(errArea, "none");
   currentID = "";
   upDateUi();
-  console.log(getDeleted());
 });
 
 searchfield1.addEventListener("submit", function (e) {
@@ -141,7 +143,7 @@ searchfield1.addEventListener("submit", function (e) {
   const trefwoord = document.getElementById("searchfield1").value.trim();
 
   const zoekjournals = zoekTrefwoordInJournals(getJournals(), trefwoord);
-  displayJournals(zoekjournals);
+  displayJournals(zoekjournals, "journals");
 
 });
 
@@ -154,7 +156,7 @@ searchfield2.addEventListener("submit", function (e) {
   const treftag = document.getElementById("searchfield2").value;
 
   const zoekjournals = zoekTrefTagInJournals(getJournals(), treftag);
-  displayJournals(zoekjournals);
+  displayJournals(zoekjournals, "journals");
 
 });
 
@@ -184,6 +186,11 @@ submitEdit.addEventListener("submit", function (e) {  //G, sumbit form, edit jou
   style(errArea, "none");
   upDateUi();
 });
+
+delAllDeleted.addEventListener('click', () => {
+  deleteJournals();
+  upDateUi();
+})
 
 
 
