@@ -33,4 +33,40 @@ export function showDetails(event) {
   style(tags, "block");
 }
 
-//editArea, errArea, currentID, editTitle, editContent, editTags
+function bevatTrefwoord(journal, trefwoord) {
+  return journal.titel.split(" ").some(word => word.toLowerCase().includes(trefwoord.toLowerCase())) ||
+  journal.content.split(" ").some(word => word.toLowerCase().includes(trefwoord.toLowerCase()));
+}
+
+export function zoekTrefwoordInJournals(journals, trefwoord) {
+  let result = [];
+  for (let x of journals){
+    if(bevatTrefwoord(x, trefwoord)){
+      //highlightTrefwoord(x, trefwoord);
+      result.push(x);
+    }
+  }
+  return result;
+}
+
+function bevatTrefTag(journal, treftag) {
+  try {
+    if (treftag.startsWith("#")) {
+      return journal.tags.some(word => String(word).toLowerCase().includes(treftag.toLowerCase()));
+    } else {
+      throw new Error("Tags moeten starten met #");
+    }
+  } catch (err) {
+    document.querySelector(".error").textContent = err.message;
+  }
+}
+
+export function zoekTrefTagInJournals(journals, treftag) {
+  let result = [];
+  for (let x of journals) {
+    if (bevatTrefTag(x, treftag)) {
+      result.push(x);
+    }
+  }
+  return result;
+}
