@@ -10,8 +10,8 @@ Een lijst aan verwijderde entries, met de optie deze permanent uit storage te ve
 
 ### ✅ Acceptatiecriteria
 
-* [ ] Deleted entry list in local storage
-* [ ] Entries volledig verwijderen uit de lijst en dus de local storage
+* [X] Deleted entry list in local storage
+* [X] Entries volledig verwijderen uit de lijst en dus de local storage
 
 ### 🧮 Estimate
 In ideale tijd: **2 dagen**.
