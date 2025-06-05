@@ -215,7 +215,7 @@ tbody tr:nth-child(even) {
   background-color: #064e3b;
 }
 
-.build-failed {
+.build-failure {
   border-left-color: #ef4444;
   background-color: #7f1d1d;
 }
@@ -241,7 +241,7 @@ tbody tr:nth-child(even) {
   right: 0;
   background-color: #444;
   border: 1px solid #666;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
   z-index: 10;
 }
 
@@ -264,7 +264,7 @@ tbody tr:nth-child(even) {
   background-color: #666;
 }
 
-.highlighted{
+.highlighted {
   background-color: yellow;
   font-weight: bold;
 }
