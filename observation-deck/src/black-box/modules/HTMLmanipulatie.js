@@ -75,3 +75,30 @@ export function zoekTrefTagInJournals(journals, treftag) {
   }
   return result;
 }
+
+export function calcTagCount(journals){
+  let result = [];
+  journals.forEach(x => result.push(x.tags));
+
+  const flattened = result.flat();
+
+  let uniquetags = [...new Set(flattened)];
+
+  let endresult = [];
+  for(let i=0; i<uniquetags.length-1;i++){
+    let count = 0;
+    for(let j=0; j<flattened.length-1;j++){
+      if(flattened[j]===uniquetags[i]){
+        count += 1;
+      }
+    }
+    endresult.push([uniquetags[i], count]);
+  }
+  return endresult;
+}
+
+export function displayTagCount(arr){
+  const ul = document.querySelector(".tag-list");
+  ul.innerHTML = "";
+  arr.forEach(x => { ul.insertAdjacentHTML("afterbegin", `<li>${x[0]} : ${x[1]}</li>`)});
+}

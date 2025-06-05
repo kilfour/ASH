@@ -1,6 +1,6 @@
 import { getJournals, addJournal, removeJournal, editJournal, getDeleted, deleteJournals } from "./modules/journalsState.js";
 import { style } from "./modules/repetitieveFuncties.js";
-import { showDetails, current } from "./modules/HTMLmanipulatie.js";
+import { showDetails, current, calcTagCount, displayTagCount } from "./modules/HTMLmanipulatie.js";
 import { zoekTrefTagInJournals, zoekTrefwoordInJournals } from "./modules/HTMLmanipulatie.js";
 
 const formEl = document.querySelector(".journal");  //G, alles in 1 object steken of apart laten?
@@ -15,7 +15,7 @@ const errmsg = document.querySelector(".Errormsg");
 const submitEdit = document.querySelector(".edit");
 const cancelEdit = document.querySelector(".btn-edit-cancel");
 const delAllDeleted = document.querySelector(".btn-delete-all");
-
+const taglistButton = document.querySelector(".btn-tag-list");
 
 
 function upDateUi() {
@@ -132,8 +132,22 @@ submitEdit.addEventListener("submit", function (e) {  //G, sumbit form, edit jou
 delAllDeleted.addEventListener('click', () => {
   deleteJournals();
   upDateUi();
-})
+});
 
+let hidden = true;
+taglistButton.addEventListener('click', () => {
+  if(hidden){
+    displayTagCount(calcTagCount(getJournals()));
+    hidden = false;
+    document.querySelector(".btn-tag-list").textContent = "Hide tag list"
+  } else {
+    const ul = document.querySelector(".tag-list");
+    ul.innerHTML = "";
+    hidden = true;
+    document.querySelector(".btn-tag-list").textContent = "Show tag list"
+  }
+  upDateUi();
+});
 
 
 /*
