@@ -1,6 +1,6 @@
-import { html, htmlList, styled } from '../_utils/fabrication-facility';
-// why ?: we need this for `styled`
-globalThis.html = html;
+import { html, htmlList } from '../_utils/fabrication-facility';
+import { styled } from '../_utils/sanitation-sheen';
+
 
 const teamOrange = ['Laurens', 'Benny', 'Mathias', 'Michael'];
 const teamBlue = ['Alex', 'Milad', 'Abigail', 'Naomi'];
@@ -11,14 +11,18 @@ const flexRow = styled('div', {
     gap: '1rem'
 }, html);
 
+const listItem = styled('li', {
+    marginLeft: '3rem'
+}, html);
+
 const container =
     flexRow(
         html('div',
             html('h2', '🔸Team Orange'),
-            htmlList('ul', teamOrange, name => html('li', { style: { 'margin-left': '3rem' } }, name))),
+            htmlList('ul', teamOrange, name => listItem(name))),
         html('div',
             html('h2', '🔹Team Blue'),
-            htmlList('ul', teamBlue, name => html('li', { style: { 'margin-left': '3rem' } }, name)))
+            htmlList('ul', teamBlue, name => listItem(name)))
     );
 
 export function renderTeamLists(parent) {
