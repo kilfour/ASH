@@ -43,6 +43,7 @@ function updateUserStory(index, updatedStory) {
 
 function deleteUserStory(index) {
     const stories = getStories();
+    console.log(index)
     stories.splice(index, 1);
     storeStories(stories);
 }

@@ -1,4 +1,4 @@
-import {  show } from '../UserStoryForm/uiHelpers.js'
+import { show } from '../UserStoryForm/uiHelpers.js'
 
  export function onOpenFilterClicked() {
    const input = document.getElementById("myInput");
