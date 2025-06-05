@@ -1,9 +1,5 @@
-// * [ ] een add knop om een project aan te maken op de hoofdpagina
-// * [ ] dit opent een inputveld waarin je een naam kan ingeven en meteen opslaan met 'save'
-// * [ ] een close button om het inputveld te sluiten
-// * [ ] project tonen op list pagina naast description
-
-const inputVeld= document.querySelector("#inputVeld");
+// * [ ] in forms: optie om projectnaam te kunnen kiezen
+// * [ ] in list: project tonen bij juiste story naast description (via local storage)
 
 //als er geklikt wordt, wordt het inputveld zichtbaar
 const createProjectBTN = document.querySelector("#project-button");
@@ -12,20 +8,63 @@ function inputveld(){
     inputVeld.classList.toggle("hidden"); //werkt niet
 }
 
-//als save klik > project opgeslagen in localStorage
+//als save klik > projectnaam opgeslagen in localStorage
 const saveProjectBTN = document.getElementById("saveBTN");
-saveProjectBTN.addEventListener("click", saveProject);
-function saveProject(){
-    const naamProject = document.querySelector("#naamProject").value;
-    localStorage.setItem("naamProject",naamProject);
-}
+saveProjectBTN.addEventListener("click", saveProjectnames);
+function saveProjectnames(){
+    //save new input
+    const naamInput = document.querySelector("#naamProject").value;
+    
+    //object zodat je steeds nieuwe projectnaam hebt
+    if (naamInput){
+    const nieuweNaam= {
+        naam: naamInput
+    }
+    // lege array 
+    const projectLijst = JSON.parse(localStorage.getItem("Lijst")) || [];
+    
+    projectLijst.push(nieuweNaam);
 
+    localStorage.setItem("Lijst", JSON.stringify(projectLijst));
+}}
 
+saveProjectnames();
 
-//bij klikken save en close > ook sluiten van inputveld
+// tonen van projectnamen op
+
+//bij klikken save en close > ook sluiten van inputveld EN NIEUWPROJECT
 const closeProjectBTN = document.getElementById("closeBTN");
 closeProjectBTN.addEventListener("click",closeProject)
 saveProjectBTN.addEventListener("click", closeProject)
 function closeProject(){
     inputVeld.classList.toggle("hidden"); 
 }
+closeProjectBTN.addEventListener("click",hideProject);
+function hideProject(){
+    const projectField = document.querySelector("#chooseProject");
+    projectField.classList.toggle("hidden"); ////werkt niet for some reason
+}
+
+
+//reset input als je op save of close drukt WERKT NOG NIET
+// saveProjectBTN.addEventListener("focus", emptyField);
+// closeProjectBTN.addEventListener("focus", emptyField);
+
+// function emptyField(){
+//     naamProject.value="";
+// }
+//tonen van projectnaam bij storyform STAPPEN
+//     eerst key van ingegeven projectnamen setten
+
+
+
+
+
+/* <div class= "center" id="chooseProject">
+            <label for="cars">Choose a project</label>
+                <select id="projectList">
+                    <option id="option1" value="">     </option>
+                    <option value="">    </option>
+                    <option value="">   </option>
+                    <option value="">   */
+

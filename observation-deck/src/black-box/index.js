@@ -1,6 +1,6 @@
 import { getJournals, addJournal, removeJournal, editJournal, getDeleted, deleteJournals } from "./modules/journalsState.js";
 import { style } from "./modules/repetitieveFuncties.js";
-import { showDetails, current } from "./modules/HTMLmanipulatie.js";
+import { showDetails, current, calcTagCount, displayTagCount } from "./modules/HTMLmanipulatie.js";
 import { zoekTrefTagInJournals, zoekTrefwoordInJournals } from "./modules/HTMLmanipulatie.js";
 
 const formEl = document.querySelector(".journal");  //G, alles in 1 object steken of apart laten?
@@ -15,7 +15,7 @@ const errmsg = document.querySelector(".Errormsg");
 const submitEdit = document.querySelector(".edit");
 const cancelEdit = document.querySelector(".btn-edit-cancel");
 const delAllDeleted = document.querySelector(".btn-delete-all");
-
+const taglistButton = document.querySelector(".btn-tag-list");
 
 
 function upDateUi() {
@@ -27,12 +27,13 @@ function displayJournals(journals, locatie) {
   const journalsView = document.querySelector(`.${locatie}`);
   journalsView.innerHTML = "";
 
-  journals.forEach(function ({ id, titel, content, tags }) {
+  journals.forEach(function ({ id, titel, content, tags, date }) {
     const html = `
         <div class=journal id=${id}>
           <h2 class="titel">${titel}</h2>
-          <p class="content" style = 'display: none'>${content}<p>
-          <p class="tags" style = 'display: none'>${tags.join(", ")}<p>`;
+          <p class="content" style = 'display: none'>${content}</p>
+          <p class="tags" style = 'display: none'>${tags.join(", ")}</p>
+          <p class="date" style = 'display: none'>${date}</p>`;
 
     journalsView.insertAdjacentHTML("afterbegin", html);
 
@@ -41,15 +42,25 @@ function displayJournals(journals, locatie) {
 
 //maakt nieuwe journal
 formEl.addEventListener("submit", function (e) {
-  e.preventDefault("");
+  e.preventDefault();
 
   const formData = new FormData(e.target);
   const data = Object.fromEntries(formData);
+  let date = formData.get("date");
+
+  if(!date) {
+    const today = new Date();
+    const yyyy = today.getFullYear();
+    const mm = String(today.getMonth() + 1).padStart(2, '0');
+    const dd = String(today.getDate()).padStart(2, '0');
+    date = `${dd}-${mm}-${yyyy}`;
+  }
 
   const newJournal = {
     ...data,
+    date,
     id: crypto.randomUUID(),
-    tags: [data.tags.split(",")],
+    tags: [data.tags.split(", ")],
   };
 
   addJournal(newJournal);
@@ -121,8 +132,22 @@ submitEdit.addEventListener("submit", function (e) {  //G, sumbit form, edit jou
 delAllDeleted.addEventListener('click', () => {
   deleteJournals();
   upDateUi();
-})
+});
 
+let hidden = true;
+taglistButton.addEventListener('click', () => {
+  if(hidden){
+    displayTagCount(calcTagCount(getJournals()));
+    hidden = false;
+    document.querySelector(".btn-tag-list").textContent = "Hide tag list"
+  } else {
+    const ul = document.querySelector(".tag-list");
+    ul.innerHTML = "";
+    hidden = true;
+    document.querySelector(".btn-tag-list").textContent = "Show tag list"
+  }
+  upDateUi();
+});
 
 
 /*
