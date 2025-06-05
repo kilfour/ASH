@@ -32,43 +32,7 @@
 // Optioneel: initiale filter toepassen bij laden
 //   document.addEventListener('DOMContentLoaded', filterStories);
 
-// // VOLLEDIG NIEUWE INPUT WAARBIJ DE OPTIES WEL IN EEN DROP DOWN ZITTEN
 
-// Create label
-// const label = document.createElement('label');
-// label.textContent = 'Filter status:';
-// label.setAttribute('for', 'statusFilter');
-// document.body.appendChild(label);
-// document.body.appendChild(document.createElement('br'));
-
-// // Create select element with multiple selection
-// const select = document.createElement('select');
-// select.id = 'statusFilter';
-// select.multiple = true;
-// select.style.width = '200px';
-// select.style.height = '100px';
-
-// // Add options
-// const options = [
-//   { value: 'new', label: 'New' },
-//   { value: 'in_progress', label: 'In Progress' },
-//   { value: 'done', label: 'Done' }
-// ];
-
-// options.forEach(opt => {
-//   const option = document.createElement('option');
-//   option.value = opt.value;
-//   option.textContent = opt.label;
-//   select.appendChild(option);
-// });
-
-// document.body.appendChild(select);
-
-// // Create div to display selected values
-// const resultDiv = document.createElement('div');
-// resultDiv.id = 'selectedValues';
-// resultDiv.style.marginTop = '10px';
-// document.body.appendChild(resultDiv);
 
 // // Handle change event
 // select.addEventListener('change', () => {
