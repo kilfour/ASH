@@ -41,7 +41,6 @@ function storyDelete(index, row) {
 }
 
 function storyEdit(index) {
-    console.log(index)
     const s = getStories()[index];
     elements.title.value = s.title;
     elements.desc.value = s.description;
