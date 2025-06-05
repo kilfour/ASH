@@ -77,18 +77,17 @@ export function calcTagCount(journals){
 
   const flattened = result.flat();
 
-  flattened.forEach(x => console.log(x))
+  let uniquetags = [...new Set(flattened)];
 
   let endresult = [];
-
-  for(let i=0; i<flattened.length-1;i++){
+  for(let i=0; i<uniquetags.length-1;i++){
     let count = 0;
     for(let j=0; j<flattened.length-1;j++){
-      if(flattened[j]===flattened[i]){
+      if(flattened[j]===uniquetags[i]){
         count += 1;
       }
     }
-    endresult.push([flattened[i], count]);
+    endresult.push([uniquetags[i], count]);
   }
   return endresult;
 }
