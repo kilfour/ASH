@@ -9,6 +9,7 @@ function toggle(element){
   else
     hide(element);
 }
+
 /**
  * this a similar function as Show/Hide, but for multiple elements,
  * 
