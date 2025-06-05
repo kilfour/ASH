@@ -83,7 +83,8 @@ export function addStoryRow(story, index) {
 }
 
 export function onSaveButtonClick() {
-  const story = getUserStory(elements.title, elements.desc);
+  const statusStory = document.querySelector('input[name="status"]:checked').value;
+  const story = getUserStory(elements.title, elements.desc, statusStory);
   if (!story) return;
 
   const index = elements.editIndex.value;

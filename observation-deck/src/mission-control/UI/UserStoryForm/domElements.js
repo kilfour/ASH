@@ -13,7 +13,7 @@ const elements = {
   modalNo: document.getElementById("modal-no"),
   editIndex: document.getElementById("edit-index"),
   formStatus: document.getElementById("formStatus"),
-  newStatus: document.getElementById("status1")
+  newStatus: document.getElementById("statusNew")
 };
 
 /**
