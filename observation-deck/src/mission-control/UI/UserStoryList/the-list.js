@@ -47,6 +47,7 @@ function storyEdit(index) {
     elements.editIndex.value = index;
     show(elements.overlay);
     toggleElements(formStory, 'remove'); 
+    hide(document.querySelector(".actions-dropdown"));
 }
 
 function dropButtons(row) {
