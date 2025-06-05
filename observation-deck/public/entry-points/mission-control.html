@@ -44,7 +44,7 @@
                     <button type="button" id="save-story">Save</button>
                     <button type="button" id="close-popup">Close</button>
                 </div>
-            
+            <!--status-->
                  <div id="formStatus">
                     <input type="radio" name="status" id="status1" form="story-form" checked>
                     <label for="status1">Nieuw</label>
@@ -82,9 +82,20 @@
                     <!-- Stories worden hier toegevoegd -->
                 </tbody>
             </table>
-
+<!--story button en project button-->
             <div class="center">
                 <button id="create-story-button" class="button">Add story</button>
+            </div>
+
+            <div class="center">
+                <button id="project-button" class="button">Add project</button>
+            
+                <div id="inputVeld" class="hidden">
+                    <input type="text" id="naamProject" placeholder="Naam project"> 
+                    <button id="saveBTN">Save</button>  
+                    <button id="closeBTN">Close</button>             
+                </div>
+    
             </div>
 
             <input type="hidden" id="edit-index" />
@@ -92,5 +103,6 @@
     </div>
 
     <script src="/observation-deck/src/mission-control/UI/UserStoryForm/status.js"></script>
+    <script src="/observation-deck/src/mission-control/UI/UserStoryList/newProject.js"></script>
 </body>
 </html>
