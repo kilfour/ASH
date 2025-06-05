@@ -70,3 +70,25 @@ export function zoekTrefTagInJournals(journals, treftag) {
   }
   return result;
 }
+
+export function calcTagCount(journals){
+  let result = [];
+  journals.forEach(x => result.push(x.tags));
+
+  const flattened = result.flat();
+
+  flattened.forEach(x => console.log(x))
+
+  let endresult = [];
+
+  for(let i=0; i<flattened.length-1;i++){
+    let count = 0;
+    for(let j=0; j<flattened.length-1;j++){
+      if(flattened[j]===flattened[i]){
+        count += 1;
+      }
+    }
+    endresult.push([flattened[i], count]);
+  }
+  return endresult;
+}
