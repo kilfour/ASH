@@ -1,4 +1,5 @@
 import { fetchLatestBuildStatus } from "./git-actions-api.js"
+import { html } from '../_utils/fabrication-facility';
 
 export async function getBuildStatusWidget() {
     try {
@@ -24,10 +25,10 @@ function responseToObject(run) {
 }
 
 function buildHtml({ url, status, message, author, updated }) {
-    const hrefOpen = `<a href="${url}" class="notification build-${status}" target="_blank">`;
-    const msg = `Build: <b>${status}</b>. <small>${message}: ${author} at ${updated}.</small>`;
-    const hrefClose = `</a>`;
-    return hrefOpen + msg + hrefClose;
+    const className = `notification build-${status}`;
+    return html('a', { href: url, class: className, target: "_blank" },
+        'Build: ', html('b', status), '. ',
+        html('small', `${message}: ${author} at ${updated}.`));
 }
 
 export const __only_for_test = { buildHtml, responseToObject };

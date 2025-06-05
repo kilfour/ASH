@@ -37,4 +37,4 @@ if (!user) {
 }
 
 let widget = await getBuildStatusWidget();
-document.getElementById("build-status").innerHTML = widget;
+document.getElementById("build-status").appendChild(widget);

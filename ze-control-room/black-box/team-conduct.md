@@ -7,10 +7,10 @@
   - Stories effectief lezen.
   - Teveel ongevraagde functionaliteit.
 
-3. Modulaire structuur. Per feature.
+3. Modulaire structuur. Per feature (MME).
 
 4. Pair Programming.
 
 5. Write some tests (MME) !!
 
-6. Styling 
+6. Styling probleem : @import url("my-imported-styles.css");
