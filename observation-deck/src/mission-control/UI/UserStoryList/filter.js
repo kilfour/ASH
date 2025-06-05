@@ -1,10 +1,10 @@
-import {  show } from '../UserStoryForm/uiHelpers.js'
+import {show,hide, toggle} from '../UserStoryForm/uiHelpers.js'
 
  export function onOpenFilterClicked() {
    const input = document.getElementById("myInput");
    const filter = input.value.toUpperCase();
    const div = document.getElementById("myDropdown");
-   show(div);
+   toggle(div);
    const a = div.getElementsByTagName("a");
    for (let i = 0; i < a.length; i++) {
      let txtValue = a[i].textContent || a[i].innerText;
