@@ -4,7 +4,7 @@ nr      | titel                       | est. time | dev        | status  | real 
  1.2    | ListStories                 |    1      | Milad      | Done    |           |
  2      | Status                      |    1,5    | Abigail    | Done    |           |
  3      | FilterStory                 |    1      | Naomi      | Doing   |           |
- 4      | Deadlines                   |    3      |            |         |           |
+ 4      | Deadlines                   |    3      | Milad      | Doing   |           |
  5      | NewProject                  |    2      |            |         |           |
  6      | Teammembers                 |    2      |            |         |           |
  7      | Dashboard                   |    2      |            |         |           |

@@ -52,6 +52,11 @@ function editJournal(currentID, event) {
   localStorage.setItem(KEY, JSON.stringify(state));
 }
 
+function deleteJournals() {
+  state.deleted = [];
+  localStorage.setItem(KEY, JSON.stringify(state));
+}
+
 function getJournals() {  //G, export const { journals } = state;  -> leest maar 1 keer de state in, als je dus een entry delete komt er geen wijziging aan de UI, vandaar getJournals()
   return state.journals;
 }
@@ -60,4 +65,4 @@ function getDeleted() {  //G, testing
   return state.deleted;
 }
 
-export { addJournal, removeJournal, getJournals, editJournal, getDeleted };
+export { addJournal, removeJournal, getJournals, editJournal, getDeleted, deleteJournals };

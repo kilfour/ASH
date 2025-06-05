@@ -1,68 +1,10 @@
-import {
-  storeUserStory,
-  getStories,
-  deleteUserStory,
-  updateUserStory
-} from "./Storage/localStorage.js";
+import {   storeUserStory, getStories, deleteUserStory, updateUserStory } from "./Storage/localStorage.js";
 import { getUserStory } from "./Entities/userStory.js";
-
-/**
- * UI elements
- */
-const elements = {
-  addBTN: document.getElementById("create-story-button"),
-  overlay: document.getElementById("popup-overlay"),
-  closeBTN: document.getElementById("close-popup"),
-  saveBTN: document.getElementById("save-story"),
-  title: document.getElementById("story-title-name"),
-  desc: document.getElementById("story-description"),
-  modal: document.getElementById("modal-confirm"),
-  modalYes: document.getElementById("modal-yes"),
-  modalNo: document.getElementById("modal-no"),
-  editIndex: document.getElementById("edit-index"),
-  formStatus: document.getElementById("formStatus"),
-  newStatus: document.getElementById("status1")
-};
+import elements, { formStory } from "./UI/UserStoryForm/domElements.js"
+import { show, hide, toggleElements} from "./UI/UserStoryForm/uiHelpers.js"
+import { onAddButtonClick, onCloseButtonClick, onModalYesClick, onModalNoClick, resetStory }from "./UI/UserStoryForm/eventHandelers.js"
 
 
-///////////// DON'T TOUCH /////////
-const show = (el) => el.classList.remove("hidden");
-const hide = (el) => el.classList.add("hidden");
-const formStory = [elements.saveBTN, elements.closeBTN, elements.desc, elements.title, elements.formStatus]
-
-const toggleElements = (el, action) => {
-    el.forEach(el => el.classList[action]('hidden'));
-};
-///////////// DON'T TOUCH /////////
-
-
-function resetStory() {
-  elements.title.value = "";
-  elements.desc.value = "";
-  elements.editIndex.value = "";
-}
-
-function onAddButtonClick() {
-  show(elements.overlay);
-  toggleElements(formStory, 'remove');
-  elements.newStatus.checked = true;
-}
-
-function onCloseButtonClick() {
-  show(elements.modal);
-  toggleElements(formStory, 'add');
-}
-
-function onModalYesClick() {
-  hide(elements.overlay);
-  hide(elements.modal);
-  resetStory();
-}
-
-function onModalNoClick() {
-  toggleElements(formStory, 'remove');
-  hide(elements.modal);
-}
 
 function onSaveButtonClick() {
   const story = getUserStory(elements.title, elements.desc);
@@ -151,7 +93,7 @@ window.addEventListener("DOMContentLoaded", () => {
 });
 
 /**
- * Key Bindings
+ * Key Bindings //Alx:: leave keybindings here, don't refactor this
  */
 elements.addBTN.onclick = onAddButtonClick;
 elements.closeBTN.onclick = onCloseButtonClick;

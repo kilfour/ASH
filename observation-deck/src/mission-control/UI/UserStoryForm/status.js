@@ -17,7 +17,7 @@
   });
 }
 hideForm(); //fout: form in form =nesten= mag niet 
-// DUS form weghalen en linken aan pop-up form???
+// DUS form weghalen en linken aan pop-up form
 
 //backup html:
 //  <div id="formStatus">
