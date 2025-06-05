@@ -1,9 +1,6 @@
 import { hide } from "./uiHelpers.js";
 
-
-
 //GELUKTE POGING: hideform via classlist toggle als er op close gedrukt wordt
-
 
 function hideForm (){
   document.querySelector("#close-popup").addEventListener("click", () => {
@@ -14,9 +11,6 @@ function hideForm (){
 }
 hideForm(); //fout: form in form =nesten= mag niet 
 // DUS form weghalen en linken aan pop-up form
-
-
-
 
 
 
