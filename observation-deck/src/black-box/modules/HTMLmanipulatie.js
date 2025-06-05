@@ -79,7 +79,8 @@ export function calcTagCount(journals){
   let result = [];
   journals.forEach(x => result.push(x.tags));
 
-  const flattened = result.flat();
+  let flattened = result.flat();
+  //flattened = flattened.map(x => x.trim()); // to remove leading or lagging spaces from the tags
 
   let uniquetags = [...new Set(flattened)];
 
@@ -91,7 +92,7 @@ export function calcTagCount(journals){
         count += 1;
       }
     }
-    endresult.push([uniquetags[i], count]);
+    endresult.push([uniquetags[i], count]);  //G, tag toegevoegd, maar kan later niet verwijdered worden
   }
   return endresult;
 }

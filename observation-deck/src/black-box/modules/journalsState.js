@@ -87,6 +87,7 @@ function deleteJournals() {  //G, verwijder alle deleted journals uit localstate
 }
 
 function getJournals() {  //G, export const { journals } = state;  -> leest maar 1 keer de state in, als je dus een entry delete komt er geen wijziging aan de UI, vandaar getJournals()
+  console.log(state);
   return state.journals;
 }
 
