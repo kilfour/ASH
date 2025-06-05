@@ -122,6 +122,7 @@ tbody tr:nth-child(even) {
 
 .button {
   margin-left: 80px;
+  margin-bottom: 20px;
   height: fit-content;
   padding: 10px 40px;
   /* adjust as needed */

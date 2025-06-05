@@ -40,28 +40,38 @@
             <a>Done</a>
         </div>
     </div>
-    <!-- PopUp overlay -->
+    <!-- PopUp overlay / forms -->
     <form id="story-form"> 
         <div id="popup-overlay" class="overlay hidden">
-            <div class="popup">
-                <input type="text" id="story-title-name" placeholder="Title" />
-                <p></p>
-                <textarea id="story-description" placeholder="Description"></textarea>
-                <div>
-                    <button type="button" id="save-story">Save</button>
-                    <button type="button" id="close-popup">Close</button>
-                </div>
-            <!--status-->
-                 <div id="formStatus">
-                    <input type="radio" name="status" id="status1" form="story-form" checked>
-                    <label for="status1">Nieuw</label>
+        
+        <div class="popup">
+            <input type="text" id="story-title-name" placeholder="Title" />
+            <p></p>
+            <textarea id="story-description" placeholder="Description"></textarea>
+            <div>
+                <button type="button" id="save-story">Save</button>
+                <button type="button" id="close-popup">Close</button>
+            </div>
             
-                    <input type="radio" name="status" id="status2" form="story-form"  >
-                    <label for="status2">In Progress</label>
-            
-                    <input type="radio" name="status" id="status3" form="story-form" >
-                    <label for="status3">Done</label>
-                </div>
+<!--project kiezen-->
+        <div class= "center" id="chooseProject">
+            <label for="cars">Choose a project</label>
+                <select id="projectList">
+                    <option id="option1" value="none">none</option>
+                </select>
+        </div>
+
+<!--status kiezen-->
+        <div class="center" id="formStatus">
+        <input type="radio" name="status" id="status1" form="story-form" checked>
+        <label for="status1">Nieuw</label>
+
+        <input type="radio" name="status" id="status2" form="story-form"  >
+        <label for="status2">In Progress</label>
+
+        <input type="radio" name="status" id="status3" form="story-form" >
+        <label for="status3">Done</label>
+    </div>
                 
                 <div id="modal-confirm" class="hidden">
                     <div class="modal-content">
@@ -92,9 +102,7 @@
 <!--story button en project button-->
             <div class="center">
                 <button id="create-story-button" class="button">Add story</button>
-            </div>
-
-            <div class="center">
+            
                 <button id="project-button" class="button">Add project</button>
             
                 <div id="inputVeld" class="hidden">
