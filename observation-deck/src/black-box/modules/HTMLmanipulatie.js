@@ -91,3 +91,9 @@ export function calcTagCount(journals){
   }
   return endresult;
 }
+
+export function displayTagCount(arr){
+  const ul = document.querySelector(".tag-list");
+  ul.innerHTML = "";
+  arr.forEach(x => { ul.insertAdjacentHTML("afterbegin", `<li>${x[0]} : ${x[1]}</li>`)});
+}
