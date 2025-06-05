@@ -1,6 +1,7 @@
 // * [ ] een add knop om een project aan te maken op de hoofdpagina
 // * [ ] dit opent een inputveld waarin je een naam kan ingeven en meteen opslaan met 'save'
 // * [ ] een close button om het inputveld te sluiten
+// * [ ] project tonen op list pagina naast description
 
 const inputVeld= document.querySelector("#inputVeld");
 

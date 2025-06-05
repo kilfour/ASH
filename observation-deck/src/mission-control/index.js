@@ -102,3 +102,17 @@ elements.modalNo.onclick = onModalNoClick;
 elements.saveBTN.onclick = onSaveButtonClick;
 
 document.getElementById("open-filter").addEventListener('click', onOpenFilterClicked)
+
+
+// status verbergen
+function hideForm (){
+  document.querySelector("#close-popup").addEventListener("click", () => {
+    const form = document.querySelector("#formStatus");
+    hide(form);
+    // form.classList.toggle("visible");
+  });
+}
+hideForm();
+
+// const show = (el) => el.classList.remove("hidden");
+// const hide = (el) => el.classList.add("hidden");
