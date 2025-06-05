@@ -1,7 +1,6 @@
 import { getJournals, addJournal, removeJournal, editJournal, getDeleted, deleteJournals } from "./modules/journalsState.js";
 import { style } from "./modules/repetitieveFuncties.js";
-import { showDetails, current, calcTagCount, displayTagCount } from "./modules/HTMLmanipulatie.js";
-import { zoekTrefTagInJournals, zoekTrefwoordInJournals } from "./modules/HTMLmanipulatie.js";
+import { showDetails, current, calcTagCount, displayTagCount, zoekTrefTagInJournals, zoekTrefwoordInJournals, zoekDatumInJournals } from "./modules/HTMLmanipulatie.js";
 
 const formEl = document.querySelector(".journal");  //G, alles in 1 object steken of apart laten?
 const journalList = document.querySelector(".journals");
@@ -53,7 +52,7 @@ formEl.addEventListener("submit", function (e) {
     const yyyy = today.getFullYear();
     const mm = String(today.getMonth() + 1).padStart(2, '0');
     const dd = String(today.getDate()).padStart(2, '0');
-    date = `${dd}-${mm}-${yyyy}`;
+    date = `${yyyy}-${mm}-${dd}`;
   }
 
   const newJournal = {
