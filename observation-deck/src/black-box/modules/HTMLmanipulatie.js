@@ -47,7 +47,6 @@ export function zoekTrefwoordInJournals(journals, trefwoord) {
   let result = [];
   for (let x of journals){
     if(bevatTrefwoord(x, trefwoord)){
-      //highlightTrefwoord(x, trefwoord);
       result.push(x);
     }
   }
