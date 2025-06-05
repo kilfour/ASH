@@ -5,10 +5,10 @@ globalThis.html = html;
 const teamOrange = ['Laurens', 'Benny', 'Mathias', 'Michael'];
 const teamBlue = ['Alex', 'Milad', 'Abigail', 'Naomi'];
 
-const flexRow = styled("div", {
-    display: "flex",
-    justifyContent: "center",
-    gap: "1rem"
+const flexRow = styled('div', {
+    display: 'flex',
+    justifyContent: 'center',
+    gap: '1rem'
 }, html);
 
 const container =
