@@ -13,15 +13,19 @@ export function showDetails(event) {
   //G, iedere journal hidden 
   const prev1 = document.querySelectorAll("p.content");
   const prev2 = document.querySelectorAll("p.tags");
-  prev1.forEach(el => { el.style.display = "none"; });
-  prev2.forEach(el => { el.style.display = "none"; });
+  const prev3 = document.querySelectorAll("p.date");
+  prev1.forEach(el => style(el, "none") );
+  prev2.forEach(el => style(el, "none") );
+  prev3.forEach(el => style(el, "none") );
   style(editArea, "none");
   style(errArea, "none");
 
   const title = event.target; // the clicked <h2>
+  const parent = title.parentElement;
 
-  const content = title.nextElementSibling;
-  const tags = content.nextElementSibling.nextElementSibling;
+  const content = parent.querySelector("p.content");
+  const tags = parent.querySelector("p.tags");
+  const date = parent.querySelector("p.date");
 
   current.ID = title.parentElement.attributes.id.textContent; //G, ID wordt opgeslagen voor gebruik
   editTitle.value = title.textContent;  //G, journal info als edit initial value
@@ -31,6 +35,7 @@ export function showDetails(event) {
   // Show both elements
   style(content, "block");
   style(tags, "block");
+  style(date, "block");
 }
 
 function bevatTrefwoord(journal, trefwoord) {

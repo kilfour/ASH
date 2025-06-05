@@ -1,7 +1,7 @@
 nr      | titel                       | est. time | dev        | status   | real time |
 --------|-----------------------------|-----------|------------|----------|-----------|  
-Story 1 | Dagboekpost kunnen aanmaken | 2D        |Benny       | rejected |           |
-Story 2 | Lijstweergave               | 3D        |Benny       | rejected |           |
+Story 1 | Dagboekpost kunnen aanmaken | 2D        |Benny + G   | done     |Xh + 2h    |
+Story 2 | Lijstweergave               | 3D        |Benny       | rejected |XH         |
 Story 3 | Details bekijken            | 2D        |Matthias    | done     |           |
 Story 4 | bewerken of verwijderen     | 2D        |Michael     | done     |5h         |
 Story 5 | tags en categorieen         | 2D        |story6      | done     |4h         |

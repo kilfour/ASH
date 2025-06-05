@@ -27,12 +27,13 @@ function displayJournals(journals, locatie) {
   const journalsView = document.querySelector(`.${locatie}`);
   journalsView.innerHTML = "";
 
-  journals.forEach(function ({ id, titel, content, tags }) {
+  journals.forEach(function ({ id, titel, content, tags, date }) {
     const html = `
         <div class=journal id=${id}>
           <h2 class="titel">${titel}</h2>
-          <p class="content" style = 'display: none'>${content}<p>
-          <p class="tags" style = 'display: none'>${tags.join(", ")}<p>`;
+          <p class="content" style = 'display: none'>${content}</p>
+          <p class="tags" style = 'display: none'>${tags.join(", ")}</p>
+          <p class="date" style = 'display: none'>${date}</p>`;
 
     journalsView.insertAdjacentHTML("afterbegin", html);
 
@@ -41,13 +42,23 @@ function displayJournals(journals, locatie) {
 
 //maakt nieuwe journal
 formEl.addEventListener("submit", function (e) {
-  e.preventDefault("");
+  e.preventDefault();
 
   const formData = new FormData(e.target);
   const data = Object.fromEntries(formData);
+  let date = formData.get("date");
+
+  if(!date) {
+    const today = new Date();
+    const yyyy = today.getFullYear();
+    const mm = String(today.getMonth() + 1).padStart(2, '0');
+    const dd = String(today.getDate()).padStart(2, '0');
+    date = `${dd}-${mm}-${yyyy}`;
+  }
 
   const newJournal = {
     ...data,
+    date,
     id: crypto.randomUUID(),
     tags: [data.tags.split(",")],
   };

@@ -4,36 +4,42 @@ const journalData = [  //Default journal data
     titel: "Welkom",
     content: "Dit is een default journal entry",
     tags: ["#Welkom", "#default", "#journal"],
+    date: "2000-12-31",
   },
   {
     id: "2",
     titel: "Waarom?",
     content: "Zodat je home pagina niet leeg staat, en zodat we kunnen listing testen",
     tags: ["#Buurt", "#test", "#paginatie"],
+    date: "2000-12-31",
   },
   {
     id: "3",
     titel: "3",
     content: "Lorem Ipsum",
-    tags: ["#Lorem Ipsum",],
+    tags: ["#Lorem Ipsum"],
+    date: "2000-12-31",
   },
   {
     id: "4",
     titel: "4",
     content: "Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum",
     tags: ["#Lorem Ipsum"],
+    date: "2000-12-31",
   },
   {
     id: "5",
     titel: "5",
     content: "Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum ",
     tags: ["#Lorem Ipsum"],
+    date: "2000-12-31",
   },
   {
     id: "6",
     titel: "6",
     content: "Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum",
     tags: ["#Lorem Ipsum"],
+    date: "2000-12-31",
   },
 ];
 
