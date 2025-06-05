@@ -1,16 +1,26 @@
 /* Dropdown Button */
 .dropbtn {
-  background-color: #04AA6D;
+  margin-left: 80px;
+  height: fit-content;
+  padding: 10px 40px;
+  /* adjust as needed */
+  background-color: #0154fa;
+  /* example color */
   color: white;
-  padding: 16px;
-  font-size: 16px;
   border: none;
+  border-radius: 200px;
+  /* makes the button oval */
   cursor: pointer;
-}
-
-/* Dropdown button on hover & focus */
-.dropbtn:hover, .dropbtn:focus {
-  background-color: #3e8e41;
+  transition: all 0.3s ease;
+  /* animatie smooth */
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  -webkit-user-select: none;
+  /* Safari */
+  -moz-user-select: none;
+  /* Firefox */
+  -ms-user-select: none;
+  /* Internet Explorer/Edge */
+  user-select: none;
 }
 
 /* The search field */

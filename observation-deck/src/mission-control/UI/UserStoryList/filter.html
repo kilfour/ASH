@@ -1,59 +1,31 @@
-<!-- <!DOCTYPE html>
-<html lang="nl">
-    <head> 
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <script defer type="module" src="../../mission-control/Storage/filterstory.js"></script>
-    <link rel="stylesheet" href="../Storage/stylefilter.css"
-    <title>filter</title>
-    </head>
-
-
-    
-<body>
-  <h1>test</h1>
-  <h2>Filter op status</h2> -->
-
-  <!-- <div class="filters" id="filterDropdown">
-    <button class="dropdown-button" onclick="toggleDropdown()">Filter status ▾</button>
-    <div class="dropdown-content"></div>
-    <label><input type="checkbox" value="new" onchange="filterStories()" checked> New</label>
-    <label><input type="checkbox" value="in progress" onchange="filterStories()" checked> In Progress</label>
-    <label><input type="checkbox" value="done" onchange="filterStories()" checked> Done</label>
-  </div>
-
-  <ul id="stories-list"> 
-    <li data-status="new">Taak 1 - New</li>
-    <li data-status="in progress">Taak 2 - In Progress</li>
-    <li data-status="done">Taak 3 - Done</li>
-    <li data-status="in progress">Taak 4 - In Progress</li>
-  </ul> -->
-<!-- 
-<div class="dropdown">
-  <button onclick="myFunction()" class="dropbtn">Dropdown</button>
-  <div id="myDropdown" class="dropdown-content">
-    <input type="text" placeholder="Search.." id="myInput" onkeyup="filterFunction()">
-    <a href="#about">About</a>
-    <a href="#base">Base</a>
-    <a href="#blog">Blog</a>
-    <a href="#contact">Contact</a>
-    <a href="#custom">Custom</a>
-    <a href="#support">Support</a>
-    <a href="#tools">Tools</a>
-  </div>
-</div>
-
-</body>
-</html> -->
-
-    <!DOCTYPE html>
+<!DOCTYPE html>
 <html>
 <head>
 <meta name="viewport" content="width=device-width, initial-scale=1">
+<!-- <script defer type="module" src="../../../mission-control/UI/UserStoryList/filter.js"></script> -->
 <style>
 .dropbtn {
-  background-color: #4613e0;
+  margin-left: 80px;
+  height: fit-content;
+  padding: 10px 40px;
+  /* adjust as needed */
+  background-color: #0154fa;
+  /* example color */
   color: white;
+  border: none;
+  border-radius: 200px;
+  /* makes the button oval */
+  cursor: pointer;
+  transition: all 0.3s ease;
+  /* animatie smooth */
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  -webkit-user-select: none;
+  /* Safari */
+  -moz-user-select: none;
+  /* Firefox */
+  -ms-user-select: none;
+  /* Internet Explorer/Edge */
+  user-select: none;
 }
 
 #myInput {
@@ -97,10 +69,8 @@
 </head>
 <body style="background-color:white;">
 
-<h2>Search/Filter Dropdown</h2>
-
 <div class="dropdown">
-  <button onclick="myFunction()" class="dropbtn">Dropdown</button>
+  <button onclick="myFunction()" class="dropbtn">Filter</button>
   <div id="myDropdown" class="dropdown-content">
     <input type="text" placeholder="Search.." id="myInput" onkeyup="filterFunction()">
     <a>New</a>
@@ -109,9 +79,8 @@
   </div>
 </div>
 
+<!-- When the user clicks on the button,toggle between hiding and showing the dropdown content -->
 <script>
-/* When the user clicks on the button,
-toggle between hiding and showing the dropdown content */
 function myFunction() {
   document.getElementById("myDropdown").classList.toggle("show");
 }
@@ -129,8 +98,28 @@ function filterFunction() {
       a[i].style.display = "none";
     }
   }
-}
-</script>
+} </script>
 
 </body>
 </html>
+
+<!-- When the user clicks on the button,
+toggle between hiding and showing the dropdown content
+function myFunction() {
+  document.getElementById("myDropdown").classList.toggle("show");
+}
+
+function filterFunction() {
+  const input = document.getElementById("myInput");
+  const filter = input.value.toUpperCase();
+  const div = document.getElementById("myDropdown");
+  const a = div.getElementsByTagName("a");
+  for (let i = 0; i < a.length; i++) {
+    txtValue = a[i].textContent || a[i].innerText;
+    if (txtValue.toUpperCase().indexOf(filter) > -1) {
+      a[i].style.display = "";
+    } else {
+      a[i].style.display = "none";
+    }
+  }
+} -->

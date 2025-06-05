@@ -5,7 +5,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script defer type="module" src="../../src/mission-control/index.js"></script>
-    <script defer type="module" src="../../src/mission-control/UI/UserStoryList/filterstory.js"></script>
     <title>Document</title>
 </head>
 
@@ -32,7 +31,15 @@
             </div>
         </div>
     </div>
-
+    <div class="dropdown">
+        <button id="open-filter" class="button">Filter</button>
+        <div id="myDropdown" class="dropdown-content hidden">
+            <input type="text" placeholder="Search.." id="myInput" onkeyup="filterFunction()">
+            <a>New</a>
+            <a>In Progress</a>
+            <a>Done</a>
+        </div>
+    </div>
     <!-- PopUp overlay -->
     <form id="story-form"> 
         <div id="popup-overlay" class="overlay hidden">
