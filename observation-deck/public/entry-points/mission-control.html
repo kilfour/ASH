@@ -56,7 +56,7 @@
             
 <!--project kiezen-->
         <div class= "center" id="chooseProject">
-            <label for="cars">Choose a project</label>
+            <label for="projectLijst">Choose a project</label>
                 <select id="projectList">
                     <option id="option1" value="none">none</option>
                 </select>
@@ -65,7 +65,7 @@
 <!--status kiezen-->
         <div class="center" id="formStatus">
         <input type="radio" name="status" id="status1" form="story-form" checked>
-        <label for="status1">Nieuw</label>
+        <label for="status1">New</label>
 
         <input type="radio" name="status" id="status2" form="story-form"  >
         <label for="status2">In Progress</label>
@@ -118,7 +118,7 @@
         </div>
     </div>
 
-    <script src="/observation-deck/src/mission-control/UI/UserStoryForm/status.js"></script>
-    <script src="/observation-deck/src/mission-control/UI/UserStoryList/newProject.js"></script>
+    <script type="module" src="/observation-deck/src/mission-control/UI/UserStoryForm/status.js"></script>
+    <script type="module" src="/observation-deck/src/mission-control/UI/UserStoryList/newProject.js"></script>
 </body>
 </html>

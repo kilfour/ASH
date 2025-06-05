@@ -1,23 +1,24 @@
- //POGING 2:hideform als er op close gedrukt: WERKT NIET
+import { hide } from "./uiHelpers.js";
 
-//  function hideForm (){
-//   document.querySelector("#close-popup").addEventListener("click", () => {
-//     const form = document.querySelector("#formStatus");
-//     form.style.display = 'none';
-//   });
-// }
-// hideForm();
+
 
 //GELUKTE POGING: hideform via classlist toggle als er op close gedrukt wordt
 
-//  export function hideForm (){
-//   document.querySelector("#close-popup").addEventListener("click", () => {
-//     const form = document.querySelector("#formStatus");
-//     form.classList.toggle("visible");
-//   });
-// }
-// hideForm(); //fout: form in form =nesten= mag niet 
+
+function hideForm (){
+  document.querySelector("#close-popup").addEventListener("click", () => {
+    const form = document.querySelector("#formStatus");
+    hide(form);
+    // form.classList.toggle("visible");
+  });
+}
+hideForm(); //fout: form in form =nesten= mag niet 
 // DUS form weghalen en linken aan pop-up form
+
+
+
+
+
 
 //backup html:
 //  <div id="formStatus">
@@ -51,27 +52,13 @@
 //   }
 // }
 
+ //POGING 2:hideform als er op close gedrukt: WERKT NIET
 
+//  function hideForm (){
+//   document.querySelector("#close-popup").addEventListener("click", () => {
+//     const form = document.querySelector("#formStatus");
+//     form.style.display = 'none';
+//   });
+// }
+// hideForm();
  
-
-
-
-
-
-//dit hoort in html in pop-up form:
-
-// <!DOCTYPE html>
-// <html>
-//     <body>
-//         <form id="formStatus">
-//             <input type="radio" name="nieuw" checked>
-//             <label for="fname">Nieuw</label>
-    
-//             <input type="radio" name="inProgress" >
-//             <label for="fname">In Progress</label>
-    
-//             <input type="radio" name="done">
-//             <label for="fname">Done</label>
-//         </form>
-//     </body>
-// </html>
