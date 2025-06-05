@@ -60,7 +60,7 @@ formEl.addEventListener("submit", function (e) {
     ...data,
     date,
     id: crypto.randomUUID(),
-    tags: [data.tags.split(", ")],
+    tags: data.tags.split(","),
   };
 
   addJournal(newJournal);
@@ -148,7 +148,6 @@ taglistButton.addEventListener('click', () => {
   }
   upDateUi();
 });
-
 
 /*
 function highlightTrefwoord(journal, trefwoord){

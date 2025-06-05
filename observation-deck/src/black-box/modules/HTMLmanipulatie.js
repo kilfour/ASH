@@ -91,7 +91,7 @@ export function calcTagCount(journals){
         count += 1;
       }
     }
-    endresult.push([uniquetags[i], count]);
+    endresult.push([uniquetags[i], count]);  //G, tag toegevoegd, maar kan later niet verwijdered worden
   }
   return endresult;
 }
