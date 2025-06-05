@@ -1,4 +1,7 @@
 import { getJournals, addJournal, removeJournal, editJournal, getDeleted, deleteJournals } from "./modules/journalsState.js";
+import { style } from "./modules/repetitieveFuncties.js";
+import { showDetails, current, calcTagCount, displayTagCount } from "./modules/HTMLmanipulatie.js";
+import { zoekTrefTagInJournals, zoekTrefwoordInJournals } from "./modules/HTMLmanipulatie.js";
 
 const formEl = document.querySelector(".journal");  //G, alles in 1 object steken of apart laten?
 const journalList = document.querySelector(".journals");
@@ -11,111 +14,51 @@ const errArea = document.querySelector(".ErrorArea");
 const errmsg = document.querySelector(".Errormsg");
 const submitEdit = document.querySelector(".edit");
 const cancelEdit = document.querySelector(".btn-edit-cancel");
-const editTitle = document.querySelector(".editTitle");
-const editContent = document.querySelector(".editContent");
-const editTags = document.querySelector(".editTags");
 const delAllDeleted = document.querySelector(".btn-delete-all");
-
-let currentID = "";
+const taglistButton = document.querySelector(".btn-tag-list");
 
 
 function upDateUi() {
   displayJournals(getJournals(), "journals");
-  displayJournals(getDeleted(), "deletedJournals")
+  displayJournals(getDeleted(), "deletedJournals");
 } upDateUi();
-
-function style(place, state) {  //G, zet de display state, vooral "block" of "none"
-  place.style.display = state;
-}
 
 function displayJournals(journals, locatie) {
   const journalsView = document.querySelector(`.${locatie}`);
   journalsView.innerHTML = "";
 
-  journals.forEach(function ({ id, titel, content, tags }) {
+  journals.forEach(function ({ id, titel, content, tags, date }) {
     const html = `
         <div class=journal id=${id}>
           <h2 class="titel">${titel}</h2>
-          <p class="content" style = 'display: none'>${content}<p>
-          <p class="tags" style = 'display: none'>${tags.join(", ")}<p>`;
+          <p class="content" style = 'display: none'>${content}</p>
+          <p class="tags" style = 'display: none'>${tags.join(", ")}</p>
+          <p class="date" style = 'display: none'>${date}</p>`;
 
     journalsView.insertAdjacentHTML("afterbegin", html);
 
   });
 }
 
-function showDetails(event) {
-  //G, iedere journal hidden 
-  const prev1 = document.querySelectorAll("p.content");
-  const prev2 = document.querySelectorAll("p.tags");
-  prev1.forEach(el => { el.style.display = "none"; });
-  prev2.forEach(el => { el.style.display = "none"; });
-  style(editArea, "none");
-  style(errArea, "none");
-
-  const title = event.target; // the clicked <h2>
-
-  const content = title.nextElementSibling;
-  const tags = content.nextElementSibling.nextElementSibling;
-
-  currentID = title.parentElement.attributes.id.textContent; //G, ID wordt opgeslagen voor gebruik
-  editTitle.value = title.textContent;  //G, journal info als edit initial value
-  editContent.value = content.textContent;
-  editTags.value = tags.textContent;
-
-  // Show both elements
-  style(content, "block");
-  style(tags, "block");
-}
-
-function bevatTrefwoord(journal, trefwoord) {
-  return journal.titel.split(" ").some(word => word.toLowerCase().includes(trefwoord.toLowerCase())) ||
-    journal.content.split(" ").some(word => word.toLowerCase().includes(trefwoord.toLowerCase()));
-}
-
-function bevatTrefTag(journal, treftag) {
-  try {
-    if (treftag.startsWith("#")) {
-      return journal.tags.some(word => String(word).toLowerCase().includes(treftag.toLowerCase()));
-    } else {
-      throw new Error("Tags moeten starten met #");
-    }
-  } catch (err) {
-    document.querySelector(".error").textContent = err.message;
-  }
-}
-
-
-function zoekTrefwoordInJournals(journals, trefwoord) {
-  let result = [];
-  for (let x of journals){
-    if(bevatTrefwoord(x, trefwoord)){
-      //highlightTrefwoord(x, trefwoord);
-      result.push(x);
-    }
-  }
-  return result;
-}
-
-function zoekTrefTagInJournals(journals, treftag) {
-  let result = [];
-  for (let x of journals) {
-    if (bevatTrefTag(x, treftag)) {
-      result.push(x);
-    }
-  }
-  return result;
-}
-
 //maakt nieuwe journal
 formEl.addEventListener("submit", function (e) {
-  e.preventDefault("");
+  e.preventDefault();
 
   const formData = new FormData(e.target);
   const data = Object.fromEntries(formData);
+  let date = formData.get("date");
+
+  if(!date) {
+    const today = new Date();
+    const yyyy = today.getFullYear();
+    const mm = String(today.getMonth() + 1).padStart(2, '0');
+    const dd = String(today.getDate()).padStart(2, '0');
+    date = `${dd}-${mm}-${yyyy}`;
+  }
 
   const newJournal = {
     ...data,
+    date,
     id: crypto.randomUUID(),
     tags: [data.tags.split(",")],
   };
@@ -129,10 +72,10 @@ journalList.addEventListener("click", function (e) {
 });
 
 delButton.addEventListener('click', () => {  //G, remove journal via ID, zet ID op niks voor edit errmsg
-  removeJournal(currentID);
+  removeJournal(current.ID);
   style(editArea, "none");
   style(errArea, "none");
-  currentID = "";
+  current.ID = "";
   upDateUi();
 });
 
@@ -161,7 +104,7 @@ searchfield2.addEventListener("submit", function (e) {
 
 
 editButton.addEventListener('click', () => {  //G, haalt het edit menu of geeft error
-  if (currentID === "") {
+  if (current.ID === "") {
     style(errArea, "block");
     style(editArea, "none");
     errmsg.textContent = "Geen Journal Selected"
@@ -179,7 +122,7 @@ cancelEdit.addEventListener('click', () => {  //G, hidden editArea, terug naar d
 submitEdit.addEventListener("submit", function (e) {  //G, sumbit form, edit journal entry, hide edit menus
   e.preventDefault();
 
-  editJournal(currentID, e);
+  editJournal(current.ID, e);
 
   style(editArea, "none");
   style(errArea, "none");
@@ -189,8 +132,22 @@ submitEdit.addEventListener("submit", function (e) {  //G, sumbit form, edit jou
 delAllDeleted.addEventListener('click', () => {
   deleteJournals();
   upDateUi();
-})
+});
 
+let hidden = true;
+taglistButton.addEventListener('click', () => {
+  if(hidden){
+    displayTagCount(calcTagCount(getJournals()));
+    hidden = false;
+    document.querySelector(".btn-tag-list").textContent = "Hide tag list"
+  } else {
+    const ul = document.querySelector(".tag-list");
+    ul.innerHTML = "";
+    hidden = true;
+    document.querySelector(".btn-tag-list").textContent = "Show tag list"
+  }
+  upDateUi();
+});
 
 
 /*

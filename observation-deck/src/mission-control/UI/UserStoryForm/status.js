@@ -8,15 +8,15 @@
 // }
 // hideForm();
 
-//POGING3: hideform via classlist toggle als er op close gedrukt wordt
+//GELUKTE POGING: hideform via classlist toggle als er op close gedrukt wordt
 
- function hideForm (){
-  document.querySelector("#close-popup").addEventListener("click", () => {
-    const form = document.querySelector("#formStatus");
-    form.classList.toggle("visible");
-  });
-}
-hideForm(); //fout: form in form =nesten= mag niet 
+//  export function hideForm (){
+//   document.querySelector("#close-popup").addEventListener("click", () => {
+//     const form = document.querySelector("#formStatus");
+//     form.classList.toggle("visible");
+//   });
+// }
+// hideForm(); //fout: form in form =nesten= mag niet 
 // DUS form weghalen en linken aan pop-up form
 
 //backup html:
