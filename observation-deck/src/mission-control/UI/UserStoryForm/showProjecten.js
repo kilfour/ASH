@@ -12,14 +12,6 @@
 
 
 
-// //html:
-//   //  <div class= "center" id="chooseProject">
-//   //           <label for="cars">Choose a project</label>
-//   //               <select id="projectList">
-//   //                   <option id="option1" value="">     </option>
-//   //               </select>
-//   //       </div>
-
 
   
 //   array.forEach((comment) => {

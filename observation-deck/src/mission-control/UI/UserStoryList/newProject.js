@@ -1,14 +1,14 @@
 import { hide } from "../UserStoryForm/uiHelpers.js";
 
 //projectkiezer verbergen
-const closeProjectBTN = document.getElementById("closeBTN");
+const closeProjectBTN = document.getElementById("close-popup");
 closeProjectBTN.addEventListener("click",hideProject);
 function hideProject (){
     const project = document.querySelector("#chooseProject");
     hide(project);
   };
 
-hideProject();
+
 
 
 // * [ ] in forms: optie om projectnaam (uit localstorage) te kunnen kiezen
