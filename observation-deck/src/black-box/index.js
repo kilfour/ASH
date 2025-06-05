@@ -1,85 +1,190 @@
-import { getJournals, addJournal, removeJournal } from "./modules/journalsState.js";
+import { getJournals, addJournal, removeJournal, editJournal, getDeleted, deleteJournals } from "./modules/journalsState.js";
+import { style } from "./modules/repetitieveFuncties.js";
+import { showDetails, current, calcTagCount, displayTagCount } from "./modules/HTMLmanipulatie.js";
+import { zoekTrefTagInJournals, zoekTrefwoordInJournals } from "./modules/HTMLmanipulatie.js";
 
-const formEl = document.querySelector(".journal");
+const formEl = document.querySelector(".journal");  //G, alles in 1 object steken of apart laten?
+const journalList = document.querySelector(".journals");
 const delButton = document.querySelector(".btn-delete");
+const searchfield1 = document.querySelector(".searchbar-content");
+const searchfield2 = document.querySelector(".searchbar-tags");
+const editButton = document.querySelector(".btn-edit");
+const editArea = document.querySelector(".EditArea");
+const errArea = document.querySelector(".ErrorArea");
+const errmsg = document.querySelector(".Errormsg");
+const submitEdit = document.querySelector(".edit");
+const cancelEdit = document.querySelector(".btn-edit-cancel");
+const delAllDeleted = document.querySelector(".btn-delete-all");
+const taglistButton = document.querySelector(".btn-tag-list");
 
 
-function displayJournals(journals) {
-  const journalsView = document.querySelector(".journals");
+function upDateUi() {
+  displayJournals(getJournals(), "journals");
+  displayJournals(getDeleted(), "deletedJournals");
+} upDateUi();
+
+function displayJournals(journals, locatie) {
+  const journalsView = document.querySelector(`.${locatie}`);
   journalsView.innerHTML = "";
 
-  journals.forEach(function ({ id, titel, content, tags }) {
+  journals.forEach(function ({ id, titel, content, tags, date }) {
     const html = `
         <div class=journal id=${id}>
           <h2 class="titel">${titel}</h2>
-          <p class="content" style = 'display: none'>${content}<p>
-          <p class="tags" style = 'display: none'>${tags.join(", ")}<p>`;
+          <p class="content" style = 'display: none'>${content}</p>
+          <p class="tags" style = 'display: none'>${tags.join(", ")}</p>
+          <p class="date" style = 'display: none'>${date}</p>`;
 
     journalsView.insertAdjacentHTML("afterbegin", html);
-    
+
   });
 }
 
-
-function showDetails(event){
-    const title = event.target; // the clicked <h2>
-    console.log(event);
-    const content = title.nextElementSibling;
-    const tags = content.nextElementSibling;
-
-    // Show both elements
-    content.style.display = "block";
-    tags.style.display = "block";
-}
-
-function upDateUi() {
-  displayJournals(getJournals());
-}
-upDateUi();
-
+//maakt nieuwe journal
 formEl.addEventListener("submit", function (e) {
-  e.preventDefault("");
+  e.preventDefault();
 
   const formData = new FormData(e.target);
   const data = Object.fromEntries(formData);
+  let date = formData.get("date");
+
+  if(!date) {
+    const today = new Date();
+    const yyyy = today.getFullYear();
+    const mm = String(today.getMonth() + 1).padStart(2, '0');
+    const dd = String(today.getDate()).padStart(2, '0');
+    date = `${dd}-${mm}-${yyyy}`;
+  }
 
   const newJournal = {
     ...data,
-    id: "123455667",
-    tags: [data.tags.split(",")],
+    date,
+    id: crypto.randomUUID(),
+    tags: data.tags.split(", "),
   };
 
   addJournal(newJournal);
   upDateUi();
 });
 
-const t = document.querySelector(".journals");
-t.addEventListener("click",  function(e){
-    showDetails(e);
+journalList.addEventListener("click", function (e) {
+  showDetails(e);
 });
 
-delButton.addEventListener('click', () => {
-  removeJournal("23254687612");  //moet de ID van de geselecteerde entry nemen
+delButton.addEventListener('click', () => {  //G, remove journal via ID, zet ID op niks voor edit errmsg
+  removeJournal(current.ID);
+  style(editArea, "none");
+  style(errArea, "none");
+  current.ID = "";
   upDateUi();
+});
+
+searchfield1.addEventListener("submit", function (e) {
+  e.preventDefault("");
+
+  const trefwoord = document.getElementById("searchfield1").value.trim();
+
+  const zoekjournals = zoekTrefwoordInJournals(getJournals(), trefwoord);
+  displayJournals(zoekjournals, "journals");
+
+});
+
+searchfield2.addEventListener("submit", function (e) {
+  e.preventDefault("");
+
+  document.querySelector(".error").textContent = "";
+  //style(document.querySelector(".error"), "none");
+
+  const treftag = document.getElementById("searchfield2").value;
+
+  const zoekjournals = zoekTrefTagInJournals(getJournals(), treftag);
+  displayJournals(zoekjournals, "journals");
+
+});
+
+
+editButton.addEventListener('click', () => {  //G, haalt het edit menu of geeft error
+  if (current.ID === "") {
+    style(errArea, "block");
+    style(editArea, "none");
+    errmsg.textContent = "Geen Journal Selected"
+  } else {
+    style(editArea, "block");
+    style(errArea, "none");
+  }
 })
 
+cancelEdit.addEventListener('click', () => {  //G, hidden editArea, terug naar detail display
+  style(editArea, "none");
+  style(errArea, "none");
+})
 
-// export function searchContent(str, searchstr){
-//     return str.split(' ').some(word => word.toLowerCase().includes(searchstr.toLowerCase()));
-// }
-//The .some() method in JavaScript is used on arrays to check if at least one element satisfies a given condition.
-//It returns a boolean
+submitEdit.addEventListener("submit", function (e) {  //G, sumbit form, edit journal entry, hide edit menus
+  e.preventDefault();
 
-/*   DIT IS DE LANGE VERSIE VAN DE CODE HIERBOVEN VOOR DE DUIDELIJKHEID
+  editJournal(current.ID, e);
 
-function searchContent(str, searchstr){
-    const splitted = str.split(' ');
-    let result = false;
-    for (let i=0; i<splitted.length-1;i++){
-        if(splitted[i].includes(searchstr)){
-            result = true;
-        }
-    }
-    return result;
+  style(editArea, "none");
+  style(errArea, "none");
+  upDateUi();
+});
+
+delAllDeleted.addEventListener('click', () => {
+  deleteJournals();
+  upDateUi();
+});
+
+let hidden = true;
+taglistButton.addEventListener('click', () => {
+  if(hidden){
+    displayTagCount(calcTagCount(getJournals()));
+    hidden = false;
+    document.querySelector(".btn-tag-list").textContent = "Hide tag list"
+  } else {
+    const ul = document.querySelector(".tag-list");
+    ul.innerHTML = "";
+    hidden = true;
+    document.querySelector(".btn-tag-list").textContent = "Show tag list"
+  }
+  upDateUi();
+});
+
+/*
+function highlightTrefwoord(journal, trefwoord){
+  const query = trefwoord.trim().toLowerCase();
+  const t = document.querySelector("h2.titel");
+  const torigin = t.textContent;
+  const c = document.querySelector("p.content");
+  const corigin = c.textContent;
+  if(query === ""){  //to reset
+    t.innerHTML = torigin;
+    c.innerHTML = corigin;
+    return;
+  }
+
+  const twords = torigin.split(/(\s+)/); //split and keep spaces
+  const cwords = corigin.split(/(\s+)/);
+  const HLtwords = twords
+          .map(word => {
+            if(word.toLowerCase().includes(query)){
+              return `<span class="highlighted">${word}</span>`;
+            }
+            return word;
+          })
+          .join("");
+  const HLcwords = cwords
+          .map(word => {
+            if(word.toLowerCase().includes(query)){
+              return `<span class="highlighted">${word}</span>`;
+            }
+            return word;
+          })
+          .join("");
+  console.log(HLtwords);
+  console.log(HLcwords);
+  t.innerHTML = HLtwords;
+  c.innerHTML = HLcwords;
+  console.log(t);
+  console.log(c);
 }
-*/
+  */

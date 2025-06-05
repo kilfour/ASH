@@ -2,6 +2,10 @@
 
 Een modulaire team-based web applicatie voor en door learners.
 
+## 🚨 Important Info 🚨
+ - [Project Structure](./project-structure.md)
+ - [Current Teams](./current-teams.md)
+ 
 ## 💡 Teams
 
 * **Team Blue**: Werkt in `mission-control/` (Story Tracker)

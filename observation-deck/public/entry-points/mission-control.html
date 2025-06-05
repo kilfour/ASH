@@ -1,60 +1,114 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <link rel="stylesheet" href="/observation-deck/public/styles_mc.css">
+    <link rel="stylesheet" href="../styles.css">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script defer type="module" src="../../src/mission-control/index.js"></script>
     <title>Document</title>
-    
 </head>
-<title>Title</title>
+
 <body>
+    <h1>Mission Control</h1>
+
     <div class="dashboard">DASHBOARD
         <div class="status">STATUS
             <div class="status-item">
-                <span id="new">NEW:</span>
+                <span>NEW:</span>
                 <span id="new-value">12</span>
             </div>
             <div class="status-item">
-                <span id="open">OPEN:</span>
-                <span id="oopen-value">7</span>
+                <span>OPEN:</span>
+                <span id="open-value">7</span>
             </div>
             <div class="status-item">
-                <span id="inProgress">IN PROGRESS:</span>
+                <span>IN PROGRESS:</span>
                 <span id="inProgress-value">4</span>
             </div>
             <div class="status-item">
-                <span id="done">DONE:</span>
+                <span>DONE:</span>
                 <span id="done-value">15</span>
-                <button id="testbtn">test</button>
             </div>
         </div>
     </div>
-    <div class="story-control-buttons">
-    <button id="create-story-button">Add Story</button>
-</div>
-
-<!-- PopUp overlay-->
-<form id="story-form" class="hidden"></form>
-<div id="popup-overlay" class="overlay hidden">
-    <div class="popup">
-        <input type="text" id="story-title-name" placeholder="Title" />
-        <p></p>
-        <textarea id="story-description" placeholder="Description"></textarea>
-        <div>
-            <button id="save-story">Save</button>
-            <button id="close-popup">Close</button>
-        </div>
-        <div id="modal-confirm" class="hidden modal">
-        <div class="modal-content">
-            <p>Are you sure you want to close?</p>
-            <button id="modal-yes">Yes</button>
-            <button id="modal-no">No</button>
-        </div>
+    <!-- filter -->
+    <div class="dropdown"> 
+        <button id="open-filter" class="button">Filter</button>
+        <div id="myDropdown" class="dropdown-content hidden">
+            <input type="text" placeholder="Search.." id="myInput" onkeyup="filterFunction()">
+            <a>New</a>
+            <a>In Progress</a>
+            <a>Done</a>
         </div>
     </div>
-</div>
-</form>
-    <script type="module" src="../../src/mission-control/story-add-button.js"></script>
+    <!-- PopUp overlay / forms -->
+    <form id="story-form"> 
+        <div id="popup-overlay" class="overlay hidden">
+            <div class="popup">
+                <input type="text" id="story-title-name" placeholder="Title" />
+                <p></p>
+                <textarea id="story-description" placeholder="Description"></textarea>
+                <div>
+                    <button type="button" id="save-story">Save</button>
+                    <button type="button" id="close-popup">Close</button>
+                </div>
+            <!--status-->
+                 <div id="formStatus">
+                    <input type="radio" name="status" id="statusNew" form="story-form" checked>
+                    <label for="statusNew">Nieuw</label>
+            
+                    <input type="radio" name="status" id="statusInProgress" form="story-form"  >
+                    <label for="statusInProgress">In Progress</label>
+            
+                    <input type="radio" name="status" id="statusDone" form="story-form" >
+                    <label for="statusDone">Done</label>
+                </div>
+                
+                <div id="modal-confirm" class="hidden">
+                    <div class="modal-content">
+                        <p>Are you sure you want to close?</p>
+                        <button type="button" id="modal-yes">Yes</button>
+                        <button type="button" id="modal-no">No</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+
+    <div class="header">
+        <!-- MME: Malformed Html -->
+        <div class="table-button-wrapper">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Story name</th>
+                        <th>Description</th>
+                        <th>Project/ Sprint</th>
+                    </tr>
+                </thead>
+                <tbody id="story-table-body">
+                    <!-- Stories worden hier toegevoegd -->
+                </tbody>
+            </table>
+<!--story button en project button-->
+            <div class="center">
+                <button id="create-story-button" class="button">Add story</button>
+            
+                <button id="project-button" class="button">Add project</button>
+            
+                <div id="inputVeld" class="hidden">
+                    <input type="text" id="naamProject" placeholder="Naam project"> 
+                    <button id="saveBTN">Save</button>  
+                    <button id="closeBTN">Close</button>             
+                </div>
+    
+            </div>
+
+            <input type="hidden" id="edit-index" />
+        </div>
+    </div>
+
+    <script type="module" src="/observation-deck/src/mission-control/UI/UserStoryForm/status.js"></script>
+    <script type="module" src="/observation-deck/src/mission-control/UI/UserStoryList/newProject.js"></script>
 </body>
 </html>

@@ -10,9 +10,9 @@ Gebruikers willen de mogelijkheid hebben om hun gedachten, ervaringen of belangr
 
 ✅ Acceptatiecriteria
  
-* [ ] Ik kan een nieuwe dagboekpost aanmaken en een datum, titel en inhoud invoeren.
-* [ ] De dagboekpost wordt opgeslagen en kan later geraadpleegd worden.
-* [ ] Indien ik geen datum opgeef, wordt automatisch de huidige datum ingevuld.
+* [X] Ik kan een nieuwe dagboekpost aanmaken en een datum, titel en inhoud invoeren.
+* [X] De dagboekpost wordt opgeslagen en kan later geraadpleegd worden.
+* [X] Indien ik geen datum opgeef, wordt automatisch de huidige datum ingevuld.
 
 🧮 Estimate
 
@@ -20,3 +20,5 @@ In ideale dagen: 2 dagen
 
 🔍 Notities / Open Vragen
 
+MME: Rejected 
+ - datum ?

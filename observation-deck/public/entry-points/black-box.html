@@ -1,23 +1,72 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <script defer type="module" src="../../src/black-box/index.js"></script>
-    <title>Black box</title>
-  </head>
-  <body>
-    <div>
-      <ul class="journals"></ul>
-    </div>
-    <div>
-      <form class="journal">
-        <input type="text" name="titel" class="titel" />
-        <input type="text" name="content" class="content" />
-        <input type="text" name="tags" class="tags" />
-        <button class="btn-submit">Voeg toe</button>
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="../styles.css">
+  <script defer type="module" src="../../src/black-box/index.js"></script>
+  <title>Black box</title>
+</head>
+
+<body>
+  <div>
+    <ul class="journals"></ul>
+  </div>
+
+  <div>
+    <form class="journal">
+      <input type="text" name="titel" class="titel" />
+      <input type="text" name="content" class="content" />
+      <input type="text" name="tags" class="tags" />
+      <input type="date" name="date" class="date" />
+      <button class="btn-submit">Voeg toe</button>
+    </form>
+    <button class="btn-delete">Delete Selected Journal</button>
+
+    <form class="searchbar-content">
+      <label for="searchfield1">Search trefwoorden:</label>
+      <input type="text" name="searchfield1" class="searchfield1" id="searchfield1"/>
+    </form>
+
+    <div class="tagsearching" style="display: flex; align-items: center">
+      <form class="searchbar-tags">
+        <label for="searchfield2">Search tags:</label>
+        <input type="text" name="searchfield2" class="searchfield2" id="searchfield2"/>
       </form>
-      <button class="btn-delete">Delete Selected Journal</button>
+      <p style="background-color:red; color: white;  margin-left: 10px" class="error"></p>
     </div>
-  </body>
+
+    <div class="tag-count">
+      <ul class="tag-list"></ul>
+      <div>
+        <button class="btn-tag-list">Show tag list</button>
+        
+      </div>
+    </div>
+
+    <button class="btn-edit">Edit Selected Journal</button>
+  </div>
+
+  <div class="EditArea" style="display: none;">
+    <form class="edit">
+      <input name="titel" placeholder="Edit Title" class="editTitle" /><br/>
+      <input name="content" placeholder="Edit Content" class="editContent" /><br/>
+      <input name="tags" placeholder="Edit Tags" class="editTags" /><br/>
+      <button class="btn-edit-submit">Submit</button>
+    </form>
+    <button class="btn-edit-cancel">Cancel</button>
+  </div>
+
+  <div class="ErrorArea" style="display: none;">
+    <p class="Errormsg">(error hier insteken)</p>
+  </div>
+
+  <div>
+    <ul class="deletedJournals"></ul>
+    <button class="btn-delete-all">Delete all Deleted</button>
+  </div>
+
+</body>
+
 </html>
