@@ -1,4 +1,4 @@
-const insertedStyles = new Set();
+import { parseArguments } from "./parse-arguments";
 
 export function htmlList(tag, items, renderItem) {
     const container = document.createElement(tag);
@@ -16,72 +16,15 @@ export function html(tag, ...args) {
     return node;
 }
 
-export function styled(tag, styleObj) {
-    const className = generateReadableClassName(styleObj);
-
-    if (!insertedStyles.has(className)) {
-        const cssRule = `.${className} { ${styleObjToCss(styleObj)} }`;
-        const styleTag = document.getElementById("__fabrication_styles") ||
-            Object.assign(document.head.appendChild(document.createElement("style")), { id: "__fabrication_styles" });
-        styleTag.sheet.insertRule(cssRule);
-        insertedStyles.add(className);
-    }
-
-    return function (...args) {
-        const { attrs, children } = parseArguments(args);
-        const existing = attrs.class || "";
-        return html(tag, { ...attrs, class: `${existing} ${className}`.trim() }, ...children);
-    };
-}
-
-function generateReadableClassName(styleObj) {
-    const parts = Object.entries(styleObj)
-        .slice(0, 2) // just a couple keys to keep it short
-        .map(([k, v]) =>
-            k.replace(/[A-Z]/g, m => "-" + m.toLowerCase()).replace(/[^a-z]/gi, "") + "-" + v.toString().replace(/[^a-z0-9]/gi, "")
-        );
-    const hash = hashStyleObj(styleObj);
-    return `ff-${parts.join("-").slice(0, 32)}-${hash}`;
-}
-
-function hashStyleObj(styleObj) {
-    const str = JSON.stringify(styleObj);
-    let hash = 0;
-    for (let i = 0; i < str.length; i++) {
-        hash = ((hash << 5) - hash) + str.charCodeAt(i);
-        hash |= 0;
-    }
-    return Math.abs(hash).toString(36).slice(0, 6); // Shorter but still unique-ish
-}
-
-function styleObjToCss(styleObj) {
-    return Object.entries(styleObj)
-        .map(([k, v]) => `${k.replace(/[A-Z]/g, m => "-" + m.toLowerCase())}: ${v};`)
-        .join(" ");
-}
-
-function parseArguments(args) {
-    let [first, ...rest] = args;
-    if (isAttributesObject(first)) {
-        return { attrs: first, children: rest };
-    }
-    return { attrs: {}, children: args };
-}
-
-function isAttributesObject(arg) {
-    if (!arg) return false;
-    if (typeof arg !== 'object') return false;
-    if (Array.isArray(arg)) return false;
-    if (arg instanceof Node) return false;
-    return true;
-}
-
 function applyAttributes(node, attrs) {
-    for (const [k, v] of Object.entries(attrs)) {
-        if (k === 'style' && typeof v === 'object') {
-            Object.assign(node.style, v);
+    for (const [key, value] of Object.entries(attrs)) {
+        if (key.startsWith('on') && typeof value === 'function') {
+            const eventName = key.slice(2).toLowerCase();
+            node.addEventListener(eventName, value);
+        } else if (key === 'style' && typeof value === 'object') {
+            Object.assign(node.style, value);
         } else {
-            node.setAttribute(k, v);
+            node.setAttribute(key, value);
         }
     }
 }
@@ -92,4 +35,4 @@ function appendChildren(node, children) {
     }
 }
 
-export const __only_for_test = { parseArguments, applyAttributes, styleObjToCss, insertedStyles };
+export const __only_for_test = { applyAttributes };
