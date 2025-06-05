@@ -2,7 +2,7 @@
 <html>
 <head>
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<script defer type="module" src="../../src/mission-control/"></script>
+<!-- <script defer type="module" src="../../../mission-control/UI/UserStoryList/filter.js"></script> -->
 <style>
 .dropbtn {
   margin-left: 80px;
@@ -79,9 +79,8 @@
   </div>
 </div>
 
-<script> defer type = "module"</script>
-/* When the user clicks on the button,
-toggle between hiding and showing the dropdown content */
+<!-- When the user clicks on the button,toggle between hiding and showing the dropdown content -->
+<script>
 function myFunction() {
   document.getElementById("myDropdown").classList.toggle("show");
 }
@@ -99,8 +98,28 @@ function filterFunction() {
       a[i].style.display = "none";
     }
   }
-}
-</script>
+} </script>
 
 </body>
 </html>
+
+<!-- When the user clicks on the button,
+toggle between hiding and showing the dropdown content
+function myFunction() {
+  document.getElementById("myDropdown").classList.toggle("show");
+}
+
+function filterFunction() {
+  const input = document.getElementById("myInput");
+  const filter = input.value.toUpperCase();
+  const div = document.getElementById("myDropdown");
+  const a = div.getElementsByTagName("a");
+  for (let i = 0; i < a.length; i++) {
+    txtValue = a[i].textContent || a[i].innerText;
+    if (txtValue.toUpperCase().indexOf(filter) > -1) {
+      a[i].style.display = "";
+    } else {
+      a[i].style.display = "none";
+    }
+  }
+} -->
