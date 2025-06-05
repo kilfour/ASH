@@ -1,8 +1,8 @@
-export function getUserStory(titleInput, descInput) {
+export function getUserStory(titleInput, descInput, status) {
     const title = titleInput.value.trim();
     const description = descInput.value.trim();
 
     if (!title || !description) return null;
 
-    return { title, description };
+    return { title, description, status };
 }

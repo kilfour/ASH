@@ -5,7 +5,7 @@ const closeProjectBTN = document.getElementById("close-popup");
 closeProjectBTN.addEventListener("click",hideProject);
 function hideProject (){
     const project = document.querySelector("#chooseProject");
-    hide(project);
+    // hide(project);
   };
 
 
