@@ -10,8 +10,8 @@ Mijn code moduleren naar kortere aparte files die aangeroepen worden in de main,
 
 ### ✅ Acceptatiecriteria
 
-* [ ] Een module voor journal manipulatie
-* [ ] Een module voor display/HTML manipulatie
+* [X] Een module voor journal manipulatie
+* [X] Een module voor display/HTML manipulatie
 * [ ] Verdere mogelijke funcitonaliteit moduleren
 
 ### 🧮 Estimate

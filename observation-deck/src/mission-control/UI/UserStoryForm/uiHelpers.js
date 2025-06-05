@@ -3,6 +3,12 @@
  */
 const show = (el) => el.classList.remove("hidden");
 const hide = (el) => el.classList.add("hidden");
+function toggle(element){
+  if(element.classList.contains("hidden"))
+    show(element);
+  else
+    hide(element);
+}
 
 /**
  * this a similar function as Show/Hide, but for multiple elements,
@@ -16,4 +22,4 @@ const toggleElements = (elements, action) => {
   elements.forEach(el => el.classList[action]("hidden"));
 };
 
-export { show, hide, toggleElements}
+export { show, hide, toggle,toggleElements}

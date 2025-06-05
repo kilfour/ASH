@@ -120,7 +120,7 @@ tbody tr:nth-child(even) {
   border-collapse: collapse;
 }
 
-.button {
+.button, .dropbtn {
   margin-left: 80px;
   margin-bottom: 20px;
   height: fit-content;
@@ -144,7 +144,6 @@ tbody tr:nth-child(even) {
   /* Internet Explorer/Edge */
   user-select: none;
 }
-
 
 .button:hover {
   background-color: #2980b9;
@@ -171,7 +170,6 @@ tbody tr:nth-child(even) {
   flex-wrap: wrap;
   justify-content: center;
   gap: 10px;
-
 }
 
 .overlay {
@@ -222,7 +220,6 @@ tbody tr:nth-child(even) {
 }
 
 /* voor 3-puntjes dropdown menu */
-
 .actions-menu {
   position: relative;
   display: inline-block;
@@ -274,7 +271,6 @@ tbody tr:nth-child(even) {
 /* The search field */
 #myInput {
   box-sizing: border-box;
-  background-image: url('searchicon.png');
   background-position: 14px 12px;
   background-repeat: no-repeat;
   font-size: 16px;
