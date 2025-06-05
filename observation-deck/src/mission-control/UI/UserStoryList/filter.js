@@ -1,8 +1,4 @@
-<<<<<<< HEAD
-import { show } from '../UserStoryForm/uiHelpers.js'
-=======
 import {toggle} from '../UserStoryForm/uiHelpers.js'
->>>>>>> b6a000f26b7ad5d676fb72cce5a1cb7b25633c5f
 
 export function onOpenFilterClicked() {
     const input = document.getElementById("myInput");
