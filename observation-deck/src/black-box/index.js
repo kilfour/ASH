@@ -59,7 +59,7 @@ function displayJournals(journals, locatie) {
           <p class="date" style = 'display: none'>${date}</p>`;
 
       journalsView.insertAdjacentHTML("afterbegin", html);
-    });
+    }); //test
   });
 
   viewPaginationControls(totalPages, page);
