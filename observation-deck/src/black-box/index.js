@@ -1,6 +1,12 @@
-import { getJournals, addJournal, removeJournal, editJournal, getDeleted } from "./modules/journalsState.js";
+import {
+  getJournals,
+  addJournal,
+  removeJournal,
+  editJournal,
+  getDeleted,
+} from "./modules/journalsState.js";
 
-const formEl = document.querySelector(".journal");  //G, alles in 1 object steken of apart laten?
+const formEl = document.querySelector(".journal"); //G, alles in 1 object steken of apart laten?
 const journalList = document.querySelector(".journals");
 const delButton = document.querySelector(".btn-delete");
 const searchfield1 = document.querySelector(".searchbar-content");
@@ -14,23 +20,37 @@ const cancelEdit = document.querySelector(".btn-edit-cancel");
 const editTitle = document.querySelector(".editTitle");
 const editContent = document.querySelector(".editContent");
 const editTags = document.querySelector(".editTags");
+const journalsView = document.querySelector(".journals");
 
+const ITEMS_PER_PAGINA = 7;
+let currentpage = 1;
 let currentID = "";
-
 
 function upDateUi() {
   displayJournals(getJournals());
-} upDateUi();
+}
+upDateUi();
 
-function style(place, state) {  //G, zet de display state, vooral "block" of "none"
+function style(place, state) {
+  //G, zet de display state, vooral "block" of "none"
   place.style.display = state;
 }
 
-function displayJournals(journals) {
-  const journalsView = document.querySelector(".journals");
+function displayJournals(journals, page = 1) {
   journalsView.innerHTML = "";
 
-  journals.forEach(function ({ id, titel, content, tags }) {
+  const totalPages = Math.ceil(journals.length / ITEMS_PER_PAGINA);
+  const start = (page - 1) * ITEMS_PER_PAGINA;
+  const end = start + ITEMS_PER_PAGINA;
+  const visibleJournals = journals.slice(start, end);
+
+  if (visibleJournals.length === 0) {
+    journalsView.innerHTML = `<li class="journal-empty">Geen dagboekitems gevonden.</li>`;
+    document.querySelector(".pagination").innerHTML = "";
+    return;
+  }
+
+  visibleJournals.forEach(function ({ id, titel, content, tags }) {
     const html = `
         <div class=journal id=${id}>
           <h2 class="titel">${titel}</h2>
@@ -38,60 +58,110 @@ function displayJournals(journals) {
           <p class="tags" style = 'display: none'>${tags.join(", ")}<p>`;
 
     journalsView.insertAdjacentHTML("afterbegin", html);
-    
   });
+
+  viewPaginationControls(totalPages, page);
+}
+
+function viewPaginationControls(totalPages, current) {
+  const paginationEl = document.querySelector(".pagination");
+  paginationEl.innerHTML = "";
+
+  const prevBtn = document.createElement("button");
+  prevBtn.textContent = "Vorige";
+  prevBtn.disabled = currentPage === 1;
+  prevBtn.classList.add("btn-pagination");
+  prevBtn.addEventListener("click", () => {
+    if (currentPage > 1) {
+      currentPage--;
+      displayJournals(state.journals, currentPage);
+      const total = Math.ceil(state.journals.length / ITEMS_PER_PAGINA);
+      viewPaginationControls(total, currentPage);
+    }
+  });
+  paginationEl.appendChild(prevBtn);
+
+  const onPage = document.createElement("p");
+  onPage.textContent = currentPage;
+  onPage.classList.add("current-page");
+  paginationEl.appendChild(onPage);
+
+  const nextBtn = document.createElement("button");
+  nextBtn.textContent = "Volgende";
+  nextBtn.disabled = currentPage === totalPages;
+  nextBtn.classList.add("btn-pagination");
+  nextBtn.addEventListener("click", () => {
+    if (currentPage < totalPages) {
+      currentPage++;
+      displayJournals(state.journals, currentPage);
+      viewPaginationControls(totalPages, currentPage);
+    }
+  });
+  paginationEl.appendChild(nextBtn);
 }
 
 function showDetails(event) {
-    //G, iedere journal hidden 
-    const prev1 = document.querySelectorAll("p.content");
-    const prev2 = document.querySelectorAll("p.tags");
-    prev1.forEach(el => { el.style.display = "none"; });
-    prev2.forEach(el => { el.style.display = "none"; });
-    style(editArea, "none");
-    style(errArea, "none");
+  //G, iedere journal hidden
+  const prev1 = document.querySelectorAll("p.content");
+  const prev2 = document.querySelectorAll("p.tags");
+  prev1.forEach((el) => {
+    el.style.display = "none";
+  });
+  prev2.forEach((el) => {
+    el.style.display = "none";
+  });
+  style(editArea, "none");
+  style(errArea, "none");
 
-    const title = event.target; // the clicked <h2>
-    
-    const content = title.nextElementSibling;
-    const tags = content.nextElementSibling.nextElementSibling;
+  const title = event.target; // the clicked <h2>
 
-    currentID = title.parentElement.attributes.id.textContent; //G, ID wordt opgeslagen voor gebruik
-    editTitle.value = title.textContent;  //G, journal info als edit initial value
-    editContent.value = content.textContent;
-    editTags.value = tags.textContent;
+  const content = title.nextElementSibling;
+  const tags = content.nextElementSibling.nextElementSibling;
 
-    // Show both elements
-    style(content, "block");
-    style(tags, "block");
+  currentID = title.parentElement.attributes.id.textContent; //G, ID wordt opgeslagen voor gebruik
+  editTitle.value = title.textContent; //G, journal info als edit initial value
+  editContent.value = content.textContent;
+  editTags.value = tags.textContent;
+
+  // Show both elements
+  style(content, "block");
+  style(tags, "block");
 }
 
-function bevatTrefwoord(journal, trefwoord){
-  return journal.titel.split(" ").some(word => word.toLowerCase().includes(trefwoord.toLowerCase())) ||
-         journal.content.split(" ").some(word => word.toLowerCase().includes(trefwoord.toLowerCase()));
+function bevatTrefwoord(journal, trefwoord) {
+  return (
+    journal.titel
+      .split(" ")
+      .some((word) => word.toLowerCase().includes(trefwoord.toLowerCase())) ||
+    journal.content
+      .split(" ")
+      .some((word) => word.toLowerCase().includes(trefwoord.toLowerCase()))
+  );
 }
 
-function bevatTrefTag(journal, treftag){
+function bevatTrefTag(journal, treftag) {
   try {
-      if(treftag.startsWith("#")){
-        return journal.tags.some(word => String(word).toLowerCase().includes(treftag.toLowerCase()));
-      } else {
-        throw new Error("Tags moeten starten met #"); 
-      }
-  } catch(err) {
+    if (treftag.startsWith("#")) {
+      return journal.tags.some((word) =>
+        String(word).toLowerCase().includes(treftag.toLowerCase())
+      );
+    } else {
+      throw new Error("Tags moeten starten met #");
+    }
+  } catch (err) {
     document.querySelector(".error").textContent = err.message;
     //style(document.querySelector(".error"), "inline-block");
   }
 }
 
-
-function highlightTrefwoord(journal, trefwoord){
+function highlightTrefwoord(journal, trefwoord) {
   const query = trefwoord.trim().toLowerCase();
   const t = document.querySelector("h2.titel");
   const torigin = t.textContent;
   const c = document.querySelector("p.content");
   const corigin = c.textContent;
-  if(query === ""){  //to reset
+  if (query === "") {
+    //to reset
     t.innerHTML = torigin;
     c.innerHTML = corigin;
     return;
@@ -100,21 +170,21 @@ function highlightTrefwoord(journal, trefwoord){
   const twords = torigin.split(/(\s+)/); //split and keep spaces
   const cwords = corigin.split(/(\s+)/);
   const HLtwords = twords
-          .map(word => {
-            if(word.toLowerCase().includes(query)){
-              return `<span class="highlighted">${word}</span>`;
-            }
-            return word;
-          })
-          .join("");
+    .map((word) => {
+      if (word.toLowerCase().includes(query)) {
+        return `<span class="highlighted">${word}</span>`;
+      }
+      return word;
+    })
+    .join("");
   const HLcwords = cwords
-          .map(word => {
-            if(word.toLowerCase().includes(query)){
-              return `<span class="highlighted">${word}</span>`;
-            }
-            return word;
-          })
-          .join("");
+    .map((word) => {
+      if (word.toLowerCase().includes(query)) {
+        return `<span class="highlighted">${word}</span>`;
+      }
+      return word;
+    })
+    .join("");
   console.log(HLtwords);
   console.log(HLcwords);
   t.innerHTML = HLtwords;
@@ -123,10 +193,10 @@ function highlightTrefwoord(journal, trefwoord){
   console.log(c);
 }
 
-function zoekTrefwoordInJournals(journals, trefwoord){
+function zoekTrefwoordInJournals(journals, trefwoord) {
   let result = [];
-  for (let x of journals){
-    if(bevatTrefwoord(x, trefwoord)){
+  for (let x of journals) {
+    if (bevatTrefwoord(x, trefwoord)) {
       highlightTrefwoord(x, trefwoord);
       result.push(x);
     }
@@ -134,10 +204,10 @@ function zoekTrefwoordInJournals(journals, trefwoord){
   return result;
 }
 
-function zoekTrefTagInJournals(journals, treftag){
+function zoekTrefTagInJournals(journals, treftag) {
   let result = [];
-  for (let x of journals){
-    if(bevatTrefTag(x, treftag)){
+  for (let x of journals) {
+    if (bevatTrefTag(x, treftag)) {
       result.push(x);
     }
   }
@@ -161,11 +231,12 @@ formEl.addEventListener("submit", function (e) {
   upDateUi();
 });
 
-journalList.addEventListener("click",  function(e){
-    showDetails(e);
+journalList.addEventListener("click", function (e) {
+  showDetails(e);
 });
 
-delButton.addEventListener('click', () => {  //G, remove journal via ID, zet ID op niks voor edit errmsg
+delButton.addEventListener("click", () => {
+  //G, remove journal via ID, zet ID op niks voor edit errmsg
   removeJournal(currentID);
   style(editArea, "none");
   style(errArea, "none");
@@ -174,17 +245,16 @@ delButton.addEventListener('click', () => {  //G, remove journal via ID, zet ID 
   console.log(getDeleted());
 });
 
-searchfield1.addEventListener("submit", function(e){
+searchfield1.addEventListener("submit", function (e) {
   e.preventDefault("");
 
   const trefwoord = document.getElementById("searchfield1").value.trim();
 
   const zoekjournals = zoekTrefwoordInJournals(getJournals(), trefwoord);
   displayJournals(zoekjournals);
-
 });
 
-searchfield2.addEventListener("submit", function(e){
+searchfield2.addEventListener("submit", function (e) {
   e.preventDefault("");
 
   document.querySelector(".error").textContent = "";
@@ -194,27 +264,28 @@ searchfield2.addEventListener("submit", function(e){
 
   const zoekjournals = zoekTrefTagInJournals(getJournals(), treftag);
   displayJournals(zoekjournals);
-
 });
 
-
-editButton.addEventListener('click', () => {  //G, haalt het edit menu of geeft error
-  if(currentID === ""){
+editButton.addEventListener("click", () => {
+  //G, haalt het edit menu of geeft error
+  if (currentID === "") {
     style(errArea, "block");
     style(editArea, "none");
-    errmsg.textContent = "Geen Journal Selected"
-  } else { 
+    errmsg.textContent = "Geen Journal Selected";
+  } else {
     style(editArea, "block");
     style(errArea, "none");
   }
-})
+});
 
-cancelEdit.addEventListener('click', () => {  //G, hidden editArea, terug naar detail display
+cancelEdit.addEventListener("click", () => {
+  //G, hidden editArea, terug naar detail display
   style(editArea, "none");
   style(errArea, "none");
-})
+});
 
-submitEdit.addEventListener("submit", function (e) {  //G, sumbit form, edit journal entry, hide edit menus
+submitEdit.addEventListener("submit", function (e) {
+  //G, sumbit form, edit journal entry, hide edit menus
   e.preventDefault();
 
   editJournal(currentID, e);
@@ -223,8 +294,6 @@ submitEdit.addEventListener("submit", function (e) {  //G, sumbit form, edit jou
   style(errArea, "none");
   upDateUi();
 });
-
-
 
 // export function searchContent(str, searchstr){
 //     return str.split(' ').some(word => word.toLowerCase().includes(searchstr.toLowerCase()));
