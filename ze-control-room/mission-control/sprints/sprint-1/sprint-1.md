@@ -3,7 +3,7 @@ nr      | titel                       | est. time | dev        | status     | re
  1.1    | NewStory                    |    2.5    | Alex       | Done       |           |
  1.2    | ListStories                 |    2      | Milad      | Done       |           |
  2      | Status                      |    1,5    | Abigail    | Done       |           |
- 3      | FilterStory                 |    1      | Naomi      | Doing      |           |
+ 3      | FilterStory                 |    1      | Naomi      | Done       |    1.5    |
  4      | Deadlines                   |    3      | Milad      | Not Needed |           |
  5      | NewProject                  |    2      | Abigail    | Doing      |           |
  6      | Teammembers                 |    2      |            |            |           |

@@ -18,10 +18,6 @@
                 <span id="new-value">12</span>
             </div>
             <div class="status-item">
-                <span>OPEN:</span>
-                <span id="open-value">7</span>
-            </div>
-            <div class="status-item">
                 <span>IN PROGRESS:</span>
                 <span id="inProgress-value">4</span>
             </div>
@@ -41,32 +37,15 @@
             <a>Done</a>
         </div>
     </div> -->
-    <!-- selection filter -->
-<title>Status Filter</title>
-  <style>
-    .item {
-      margin: 5px 0;
-    }
-  </style>
 
-
-  <!-- Dropdown Filter -->
-  <label for="statusFilter">Filter by status:</label>
-  <select id="statusFilter">
-    <option value="all">All</option>
-    <option value="new">New</option>
-    <option value="in progress">In Progress</option>
-    <option value="done">Done</option>
-  </select>
-
-  <!-- List of Items, deze moet uit onze local storage komen?? -->
-  <div id="itemList">
-    <div class="item" data-status="new">Item 1 - New</div>
-    <div class="item" data-status="in progress">Item 2 - In Progress</div>
-    <div class="item" data-status="done">Item 3 - Done</div>
-    <div class="item" data-status="new">Item 4 - New</div>
-    <div class="item" data-status="done">Item 5 - Done</div>
-  </div>
+  <!-- Dropdown Filter met select -->
+    <label for="open-filter">Filter by status:</label>
+    <select id="open-filter">
+        <option value="all">All</option>
+        <option value="new">New</option>
+        <option value="inProgress">In Progress</option>
+        <option value="done">Done</option>
+    </select>
 
     <!-- PopUp overlay / forms -->
     <form id="story-form"> 
@@ -146,8 +125,6 @@
         </div>
     </div>
 
-    <script type="module" src="/observation-deck/src/mission-control/UI/UserStoryForm/status.js"></script>
-    <script type="module" src="/observation-deck/src/mission-control/UI/UserStoryList/newProject.js"></script>
-    <script type="module" src="/observation-deck/src/mission-control/UI/UserStoryForm/showProjecten.js"></script>
+
 </body>
 </html>
