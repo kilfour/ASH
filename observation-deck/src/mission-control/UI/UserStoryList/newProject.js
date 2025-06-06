@@ -9,6 +9,9 @@ import { hide } from "../../../aperture-core/utils.js";
 //   };
 
 
+// solution: add id of showProject in elements (=object) 
+// > elements in formStory (=collections of elements)
+
 //als er geklikt wordt, wordt het inputveld zichtbaar
 const createProjectBTN = document.querySelector("#project-button");
 createProjectBTN.addEventListener("click",inputveld);
