@@ -13,9 +13,9 @@
 :root {
   --primary-color: #18aaff;
   --font-base: Arial, sans-serif;
-  --color-background: #222;
+  --color-background: #2a2a2a;
   --color-text-main: #e3e7ea;
-  --color-panel: #3b4b5a;
+  --color-panel: #1a1a1a;
   --color-border: #f9fafd;
   --color-accent-blue: #18aaff;
   --color-accent-orange: #ff9200;
@@ -167,7 +167,7 @@ tbody tr:nth-child(even) {
 }
 
 .dashboard {
-  border: 2px solid var(--color-accent-blue);
+  border: 2px solid var(--color-panel);
   max-width: 1000px;
   margin: 0 auto;
   padding: 20px;
