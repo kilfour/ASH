@@ -3,7 +3,7 @@ import { getStories,
     updateUserStory,
     deleteUserStory} from "../../Storage/localStorage.js"
 import elements, { formStory } from "../UserStoryForm/domElements.js"
-import { show, hide, toggleElements} from "../../../aperture-core/utils.js"
+import { show, hide, toggleElements} from "../UserStoryForm/uiHelpers.js"
 import { getUserStory } from "../../Entities/userStory.js"
 import { resetStory } from "../UserStoryForm/eventHandelers.js"
 
