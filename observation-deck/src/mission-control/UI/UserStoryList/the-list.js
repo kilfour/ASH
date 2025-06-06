@@ -50,12 +50,23 @@ function storyEdit(index) {
     hide(document.querySelector(".actions-dropdown"));
 }
 
+
 function dropButtons(row) {
     const dropdown = row.querySelector(".actions-dropdown");
     row.querySelector(".dots-button").onclick = () => {
     dropdown.classList.toggle("hidden");
   };
-}
+
+
+  //checking features
+    document.addEventListener("click", (event) => {
+    if (!row.contains(event.target)) {
+      dropdown.classList.add("hidden");
+      }
+    });
+  //cheking features
+  }
+  
 
 function updateRow(index, story) {
   const row = document.querySelector(`tr[data-index='${index}']`);
