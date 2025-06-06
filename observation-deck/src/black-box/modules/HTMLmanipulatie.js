@@ -1,4 +1,6 @@
+import { getJournals } from "./journalsState.js";
 import { style } from "./repetitieveFuncties.js";
+import { marked } from "https://cdn.jsdelivr.net/npm/marked/lib/marked.esm.js";
 
 const editTitle = document.querySelector(".editTitle");
 const editContent = document.querySelector(".editContent");
@@ -11,7 +13,7 @@ export let current = { ID: "" };
 
 export function showDetails(event) {
   //G, iedere journal hidden 
-  const prev1 = document.querySelectorAll("p.content");
+  const prev1 = document.querySelectorAll("div.content");
   const prev2 = document.querySelectorAll("p.tags");
   const prev3 = document.querySelectorAll("p.date");
   prev1.forEach(el => style(el, "none") );
@@ -23,7 +25,7 @@ export function showDetails(event) {
   const title = event.target; // the clicked <h2>
   const parent = title.parentElement;
 
-  const content = parent.querySelector("p.content");
+  const content = parent.querySelector("div.content");
   const tags = parent.querySelector("p.tags");
   const date = parent.querySelector("p.date");
 
@@ -113,8 +115,96 @@ export function calcTagCount(journals){
   return endresult;
 }
 
+const ITEMS_PER_PAGINA = 7;
 export function displayTagCount(arr){
   const ul = document.querySelector(".tag-list");
   ul.innerHTML = "";
   arr.forEach(x => { ul.insertAdjacentHTML("afterbegin", `<li>${x[0]} : ${x[1]}</li>`)});
+}
+
+export function displayJournals(journals, locatie, page = 1) {
+  const journalsView = document.querySelector(`.${locatie}`);
+  journalsView.innerHTML = "";
+
+  const totalPages = Math.ceil(journals.length / ITEMS_PER_PAGINA);
+  const start = (page - 1) * ITEMS_PER_PAGINA;
+  const end = start + ITEMS_PER_PAGINA;
+  const visibleJournals = journals.slice(start, end);
+
+  if (visibleJournals.length === 0) {
+    journalsView.innerHTML = `<li clas="journal-empty">Geen dagboekitems gevonden.</li>`;
+    document.querySelector(".pagination").innerHTML = "";
+    return;
+  }
+
+  visibleJournals.forEach(function ({ id, titel, content, tags, date }) {
+      const html = `
+        <div class=journal id=${id}>
+          <h2 class="titel">${titel}</h2>
+          <div class="content" style = 'display: none'>${marked.parse(content)}</div>
+          <p class="tags" style = 'display: none'>${tags.join(", ")}</p>
+          <p class="date" style = 'display: none'>${date}</p>
+        </div>`;
+
+      journalsView.insertAdjacentHTML("afterbegin", html);
+    });
+    viewPaginationControls(totalPages, page);
+}
+
+
+export let currentPage = 1;
+export function viewPaginationControls(totalPages) {
+  const paginationEl = document.querySelector(".pagination");
+  paginationEl.innerHTML = "";
+
+  const prevBtn = document.createElement("button");
+  prevBtn.textContent = "Vorige";
+  prevBtn.disabled = currentPage === 1;
+  prevBtn.classList.add("btn-pagination");
+  prevBtn.addEventListener("click", () => {
+    if (currentPage > 1) {
+      currentPage--;
+      displayJournals(getJournals(), "journals", currentPage);
+      const total = Math.ceil(getJournals().length / ITEMS_PER_PAGINA);
+      viewPaginationControls(total, currentPage);
+    }
+  });
+  paginationEl.appendChild(prevBtn);
+
+  const onPage = document.createElement("p");
+  onPage.textContent = currentPage;
+  onPage.classList.add("current-page");
+  paginationEl.appendChild(onPage);
+
+  const nextBtn = document.createElement("button");
+  nextBtn.textContent = "Volgende";
+  nextBtn.disabled = currentPage === totalPages;
+  nextBtn.classList.add("btn-pagination");
+  nextBtn.addEventListener("click", () => {
+    if (currentPage < totalPages) {
+      currentPage++;
+      displayJournals(getJournals(), "journals", currentPage);
+      viewPaginationControls(totalPages, currentPage);
+    }
+  });
+  paginationEl.appendChild(nextBtn);
+}
+
+
+
+
+export function displayDeleted(journals, locatie, page = 1) {
+  const journalsView = document.querySelector(`.${locatie}`);
+  journalsView.innerHTML = "";
+
+  journals.forEach(function ({ id, titel, content, tags, date }) {
+      const html = `
+        <div class=journal id=${id}>
+          <h2 class="titel">${titel}</h2>
+          <p class="content" style = 'display: none'>${content}</p>
+          <p class="tags" style = 'display: none'>${tags.join(", ")}</p>
+          <p class="date" style = 'display: none'>${date}</p>`;
+
+      journalsView.insertAdjacentHTML("afterbegin", html);
+    });
 }
