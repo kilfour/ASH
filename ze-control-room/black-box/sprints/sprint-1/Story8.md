@@ -10,9 +10,9 @@ Mijn Dagboek entries valideren zodat ik niet-unieke titels kan hebben, alsook de
 
 ### ✅ Acceptatiecriteria
 
-* [ ] Kan geen lege titel
+* [X] Kan geen lege titel
 * [X] Duplicate titels zijn toegestaan
-* [ ] Titel lengte limiet, 150 karakters
+* [X] Titel lengte limiet, 150 karakters
 * [X] Inf lengte inhoud
 
 ### 🧮 Estimate
