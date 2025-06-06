@@ -2,9 +2,11 @@
 
 // //eerst array ophalen> for each om ze er telkens uit te halen
 const projectLijst = JSON.parse(localStorage.getItem("Lijst"));
-projectLijst.forEach((project) => {
+projectLijst.forEach((project, index) => {
   const dropdown = document.querySelector("#projectList");
   const Lijstoptie = document.createElement("option"); //per projectnaam een nieuw optieveld
+  //id geven aan nieuwe optie
+    // Lijstoptie.id = `projectNaam-${index}`;
   Lijstoptie.textContent= `Project naam: ${project.naam}`;
   dropdown.appendChild(Lijstoptie);
 })
