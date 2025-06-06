@@ -25,8 +25,8 @@
 body {
   font-family: Arial, sans-serif;
   line-height: 1.6;
-  background-color: #2a2a2a;
-  color: #ffffff;
+  background-color: var(--color-background);
+  color: var(--color-text-main);
   resize: none;
 }
 
@@ -69,9 +69,9 @@ nav {
 nav button {
   padding: 10px 20px;
   /* adjust as needed */
-  background-color: #3498db;
+  background-color: var(--color-accent-blue);
   /* example color */
-  color: white;
+  color: var(--color-panel);
   border: none;
   border-radius: 50px;
   /* makes the button oval */
@@ -82,7 +82,7 @@ nav button a {
   font-family: sans-serif;
   font-size: large;
   font-weight: 600;
-  color: #fff;
+  color: var(--color-panel);
   text-decoration: none;
 }
 
@@ -99,12 +99,12 @@ nav button:hover a {
 table {
   border-collapse: collapse;
   width: 1500px;
-  background-color: #2a2a2a;
+  background-color: var(--color-panel);
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
 th {
-  background-color: #2a2a2a;
+  background-color: var(--color-panel);
   color: #ee8f00;
   padding: 20px;
   text-align: center;
@@ -112,13 +112,13 @@ th {
 
 td {
   padding: 12px;
-  border-top: 1px solid #000000;
-  color: #fff;
+  border-top: 1px solid var(--color-panel);
+  color: var(--color-text-main);
   text-align: center;
 }
 
 tbody tr:nth-child(even) {
-  background-color: #212020;
+  background-color: var(--color-background);
 }
 
 .table-button-wrapper {
@@ -237,6 +237,10 @@ tbody tr:nth-child(even) {
   display: inline-block;
 }
 
+.dots-button {
+  color: var(--color-accent-orange)
+}
+
 .actions-menu button {
   background: none;
   border: none;
@@ -280,12 +284,16 @@ tbody tr:nth-child(even) {
   display: inline-block;
 }
 
+#open-filter {
+  background-color: var(--color-accent-orange);
+}
+
 /* Dropdown Content */
 .dropdown-content {
   position: absolute;
-  background-color: #f6f6f6;
+  background-color: var(--color-panel);
   min-width: 230px;
-  border: 1px solid #ddd;
+  border: 1px solid var(--color-accent-orange);
   z-index: 1;
 }
 
@@ -363,7 +371,7 @@ button:hover {
 }
 
 select {
-  background-color:#ee8f00;
+  background-color: var(--color-accent-orange);
   font: Arial, sans-serif;
   color: white;
     padding: 10px 20px;
@@ -374,4 +382,12 @@ select {
 .box {
   width: 200px;
   margin-left: 73%; /* 30% van de breedte van de ouder/container */
+}
+
+.entrySection {
+  max-width: 940px;
+  margin: 2rem auto;
+  padding: 1.5rem 2.5rem;
+  background: var(--color-panel);
+  border-radius: 22px;
 }
