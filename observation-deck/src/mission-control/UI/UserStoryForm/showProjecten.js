@@ -16,11 +16,11 @@ export function fillDropdownWithProjectNames (){
   dropdown.appendChild(Lijstoptie);
 })
 }
-// ' is handiger in js ()
+
 // hier id toevoegen is fragiel want je kan een item uit array verwijderen!!
+// 
 
-
-
+// ' is handiger in js ()
 
 //get the ids from projectnamenlijst
 // const projectIds = projects.map(project => project.id);

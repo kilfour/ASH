@@ -6,7 +6,6 @@ export function hideForm (){
   document.querySelector("#close-popup").addEventListener("click", () => {
     const form = document.querySelector("#formStatus");
     hide(form);
-    // form.classList.toggle("visible");
   });
 }
  //fout: form in form =nesten= mag niet 
