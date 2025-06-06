@@ -17,7 +17,7 @@ export function onOpenFilterClicked() {
 }
 
 // const filterOptions = document.getElementById("myDropdown");
-// const statusNew = document.getElementById("statusNew")
+// const statusNew = document.getElementById("StatusNew")
 // const statusInProgress = document.getElementById("statusInProgress")
 // const statusDone = document.getElementById("statusDone")
 
@@ -38,9 +38,52 @@ export function onOpenFilterClicked() {
 // data-category is the data attribute of each item that corresponds to a filter option.
 // This approach ensures that only items matching the single selected option are displayed, while all other items are hidden.
 
+{/* <select id="mySelect">
+  <option value="New">New</option>
+  <option value="In Progress">In Progress 2</option>
+  <option value="Done">Done</option>
+</select> */}
 
-// function statusFilter() {
-// return elements.formStatus}
+// const selectElement = document.getElementById('mySelect');
 
-//   elements.formStatus
-//   formStatus: document.getElementById("formStatus"),
+// selectElement.addEventListener('change', function() {
+//   const selectedValue = this.value;
+//   // Clear previous options
+//   this.innerHTML = '';
+
+  // Create and append the selected option
+//   const selectedOption = document.createElement('option');
+//   selectedOption.value = selectedValue;
+//   selectedOption.text = selectedValue.charAt(0).toUpperCase() + selectedValue.slice(1); // Display text
+//   this.appendChild(selectedOption);
+// });
+
+
+
+//  const dropdownfilter = document.getElementById("myDropdown");
+//  const itemList = document.getElementById("itemList");
+
+//  const items = [
+//    { name: "statusNew", category: "category1" },
+//    { name: "statusInProgress", category: "category2" },
+//    { name: "statusDone", category: "category1" },
+//  ];
+
+//  dropdown.addEventListener("change", function () {
+//    const selectedValue = dropdownfilter.value;
+//    let filteredItems;
+
+//    if (selectedValue === "all") {
+//      filteredItems = items;
+//    } else {
+//      filteredItems = items.filter((item) => item.category === selectedValue);
+//    }
+
+//    itemList.innerHTML = "";
+
+//    filteredItems.forEach((item) => {
+//      const listItem = document.createElement("li");
+//      listItem.textContent = item.name;
+//      itemList.appendChild(listItem);
+//    });
+//  });

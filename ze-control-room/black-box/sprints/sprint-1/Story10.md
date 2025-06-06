@@ -12,7 +12,7 @@ Kunnen zien welke tags gebruikt worden en hoeveel keer.
 
 * [X] Lijst van tags weergeven
 * [X] Hoeveelheid van bepaalde tag weergeven.
-* [ ] Ongebruikte tags automatisch verwijderen.
+* [X] Ongebruikte tags automatisch verwijderen.
 
 ### 🧮 Estimate
 In ideale tijd: **2 dagen**.
