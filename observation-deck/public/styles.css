@@ -13,6 +13,12 @@
 :root {
   --primary-color: #007bff;
   --font-base: Arial, sans-serif;
+  --color-background: #e3e7ea;
+  --color-text-main: #222;
+  --color-panel: #f9fafd;
+  --color-border: #3b4b5a;
+  --color-accent-blue: #18aaff;
+  --color-accent-orange: #ff9200;
 }
 
 /* Base styles */
