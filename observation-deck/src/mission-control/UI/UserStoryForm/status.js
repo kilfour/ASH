@@ -1,4 +1,4 @@
-import { hide } from "./uiHelpers.js";
+import { hide } from "../../../aperture-core/utils.js";
 
 //GELUKTE POGING: hideform via classlist toggle als er op close gedrukt wordt
 

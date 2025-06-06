@@ -1,4 +1,4 @@
-import { hide } from "../UserStoryForm/uiHelpers.js";
+import { hide } from "../../../aperture-core/utils.js";
 
 //projectkiezer verbergen
 const closeProjectBTN = document.getElementById("close-popup");
