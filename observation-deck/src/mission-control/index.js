@@ -1,7 +1,7 @@
 
 import elements from "./UI/UserStoryForm/domElements.js"
 import { onAddButtonClick, onCloseButtonClick, onModalYesClick, onModalNoClick, resetStory }from "./UI/UserStoryForm/eventHandelers.js"
-import {onOpenFilterClicked} from "./UI/UserStoryList/filter.js"
+import {Initialize as InitializeStoryFilter} from "./UI/UserStoryList/filter.js"
 import { onSaveButtonClick } from "./UI/UserStoryList/the-list.js";
 
 /**
@@ -13,8 +13,8 @@ elements.modalYes.onclick = onModalYesClick;
 elements.modalNo.onclick = onModalNoClick;
 elements.saveBTN.onclick = onSaveButtonClick;
 
-document.getElementById("open-filter").addEventListener('click', onOpenFilterClicked)
 
+InitializeStoryFilter();
 
 
 

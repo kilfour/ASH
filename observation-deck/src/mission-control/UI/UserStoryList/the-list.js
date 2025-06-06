@@ -6,6 +6,7 @@ import elements, { formStory } from "../UserStoryForm/domElements.js"
 import { show, hide, showAll, hideAll} from "../../../aperture-core/utils.js"
 import { getUserStory } from "../../Entities/userStory.js"
 import { resetStory } from "../UserStoryForm/eventHandelers.js"
+// import { onOpenFilterClicked } from "./filter.js"
 
 const tbody = document.getElementById("story-table-body");
 const addStoryBTN = document.getElementById("create-story-button");
@@ -26,6 +27,16 @@ function createStoryRowHTML(story) {
     </td>
   `;
 }
+
+//List of Items, deze moet uit onze local storage komen. Niet nodige op deze manier met story.statusStory
+// function showFilteredstatus (stories, status) {
+//   const stories = getStories();
+//   return
+//   <div id="itemList">
+//     <div class="item" data-status="">stories.statusStory</div>
+//   </div>
+//   ;
+// }
 
 function renderStories() {
   tbody.innerHTML = "";
@@ -93,8 +104,9 @@ window.addEventListener("DOMContentLoaded", () => {
 
 export function addStoryRow(story, index) {
   const row = document.createElement("tr");
-
+  row.classList.add("story-list-row");
   row.setAttribute("data-index", index);
+  row.setAttribute("data-status", story.status); 
   row.innerHTML = createStoryRowHTML(story);
 
   dropButtons(row);

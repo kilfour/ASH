@@ -1,6 +1,6 @@
 import { getJournals, addJournal, removeJournal, editJournal, getDeleted, deleteJournals } from "./modules/journalsState.js";
 import { style } from "./modules/repetitieveFuncties.js";
-import { showDetails, current, calcTagCount, displayTagCount, zoekTrefTagInJournals, zoekTrefwoordInJournals, zoekDatumInJournals } from "./modules/HTMLmanipulatie.js";
+import { showDetails, current, calcTagCount, displayTagCount, zoekTrefTagInJournals, zoekTrefwoordInJournals, zoekDatumInJournals, displayDeleted, currentPage, displayJournals } from "./modules/HTMLmanipulatie.js";
 
 const formEl = document.querySelector(".journal");  //G, alles in 1 object steken of apart laten?
 const journalList = document.querySelector(".journals");
@@ -19,26 +19,11 @@ const taglistButton = document.querySelector(".btn-tag-list");
 
 
 function upDateUi() {
-  displayJournals(getJournals(), "journals");
-  displayJournals(getDeleted(), "deletedJournals");
+  displayJournals(getJournals(), "journals", currentPage);
+  displayDeleted(getDeleted(), "deletedJournals", currentPage);
 } upDateUi();
 
-function displayJournals(journals, locatie) {
-  const journalsView = document.querySelector(`.${locatie}`);
-  journalsView.innerHTML = "";
 
-  journals.forEach(function ({ id, titel, content, tags, date }) {
-          const html = `
-        <div class=journal id=${id}>
-          <h2 class="titel">${titel}</h2>
-          <p class="content" style = 'display: none'>${content}</p>
-          <p class="tags" style = 'display: none'>${tags.join(", ")}</p>
-          <p class="date" style = 'display: none'>${date}</p>`;
-
-      journalsView.insertAdjacentHTML("afterbegin", html);
-
-    });
-}
 
 //maakt nieuwe journal
 formEl.addEventListener("submit", function (e) {
