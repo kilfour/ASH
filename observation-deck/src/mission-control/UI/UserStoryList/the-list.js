@@ -3,7 +3,7 @@ import { getStories,
     updateUserStory,
     deleteUserStory} from "../../Storage/localStorage.js"
 import elements, { formStory } from "../UserStoryForm/domElements.js"
-import { show, hide, showAll} from "../../../aperture-core/utils.js"
+import { show, hide, showAll, hideAll} from "../../../aperture-core/utils.js"
 import { getUserStory } from "../../Entities/userStory.js"
 import { resetStory } from "../UserStoryForm/eventHandelers.js"
 
@@ -14,7 +14,7 @@ function createStoryRowHTML(story) {
     return`
     <td>${story.title}</td>
     <td>${story.description}</td>
-    <td>—</td>
+    <td>${story.projectName}</td>
     <td>
       <div class="actions-menu">
         <button class="dots-button">⋮</button>
@@ -28,16 +28,27 @@ function createStoryRowHTML(story) {
 }
 
 function renderStories() {
-    tbody.innerHTML = "";
-    const stories = getStories();
-    stories.forEach((story, index) => addStoryRow(story, index));
+  tbody.innerHTML = "";
+  const stories = getStories();
+  stories.forEach((story, index) => addStoryRow(story, index));
 }
 
 function storyDelete(index, row) {
-  if (confirm("Verhaal verwijderen?")) {
+  show(elements.overlay);
+  show(elements.deleteStory);
+  hideAll(formStory);
+
+  elements.deleteStoryYes.onclick = () => {
     deleteUserStory(index);
     renderStories();
-  }
+    hide(elements.overlay);
+    hide(elements.deleteStory);
+  };
+
+  elements.deleteStoryNo.onclick = () => {
+    hide(elements.overlay);
+    hide(elements.deleteStory);
+  };
 }
 
 function storyEdit(index) {

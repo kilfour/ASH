@@ -13,12 +13,15 @@ import { hide } from "../../../aperture-core/utils.js";
 // > elements in formStory (=collections of elements)
 
 //als er geklikt wordt, wordt het inputveld zichtbaar
-const createProjectBTN = document.querySelector("#project-button");
-createProjectBTN.addEventListener("click",inputveld);
-const inputVeld = document.querySelector("#inputVeld");
+
 function inputveld(){
     inputVeld.classList.toggle("hidden"); //werkt niet
 }
+
+const createProjectBTN = document.querySelector("#project-button");
+createProjectBTN.addEventListener("click",inputveld);
+const inputVeld = document.querySelector("#inputVeld");
+
 
 //als save klik > projectnaam opgeslagen in localStorage
 const saveProjectBTN = document.getElementById("saveBTN");
