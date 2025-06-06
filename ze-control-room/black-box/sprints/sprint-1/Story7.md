@@ -10,11 +10,11 @@ Markdown formaat ondersteunen om text in de entries aan te kunnen passen en makk
 
 ### ✅ Acceptatiecriteria
 
-* [ ] **BOLD** maken
-* [ ] *italic* maken
-* [ ] ***BOLDtalic*** als optie
-* [ ] _underline_ optie
-* [ ] `code` text?
+* [X] **BOLD** maken
+* [X] *italic* maken
+* [X] ***BOLDtalic*** als optie
+* [X] _underline_ optie
+* [X] `code` text?
 
 ### 🧮 Estimate
 In ideale dagen: **2**.

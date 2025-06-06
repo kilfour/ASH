@@ -1,5 +1,6 @@
 import { getJournals } from "./journalsState.js";
 import { style } from "./repetitieveFuncties.js";
+import { marked } from "https://cdn.jsdelivr.net/npm/marked/lib/marked.esm.js";
 
 const editTitle = document.querySelector(".editTitle");
 const editContent = document.querySelector(".editContent");
@@ -12,7 +13,7 @@ export let current = { ID: "" };
 
 export function showDetails(event) {
   //G, iedere journal hidden 
-  const prev1 = document.querySelectorAll("p.content");
+  const prev1 = document.querySelectorAll("div.content");
   const prev2 = document.querySelectorAll("p.tags");
   const prev3 = document.querySelectorAll("p.date");
   prev1.forEach(el => style(el, "none") );
@@ -24,7 +25,7 @@ export function showDetails(event) {
   const title = event.target; // the clicked <h2>
   const parent = title.parentElement;
 
-  const content = parent.querySelector("p.content");
+  const content = parent.querySelector("div.content");
   const tags = parent.querySelector("p.tags");
   const date = parent.querySelector("p.date");
 
@@ -140,9 +141,10 @@ export function displayJournals(journals, locatie, page = 1) {
       const html = `
         <div class=journal id=${id}>
           <h2 class="titel">${titel}</h2>
-          <p class="content" style = 'display: none'>${content}</p>
+          <div class="content" style = 'display: none'>${marked.parse(content)}</div>
           <p class="tags" style = 'display: none'>${tags.join(", ")}</p>
-          <p class="date" style = 'display: none'>${date}</p>`;
+          <p class="date" style = 'display: none'>${date}</p>
+        </div>`;
 
       journalsView.insertAdjacentHTML("afterbegin", html);
     });
