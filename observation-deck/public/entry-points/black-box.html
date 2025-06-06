@@ -63,23 +63,25 @@
     <button class="btn-edit">Edit Selected Journal</button>
   </div>
 
-  <div class="EditArea" style="display: none;">
-    <form class="edit">
-      <input name="titel" placeholder="Edit Title" class="editTitle" /><br/>
-      <input name="content" placeholder="Edit Content" class="editContent" /><br/>
-      <input name="tags" placeholder="Edit Tags" class="editTags" /><br/>
-      <button class="btn-edit-submit">Submit</button>
-    </form>
-    <button class="btn-edit-cancel">Cancel</button>
-  </div>
+  <div class="deletedSection">
+    <div class="EditArea" style="display: none;">
+      <form class="edit">
+        <input name="titel" placeholder="Edit Title" class="editTitle" /><br/>
+        <input name="content" placeholder="Edit Content" class="editContent" /><br/>
+        <input name="tags" placeholder="Edit Tags" class="editTags" /><br/>
+        <button class="btn-edit-submit">Submit</button>
+      </form>
+      <button class="btn-edit-cancel">Cancel</button>
+    </div>
 
-  <div class="ErrorArea" style="display: none;">
-    <p class="Errormsg">(error hier insteken)</p>
-  </div>
+    <div class="ErrorArea" style="display: none;">
+      <p class="Errormsg">(error hier insteken)</p>
+    </div>
 
-  <div>
-    <ul class="deletedJournals"></ul>
-    <button class="btn-delete-all">Delete all Deleted</button>
+    <div>
+      <ul class="deletedJournals"></ul>
+      <button class="btn-delete-all">Delete all Deleted</button>
+    </div>
   </div>
 
 </body>
