@@ -9,9 +9,6 @@ function hideProject (){
   };
 
 
-// * [x] in forms: optie om projectnaam (uit localstorage) te kunnen kiezen
-// * [ ] in list: project tonen bij juiste story naast description (via local storage)
-
 //als er geklikt wordt, wordt het inputveld zichtbaar
 const createProjectBTN = document.querySelector("#project-button");
 createProjectBTN.addEventListener("click",inputveld);
@@ -52,6 +49,10 @@ function closeProject(){
     const inputVeld = document.querySelector("#inputVeld");
     hide(inputVeld); 
 }
+
+// * [x] in forms: optie om projectnaam (uit localstorage) te kunnen kiezen
+// * [ ] in list: project tonen bij juiste story naast description (via local storage)
+
 
 
 //reset input als je op save of close drukt WERKT NOG NIET
