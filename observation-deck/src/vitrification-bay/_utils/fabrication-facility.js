@@ -1,3 +1,5 @@
+import { parseArguments } from "./parse-arguments";
+
 export function htmlList(tag, items, renderItem) {
     const container = document.createElement(tag);
     for (const item of items) {
@@ -14,28 +16,19 @@ export function html(tag, ...args) {
     return node;
 }
 
-function parseArguments(args) {
-    let [first, ...rest] = args;
-    if (isAttributesObject(first)) {
-        return { attrs: first, children: rest };
-    }
-    return { attrs: {}, children: args };
-}
-
-function isAttributesObject(arg) {
-    if (!arg) return false;
-    if (typeof arg !== 'object') return false;
-    if (Array.isArray(arg)) return false;
-    if (arg instanceof Node) return false;
-    return true;
-}
+const booleanProps = new Set(['checked', 'selected', 'disabled']);
 
 function applyAttributes(node, attrs) {
-    for (const [k, v] of Object.entries(attrs)) {
-        if (k === 'style' && typeof v === 'object') {
-            Object.assign(node.style, v);
+    for (const [key, value] of Object.entries(attrs)) {
+        if (key.startsWith('on') && typeof value === 'function') {
+            const eventName = key.slice(2).toLowerCase();
+            node.addEventListener(eventName, value);
+        } else if (key === 'style' && typeof value === 'object') {
+            Object.assign(node.style, value);
+        } else if (booleanProps.has(key)) {
+            node[key] = Boolean(value);
         } else {
-            node.setAttribute(k, v);
+            node.setAttribute(key, value);
         }
     }
 }
@@ -46,4 +39,4 @@ function appendChildren(node, children) {
     }
 }
 
-export const __only_for_test = { parseArguments, applyAttributes };
+export const __only_for_test = { applyAttributes };

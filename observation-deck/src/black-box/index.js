@@ -11,6 +11,7 @@ const journalList = document.querySelector(".journals");
 const delButton = document.querySelector(".btn-delete");
 const searchfield1 = document.querySelector(".searchbar-content");
 const searchfield2 = document.querySelector(".searchbar-tags");
+const searchfield3 = document.querySelector(".datumSearch");
 const editButton = document.querySelector(".btn-edit");
 const editArea = document.querySelector(".EditArea");
 const errArea = document.querySelector(".ErrorArea");
@@ -20,84 +21,48 @@ const cancelEdit = document.querySelector(".btn-edit-cancel");
 const editTitle = document.querySelector(".editTitle");
 const editContent = document.querySelector(".editContent");
 const editTags = document.querySelector(".editTags");
+const delAllDeleted = document.querySelector(".btn-delete-all");
+const taglistButton = document.querySelector(".btn-tag-list");
 const journalsView = document.querySelector(".journals");
 
 const ITEMS_PER_PAGINA = 7;
 let currentpage = 1;
-let currentID = "";
 
 function upDateUi() {
-  displayJournals(getJournals());
+  displayJournals(getJournals(), "journals");
+  displayJournals(getDeleted(), "deletedJournals");
 }
 upDateUi();
 
-function style(place, state) {
-  //G, zet de display state, vooral "block" of "none"
-  place.style.display = state;
-}
-
-function displayJournals(journals, page = 1) {
+function displayJournals(journals, locatie) {
+  const journalsView = document.querySelector(`.${locatie}`);
   journalsView.innerHTML = "";
 
-  const totalPages = Math.ceil(journals.length / ITEMS_PER_PAGINA);
-  const start = (page - 1) * ITEMS_PER_PAGINA;
-  const end = start + ITEMS_PER_PAGINA;
-  const visibleJournals = journals.slice(start, end);
+  journals.forEach(function ({ id, titel, content, tags }) {
+    const totalPages = Math.ceil(journals.length / ITEMS_PER_PAGINA);
+    const start = (page - 1) * ITEMS_PER_PAGINA;
+    const end = start + ITEMS_PER_PAGINA;
+    const visibleJournals = journals.slice(start, end);
 
-  if (visibleJournals.length === 0) {
-    journalsView.innerHTML = `<li class="journal-empty">Geen dagboekitems gevonden.</li>`;
-    document.querySelector(".pagination").innerHTML = "";
-    return;
-  }
+    if (visibleJournals.length === 0) {
+      journalsView.innerHTML = `<li class="journal-empty">Geen dagboekitems gevonden.</li>`;
+      document.querySelector(".pagination").innerHTML = "";
+      return;
+    }
 
-  visibleJournals.forEach(function ({ id, titel, content, tags }) {
-    const html = `
+    visibleJournals.forEach(function ({ id, titel, content, tags }) {
+      const html = `
         <div class=journal id=${id}>
           <h2 class="titel">${titel}</h2>
-          <p class="content" style = 'display: none'>${content}<p>
-          <p class="tags" style = 'display: none'>${tags.join(", ")}<p>`;
+          <p class="content" style = 'display: none'>${content}</p>
+          <p class="tags" style = 'display: none'>${tags.join(", ")}</p>
+          <p class="date" style = 'display: none'>${date}</p>`;
 
-    journalsView.insertAdjacentHTML("afterbegin", html);
+      journalsView.insertAdjacentHTML("afterbegin", html);
+    });
   });
 
   viewPaginationControls(totalPages, page);
-}
-
-function viewPaginationControls(totalPages, current) {
-  const paginationEl = document.querySelector(".pagination");
-  paginationEl.innerHTML = "";
-
-  const prevBtn = document.createElement("button");
-  prevBtn.textContent = "Vorige";
-  prevBtn.disabled = currentPage === 1;
-  prevBtn.classList.add("btn-pagination");
-  prevBtn.addEventListener("click", () => {
-    if (currentPage > 1) {
-      currentPage--;
-      displayJournals(state.journals, currentPage);
-      const total = Math.ceil(state.journals.length / ITEMS_PER_PAGINA);
-      viewPaginationControls(total, currentPage);
-    }
-  });
-  paginationEl.appendChild(prevBtn);
-
-  const onPage = document.createElement("p");
-  onPage.textContent = currentPage;
-  onPage.classList.add("current-page");
-  paginationEl.appendChild(onPage);
-
-  const nextBtn = document.createElement("button");
-  nextBtn.textContent = "Volgende";
-  nextBtn.disabled = currentPage === totalPages;
-  nextBtn.classList.add("btn-pagination");
-  nextBtn.addEventListener("click", () => {
-    if (currentPage < totalPages) {
-      currentPage++;
-      displayJournals(state.journals, currentPage);
-      viewPaginationControls(totalPages, currentPage);
-    }
-  });
-  paginationEl.appendChild(nextBtn);
 }
 
 function showDetails(event) {
@@ -118,7 +83,7 @@ function showDetails(event) {
   const content = title.nextElementSibling;
   const tags = content.nextElementSibling.nextElementSibling;
 
-  currentID = title.parentElement.attributes.id.textContent; //G, ID wordt opgeslagen voor gebruik
+  current.ID = title.parentElement.attributes.id.textContent; //G, ID wordt opgeslagen voor gebruik
   editTitle.value = title.textContent; //G, journal info als edit initial value
   editContent.value = content.textContent;
   editTags.value = tags.textContent;
@@ -216,15 +181,25 @@ function zoekTrefTagInJournals(journals, treftag) {
 
 //maakt nieuwe journal
 formEl.addEventListener("submit", function (e) {
-  e.preventDefault("");
+  e.preventDefault();
 
   const formData = new FormData(e.target);
   const data = Object.fromEntries(formData);
+  let date = formData.get("date");
+
+  if (!date) {
+    const today = new Date();
+    const yyyy = today.getFullYear();
+    const mm = String(today.getMonth() + 1).padStart(2, "0");
+    const dd = String(today.getDate()).padStart(2, "0");
+    date = `${yyyy}-${mm}-${dd}`;
+  }
 
   const newJournal = {
     ...data,
+    date,
     id: crypto.randomUUID(),
-    tags: [data.tags.split(",")],
+    tags: data.tags.split(", "),
   };
 
   addJournal(newJournal);
@@ -237,12 +212,11 @@ journalList.addEventListener("click", function (e) {
 
 delButton.addEventListener("click", () => {
   //G, remove journal via ID, zet ID op niks voor edit errmsg
-  removeJournal(currentID);
+  removeJournal(current.ID);
   style(editArea, "none");
   style(errArea, "none");
-  currentID = "";
+  current.ID = "";
   upDateUi();
-  console.log(getDeleted());
 });
 
 searchfield1.addEventListener("submit", function (e) {
@@ -251,11 +225,11 @@ searchfield1.addEventListener("submit", function (e) {
   const trefwoord = document.getElementById("searchfield1").value.trim();
 
   const zoekjournals = zoekTrefwoordInJournals(getJournals(), trefwoord);
-  displayJournals(zoekjournals);
+  displayJournals(zoekjournals, "journals");
 });
 
 searchfield2.addEventListener("submit", function (e) {
-  e.preventDefault("");
+  e.preventDefault();
 
   document.querySelector(".error").textContent = "";
   //style(document.querySelector(".error"), "none");
@@ -263,12 +237,12 @@ searchfield2.addEventListener("submit", function (e) {
   const treftag = document.getElementById("searchfield2").value;
 
   const zoekjournals = zoekTrefTagInJournals(getJournals(), treftag);
-  displayJournals(zoekjournals);
+  displayJournals(zoekjournals, "journals");
 });
 
 editButton.addEventListener("click", () => {
   //G, haalt het edit menu of geeft error
-  if (currentID === "") {
+  if (current.ID === "") {
     style(errArea, "block");
     style(editArea, "none");
     errmsg.textContent = "Geen Journal Selected";
@@ -288,7 +262,7 @@ submitEdit.addEventListener("submit", function (e) {
   //G, sumbit form, edit journal entry, hide edit menus
   e.preventDefault();
 
-  editJournal(currentID, e);
+  editJournal(current.ID, e);
 
   style(editArea, "none");
   style(errArea, "none");

@@ -19,13 +19,16 @@
       <input type="text" name="titel" class="titel" />
       <input type="text" name="content" class="content" />
       <input type="text" name="tags" class="tags" />
+      <input type="date" name="date" class="date" />
       <button class="btn-submit">Voeg toe</button>
     </form>
     <button class="btn-delete">Delete Selected Journal</button>
+
     <form class="searchbar-content">
       <label for="searchfield1">Search trefwoorden:</label>
       <input type="text" name="searchfield1" class="searchfield1" id="searchfield1"/>
     </form>
+
     <div class="tagsearching" style="display: flex; align-items: center">
       <form class="searchbar-tags">
         <label for="searchfield2">Search tags:</label>
@@ -33,6 +36,21 @@
       </form>
       <p style="background-color:red; color: white;  margin-left: 10px" class="error"></p>
     </div>
+
+    <form class="datumSearch">
+      <label for="searchfield3">Search op Datum:</label>
+      <input type="date" name="searchfield3" class="searchfield3" id="searchfield3"/>
+      <button class="btn-datum-search">Search op Datum</button>
+    </form>
+
+    <div class="tag-count">
+      <ul class="tag-list"></ul>
+      <div>
+        <button class="btn-tag-list">Show tag list</button>
+        
+      </div>
+    </div>
+
     <button class="btn-edit">Edit Selected Journal</button>
   </div>
 
@@ -48,6 +66,11 @@
 
   <div class="ErrorArea" style="display: none;">
     <p class="Errormsg">(error hier insteken)</p>
+  </div>
+
+  <div>
+    <ul class="deletedJournals"></ul>
+    <button class="btn-delete-all">Delete all Deleted</button>
   </div>
 
 </body>
