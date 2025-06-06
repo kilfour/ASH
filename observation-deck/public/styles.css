@@ -151,7 +151,7 @@ tbody tr:nth-child(even) {
   user-select: none;
 }
 
-.button:hover, select:hover {
+.button:hover {
   background-color: #2980b9;
   /* andere kleur bij hover */
   transform: translateY(-3px);
