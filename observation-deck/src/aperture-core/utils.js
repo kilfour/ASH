@@ -18,6 +18,9 @@ function toggle(element) {
 (element.classList.contains("hidden")) ? show(element) : hide(element);
 } 
 
+const showAll = (elements) => elements.forEach(show);
+const hideAll = (elements) => elements.forEach(hide);
+
 /**
  * this a similar function as Show/Hide, but for multiple elements,
  * 
@@ -26,8 +29,5 @@ function toggle(element) {
  *  'add' = add class .hidden           - to hide elements in popup
  *  'remove' = remove class .hidden     - to show elements in popup
  */
-const toggleElements = (elements, action) => {
-  elements.forEach(el => el.classList[action]("hidden"));
-};
 
-export { show, hide, toggle,toggleElements}
+export { show, hide, showAll, hideAll,  toggle}
