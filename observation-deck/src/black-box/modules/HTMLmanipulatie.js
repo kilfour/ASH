@@ -75,6 +75,22 @@ export function zoekTrefTagInJournals(journals, treftag) {
   return result;
 }
 
+function bevatDatum(journal, datum) {
+  //G, WIP
+  return journal.date === datum;
+}
+
+export function zoekDatumInJournals(journals, datum) {
+  //G, WIP, implementeer de button op de searchfield
+  let result = [];
+  for (let journal of journals) {
+    if (bevatDatum(journal, datum) === true) {
+      result.push(journal);
+    }
+  }
+  return result;
+}
+
 export function calcTagCount(journals){
   let result = [];
   journals.forEach(x => result.push(x.tags));

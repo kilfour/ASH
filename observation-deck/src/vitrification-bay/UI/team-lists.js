@@ -1,28 +1,18 @@
 import { html, htmlList } from '../_utils/fabrication-facility';
-import { styled } from '../_utils/sanitation-sheen';
+import { css } from './team-lists.styles';
 
 
 const teamOrange = ['Laurens', 'Benny', 'Mathias', 'Michael'];
 const teamBlue = ['Alex', 'Milad', 'Abigail', 'Naomi'];
 
-const flexRow = styled('div', {
-    display: 'flex',
-    justifyContent: 'center',
-    gap: '1rem'
-}, html);
-
-const listItem = styled('li', {
-    marginLeft: '3rem'
-}, html);
-
 const container =
-    flexRow(
+    css.flexRow(
         html('div',
             html('h2', '🔸Team Orange'),
-            htmlList('ul', teamOrange, name => listItem(name))),
+            htmlList('ul', teamOrange, name => css.listItem(name))),
         html('div',
             html('h2', '🔹Team Blue'),
-            htmlList('ul', teamBlue, name => listItem(name)))
+            htmlList('ul', teamBlue, name => css.listItem(name)))
     );
 
 export function renderTeamLists(parent) {

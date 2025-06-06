@@ -10,8 +10,9 @@ Kunnen zien welke tags gebruikt worden en hoeveel keer.
 
 ### ✅ Acceptatiecriteria
 
-* [ ] Lijst van tags weergeven
-* [ ] Hoeveelheid van bepaalde tag weergeven.
+* [X] Lijst van tags weergeven
+* [X] Hoeveelheid van bepaalde tag weergeven.
+* [ ] Ongebruikte tags automatisch verwijderen.
 
 ### 🧮 Estimate
 In ideale tijd: **2 dagen**.

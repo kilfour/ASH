@@ -1,4 +1,4 @@
-import {toggle} from '../UserStoryForm/uiHelpers.js'
+import {toggle} from '../../../aperture-core/utils.js'
 
 export function onOpenFilterClicked() {
     const input = document.getElementById("myInput");

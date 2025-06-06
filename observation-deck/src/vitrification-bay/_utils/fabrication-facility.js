@@ -16,6 +16,8 @@ export function html(tag, ...args) {
     return node;
 }
 
+const booleanProps = new Set(['checked', 'selected', 'disabled']);
+
 function applyAttributes(node, attrs) {
     for (const [key, value] of Object.entries(attrs)) {
         if (key.startsWith('on') && typeof value === 'function') {
@@ -23,6 +25,8 @@ function applyAttributes(node, attrs) {
             node.addEventListener(eventName, value);
         } else if (key === 'style' && typeof value === 'object') {
             Object.assign(node.style, value);
+        } else if (booleanProps.has(key)) {
+            node[key] = Boolean(value);
         } else {
             node.setAttribute(key, value);
         }
