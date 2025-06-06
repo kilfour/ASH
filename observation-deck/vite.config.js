@@ -7,10 +7,5 @@ export default defineConfig({
     server: {
         port: 5173,
         open: '/index.html'
-    },
-    resolve: {
-        alias: {
-            '@aperture-core': path.resolve(__dirname, './src/@aperture-core')
-        }
     }
 });
