@@ -43,12 +43,13 @@ function displayJournals(journals, locatie) {
     const start = (page - 1) * ITEMS_PER_PAGINA;
     const end = start + ITEMS_PER_PAGINA;
     const visibleJournals = journals.slice(start, end);
+    //test
 
     if (visibleJournals.length === 0) {
       journalsView.innerHTML = `<li class="journal-empty">Geen dagboekitems gevonden.</li>`;
       document.querySelector(".pagination").innerHTML = "";
       return;
-    }
+    } //test
 
     visibleJournals.forEach(function ({ id, titel, content, tags }) {
       const html = `
