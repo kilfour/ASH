@@ -19,6 +19,8 @@
   --color-border: #f9fafd;
   --color-accent-blue: #18aaff;
   --color-accent-orange: #ff9200;
+  --color-table-one: #000;
+  --color-table-two: #212020;
 }
 
 /* Base styles */
@@ -99,12 +101,12 @@ nav button:hover a {
 table {
   border-collapse: collapse;
   width: 1500px;
-  background-color: var(--color-panel);
+  background-color: var(--color-table-one);
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
 th {
-  background-color: var(--color-panel);
+  background-color: var(--color-table-one);
   color: var(--color-accent-blue);
   padding: 20px;
   text-align: center;
@@ -118,7 +120,7 @@ td {
 }
 
 tbody tr:nth-child(even) {
-  background-color: var(--color-background);
+  background-color: var(--color-table-two);
 }
 
 .table-button-wrapper {
