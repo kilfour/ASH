@@ -37,7 +37,7 @@ function renderStories() {
   stories.forEach((story, index) => addStoryRow(story, index));
 }
 
-function storyDelete(index, row) {
+function storyDelete(index) {
   show(elements.overlay);
   show(elements.deleteStory);
   hideAll(formStory);
@@ -59,7 +59,7 @@ function storyEdit(index) {
     const s = getStories()[index];
     elements.title.value = s.title;
     elements.desc.value = s.description;
-    elements.editIndex.value = index;
+    elements.editIndex.value = s.status;;
     show(elements.overlay);
     showAll(formStory); 
     hide(document.querySelector(".actions-dropdown"));
@@ -114,7 +114,7 @@ export function onSaveButtonClick() {
 
   const projectId = document.getElementById('projectList').value;
   const statusStory = document.querySelector('input[name="status"]:checked').value;
-  const story = getUserStory(elements.title, elements.desc, statusStory, projectId);
+  const story = getUserStory(elements.title, elements.desc);
   if (!story) return;
 
   const index = elements.editIndex.value;
@@ -130,5 +130,6 @@ export function onSaveButtonClick() {
   }
 
   hide(elements.overlay);
+  renderStories();
   resetStory();
 }
