@@ -1,21 +1,24 @@
-import { getStories,
-    storeUserStory,
-    updateUserStory,
-    deleteUserStory} from "../../Storage/localStorage.js"
+import { 
+  getStories,
+  storeUserStory,
+  updateUserStory,
+  deleteUserStory
+} from "../../Storage/localStorage.js"
 import elements, { formStory } from "../UserStoryForm/domElements.js"
 import { show, hide, showAll} from "../../../aperture-core/utils.js"
 import { getUserStory } from "../../Entities/userStory.js"
 import { resetStory } from "../UserStoryForm/eventHandelers.js"
-// import { onOpenFilterClicked } from "./filter.js"
+import { getProjectNameById } from "./newProject.js" 
 
 const tbody = document.getElementById("story-table-body");
 const addStoryBTN = document.getElementById("create-story-button");
 
 function createStoryRowHTML(story) {
+    const projectName= getProjectNameById(story.projectId);
     return`
     <td>${story.title}</td>
     <td>${story.description}</td>
-    <td>—</td>
+    <td>${projectName}</td>
     <td>
       <div class="actions-menu">
         <button class="dots-button">⋮</button>
@@ -27,16 +30,6 @@ function createStoryRowHTML(story) {
     </td>
   `;
 }
-
-//List of Items, deze moet uit onze local storage komen. Niet nodige op deze manier met story.statusStory
-// function showFilteredstatus (stories, status) {
-//   const stories = getStories();
-//   return
-//   <div id="itemList">
-//     <div class="item" data-status="">stories.statusStory</div>
-//   </div>
-//   ;
-// }
 
 function renderStories() {
     tbody.innerHTML = "";
@@ -107,8 +100,10 @@ export function addStoryRow(story, index) {
 }
 
 export function onSaveButtonClick() {
+
+  const projectId = document.getElementById('projectList').value;
   const statusStory = document.querySelector('input[name="status"]:checked').value;
-  const story = getUserStory(elements.title, elements.desc, statusStory);
+  const story = getUserStory(elements.title, elements.desc, statusStory, projectId);
   if (!story) return;
 
   const index = elements.editIndex.value;
