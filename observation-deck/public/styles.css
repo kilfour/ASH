@@ -13,7 +13,7 @@
 :root {
   --primary-color: #18aaff;
   --font-base: Arial, sans-serif;
-  --color-background: #2a2a2a;
+  --color-background: #151515;
   --color-text-main: #e3e7ea;
   --color-panel: #1a1a1a;
   --color-border: #f9fafd;
@@ -107,7 +107,7 @@ table {
 
 th {
   background-color: var(--color-table-one);
-  color: var(--color-accent-blue);
+  color: var(--color-accent-orange);
   padding: 20px;
   text-align: center;
 }
