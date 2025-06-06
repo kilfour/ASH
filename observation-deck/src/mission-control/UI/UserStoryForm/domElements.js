@@ -14,7 +14,10 @@ const elements = {
   editIndex: document.getElementById("edit-index"),
   formStatus: document.getElementById("formStatus"),
   newStatus: document.getElementById("statusNew"),
-  projectChoice: document.getElementById("chooseProject")
+  projectChoice: document.getElementById("chooseProject"),
+  deleteStory: document.getElementById("delete-confirm"),
+  deleteStoryYes: document.getElementById("delete-yes"),
+  deleteStoryNo: document.getElementById("delete-no")
 };
 
 /**
