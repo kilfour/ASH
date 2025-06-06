@@ -7,6 +7,7 @@ const journalList = document.querySelector(".journals");
 const delButton = document.querySelector(".btn-delete");
 const searchfield1 = document.querySelector(".searchbar-content");
 const searchfield2 = document.querySelector(".searchbar-tags");
+const searchfield3 = document.querySelector(".datumSearch")
 const editButton = document.querySelector(".btn-edit");
 const editArea = document.querySelector(".EditArea");
 const errArea = document.querySelector(".ErrorArea");
@@ -147,3 +148,11 @@ taglistButton.addEventListener('click', () => {
   }
   upDateUi();
 });
+
+searchfield3.addEventListener("submit", function (e) {
+  e.preventDefault();
+
+  const datum = document.getElementById("searchfield3").value
+  const zoekjournals = zoekDatumInJournals(getJournals(), datum);
+  displayJournals(zoekjournals, "journals");
+})
