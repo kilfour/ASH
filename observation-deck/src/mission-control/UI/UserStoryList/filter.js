@@ -16,6 +16,23 @@ export function onOpenFilterClicked() {
     }
 }
 
+// JS VOOR ANDER SOORT FILTER
+export const filter = document.getElementById('statusFilter');
+export const items = document.querySelectorAll('.item');
+
+     filter.addEventListener('change', function () {
+      const selectedStatus = this.value;
+
+      items.forEach(item => {
+        const itemStatus = item.getAttribute('data-status');
+        if (selectedStatus === 'all' || itemStatus === selectedStatus) {
+          item.style.display = '';
+        } else {
+          item.style.display = 'none';
+        }
+      });
+    });
+
 // const filterOptions = document.getElementById("myDropdown");
 // const statusNew = document.getElementById("StatusNew")
 // const statusInProgress = document.getElementById("statusInProgress")
@@ -87,3 +104,4 @@ export function onOpenFilterClicked() {
 //      itemList.appendChild(listItem);
 //    });
 //  });
+

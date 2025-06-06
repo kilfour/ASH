@@ -13,7 +13,8 @@ const elements = {
   modalNo: document.getElementById("modal-no"),
   editIndex: document.getElementById("edit-index"),
   formStatus: document.getElementById("formStatus"),
-  newStatus: document.getElementById("statusNew")
+  newStatus: document.getElementById("statusNew"),
+  projectChoice: document.getElementById("chooseProject")
 };
 
 /**
@@ -24,7 +25,8 @@ const formStory = [
     elements.closeBTN,
     elements.desc,
     elements.title,
-    elements.formStatus
+    elements.formStatus,
+    elements.projectChoice
 ]
 
 export {formStory};

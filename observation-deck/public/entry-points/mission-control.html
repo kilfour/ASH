@@ -32,7 +32,7 @@
         </div>
     </div>
     <!-- filter -->
-    <div class="dropdown"> 
+    <!-- <div class="dropdown"> 
         <button id="open-filter" class="button">Filter</button>
         <div id="myDropdown" class="dropdown-content hidden">
             <input type="text" placeholder="Search.." id="myInput" onkeyup="filterFunction()">
@@ -40,15 +40,34 @@
             <a>In Progress</a>
             <a>Done</a>
         </div>
-    </div>
+    </div> -->
     <!-- selection filter -->
-    <!-- <select id="filterDropdown">
-     <option value="New">New</option>
-     <option value="In Progress">In Progress</option>
-     <option value="Done">Done</option>
-   </select>
+<title>Status Filter</title>
+  <style>
+    .item {
+      margin: 5px 0;
+    }
+  </style>
 
-   <ul id="itemList"></ul> -->
+
+  <!-- Dropdown Filter -->
+  <label for="statusFilter">Filter by status:</label>
+  <select id="statusFilter">
+    <option value="all">All</option>
+    <option value="new">New</option>
+    <option value="in progress">In Progress</option>
+    <option value="done">Done</option>
+  </select>
+
+  <!-- List of Items, deze moet uit onze local storage komen?? -->
+  <div id="itemList">
+    <div class="item" data-status="new">Item 1 - New</div>
+    <div class="item" data-status="in progress">Item 2 - In Progress</div>
+    <div class="item" data-status="done">Item 3 - Done</div>
+    <div class="item" data-status="new">Item 4 - New</div>
+    <div class="item" data-status="done">Item 5 - Done</div>
+  </div>
+
     <!-- PopUp overlay / forms -->
     <form id="story-form"> 
         <div id="popup-overlay" class="overlay hidden">
@@ -56,18 +75,19 @@
                 <input type="text" id="story-title-name" placeholder="Title" />
                 <p></p>
                 <textarea id="story-description" placeholder="Description"></textarea>
+                 <!--project kiezen-->
+                <div class= "center" id="chooseProject">
+                    <label for="projectLijst">Choose a project</label>
+                        <select id="projectList">
+                            <option id="option1" value="none">none</option>
+                        </select>
                 <div>
-                    <button type="button" id="save-story">Save</button>
-                    <button type="button" id="close-popup">Close</button>
-    <!--project kiezen-->
-        <div class= "center" id="chooseProject">
-            <label for="projectLijst">Choose a project</label>
-                <select id="projectList">
-                    <option id="option1" value="none">none</option>
-                </select>
-        </div>
 
-                </div>
+                <button type="button" id="save-story">Save</button>
+                <button type="button" id="close-popup">Close</button>
+            </div>
+
+        </div>
     
        
             <!--status-->

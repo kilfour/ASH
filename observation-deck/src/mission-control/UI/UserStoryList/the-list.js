@@ -3,7 +3,7 @@ import { getStories,
     updateUserStory,
     deleteUserStory} from "../../Storage/localStorage.js"
 import elements, { formStory } from "../UserStoryForm/domElements.js"
-import { show, hide, toggleElements} from "../../../aperture-core/utils.js"
+import { show, hide, showAll} from "../../../aperture-core/utils.js"
 import { getUserStory } from "../../Entities/userStory.js"
 import { resetStory } from "../UserStoryForm/eventHandelers.js"
 
@@ -46,7 +46,7 @@ function storyEdit(index) {
     elements.desc.value = s.description;
     elements.editIndex.value = index;
     show(elements.overlay);
-    toggleElements(formStory, 'remove'); 
+    showAll(formStory); 
     hide(document.querySelector(".actions-dropdown"));
 }
 

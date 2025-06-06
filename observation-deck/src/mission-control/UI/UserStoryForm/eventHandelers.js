@@ -1,15 +1,15 @@
 import elements, {formStory} from './domElements.js'
-import { hide, show, toggleElements } from '../../../aperture-core/utils.js'
+import { hide, show, showAll, hideAll } from '../../../aperture-core/utils.js'
 
 function onAddButtonClick() {
   show(elements.overlay);
-  toggleElements(formStory, 'remove');
+  showAll(formStory);
   elements.newStatus.checked = true;
 }
 
 function onCloseButtonClick() {
   show(elements.modal);
-  toggleElements(formStory, 'add');
+  hideAll(formStory);
 }
 
 function onModalYesClick() {
@@ -19,7 +19,7 @@ function onModalYesClick() {
 }
 
 function onModalNoClick() {
-  toggleElements(formStory, 'remove');
+  showAll(formStory);
   hide(elements.modal);
 }
 
