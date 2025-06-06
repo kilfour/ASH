@@ -3,12 +3,20 @@
  */
 const show = (el) => el.classList.remove("hidden");
 const hide = (el) => el.classList.add("hidden");
-function toggle(element){
-  if(element.classList.contains("hidden"))
-    show(element);
-  else
-    hide(element);
-}
+
+/**
+ * Updated function for Show/Hide
+ * 
+ *  function toggle(element){
+ *    if(element.classList.contains("hidden"))
+ *        show(element);
+ *    else
+ *        hide(element);
+ *    }
+ */
+function toggle(element) {
+(element.classList.contains("hidden")) ? show(element) : hide(element);
+} 
 
 /**
  * this a similar function as Show/Hide, but for multiple elements,

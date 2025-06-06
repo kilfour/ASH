@@ -1,4 +1,4 @@
-import { hide } from "../UserStoryForm/uiHelpers.js";
+import { hide } from "../../../aperture-core/utils.js";
 
 //projectkiezer verbergen
 const closeProjectBTN = document.getElementById("close-popup");
@@ -8,9 +8,6 @@ function hideProject (){
     hide(project);
   };
 
-
-// * [x] in forms: optie om projectnaam (uit localstorage) te kunnen kiezen
-// * [ ] in list: project tonen bij juiste story naast description (via local storage)
 
 //als er geklikt wordt, wordt het inputveld zichtbaar
 const createProjectBTN = document.querySelector("#project-button");
@@ -52,6 +49,10 @@ function closeProject(){
     const inputVeld = document.querySelector("#inputVeld");
     hide(inputVeld); 
 }
+
+// * [x] in forms: optie om projectnaam (uit localstorage) te kunnen kiezen
+// * [ ] in list: project tonen bij juiste story naast description (via local storage)
+
 
 
 //reset input als je op save of close drukt WERKT NOG NIET
