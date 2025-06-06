@@ -1,12 +1,12 @@
 import { hide } from "../UserStoryForm/uiHelpers.js";
 
 //projectkiezer verbergen
-const closeProjectBTN = document.getElementById("close-popup");
-closeProjectBTN.addEventListener("click",hideProject);
-function hideProject (){
-    const project = document.querySelector("#chooseProject");
-    hide(project);
-  };
+// const closeProjectBTN = document.getElementById("close-popup");
+// closeProjectBTN.addEventListener("click",hideProject);
+// function hideProject (){
+//     const project = document.querySelector("#chooseProject");
+//     hide(project);
+//   };
 
 
 //als er geklikt wordt, wordt het inputveld zichtbaar
@@ -27,7 +27,8 @@ function saveProjectnames(){
     //object zodat je steeds nieuwe projectnaam hebt
     if (naamInput){
     const nieuweNaam= {
-        naam: naamInput
+        naam: naamInput,
+        id: crypto.randomUUID() //id geven 
     }
     // lege array 
     const projectLijst = JSON.parse(localStorage.getItem("Lijst")) || [];
