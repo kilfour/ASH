@@ -1,8 +1,10 @@
 import elements, {formStory} from './domElements.js'
 import { hide, show, showAll, hideAll } from '../../../aperture-core/utils.js'
+import { fillDropdownWithProjectNames } from './showProjecten.js';
 
 function onAddButtonClick() {
   show(elements.overlay);
+  fillDropdownWithProjectNames(); 
   showAll(formStory);
   elements.newStatus.checked = true;
 }

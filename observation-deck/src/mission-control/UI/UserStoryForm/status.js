@@ -2,37 +2,15 @@ import { hide } from "../../../aperture-core/utils.js";
 
 //GELUKTE POGING: hideform via classlist toggle als er op close gedrukt wordt
 
-function hideForm (){
+export function hideForm (){
   document.querySelector("#close-popup").addEventListener("click", () => {
     const form = document.querySelector("#formStatus");
     hide(form);
     // form.classList.toggle("visible");
   });
 }
-hideForm(); //fout: form in form =nesten= mag niet 
+ //fout: form in form =nesten= mag niet 
 // DUS form weghalen en linken aan pop-up form
-
-
-
-//backup html:
-//  <div id="formStatus">
-//                     <input type="radio" name="status" id="status1" form="story-form" checked>
-//                     <label for="status1">Nieuw</label>
-            
-//                     <input type="radio" name="status" id="status2" form="story-form"  >
-//                     <label for="status2">In Progress</label>
-            
-//                     <input type="radio" name="status" id="status3" form="story-form" >
-//                     <label for="status3">Done</label>
-//                 </div>
-
-
-
-
-
-
-
-
 
 
 

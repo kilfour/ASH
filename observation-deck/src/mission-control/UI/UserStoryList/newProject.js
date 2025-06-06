@@ -4,23 +4,22 @@ import { hide, toggle } from "../../../aperture-core/utils.js";
 // > elements in formStory (=collections of elements)
 
 //als er geklikt wordt, wordt het inputveld zichtbaar
-const inputProjectName = document.querySelector("#inputVeld");
-function toggleInputProjectName () {
+export function toggleInputProjectName () {
+    const inputProjectName = document.querySelector("#inputVeld");
     toggle(inputProjectName);
  }
 
 const createProjectBTN = document.querySelector("#project-button");
-createProjectBTN.addEventListener("click",inputveld);
-const inputVeld = document.querySelector("#inputVeld");
+// createProjectBTN.addEventListener("click",inputveld);
+// const inputVeld = document.querySelector("#inputVeld");
 
 createProjectBTN.addEventListener("click",toggleInputProjectName);
 
 
 
 //als save klik > projectnaam opgeslagen in localStorage
-const saveProjectBTN = document.getElementById("saveBTN");
-saveProjectBTN.addEventListener("click", saveProjectnames);
-function saveProjectnames(){
+
+export function saveProjectnames(){
     //save new input
     const naamInput = document.querySelector("#naamProject").value;
     
@@ -37,15 +36,18 @@ function saveProjectnames(){
     localStorage.setItem("Lijst", JSON.stringify(projectLijst));
 }}
 
+export function getProjectNameById(projectId){
+    const lijstProjecten = JSON.parse(localStorage.getItem("Lijst"));
+    const project = lijstProjecten.find(project => project.id === projectId);
+    if(!project) return '';
+    return project.naam;
+}
 
-saveProjectnames();
 
 
 //bij klikken save en close > ook sluiten van inputveld EN NIEUWPROJECN
-const closeProjectVeldBTN = document.getElementById("closeBTN");
-closeProjectVeldBTN.addEventListener("click",closeProject)
-saveProjectBTN.addEventListener("click", closeProject)
-function closeProject(){
+
+export function closeProject(){
     const inputVeld = document.querySelector("#inputVeld");
     hide(inputVeld); 
 }
