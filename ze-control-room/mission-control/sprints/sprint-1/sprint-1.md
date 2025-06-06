@@ -5,7 +5,7 @@ nr      | titel                       | est. time | dev        | status     | re
  2      | Status                      |    1,5    | Abigail    | Done       |           |
  3      | FilterStory                 |    1      | Naomi      | Done       |    1.5    |
  4      | Deadlines                   |    3      | Milad      | Not Needed |           |
- 5      | NewProject                  |    2      | Abigail    | Doing      |           |
+ 5      | NewProject                  |    2      | Abigail    | Done       |           |
  6      | Teammembers                 |    2      |            |            |           |
  7      | Dashboard                   |    2      |            |            |           |
  8      | ListProjects                |    2      |            |            |           |
