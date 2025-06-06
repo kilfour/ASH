@@ -53,7 +53,7 @@ header h1 {
 }
 
 .BbTitle {
-  color: var(--color-accent-blue);
+  color: var(--color-accent-orange);
 }
 
 .McTitle {
@@ -198,7 +198,7 @@ tbody tr:nth-child(even) {
 }
 
 .popup {
-  background: #2a2a2a;
+  background: var(--color-panel);
   padding: 20px;
   box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
 }
