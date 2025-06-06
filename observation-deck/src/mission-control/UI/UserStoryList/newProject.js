@@ -10,6 +10,9 @@ function toggleInputProjectName () {
  }
 
 const createProjectBTN = document.querySelector("#project-button");
+createProjectBTN.addEventListener("click",inputveld);
+const inputVeld = document.querySelector("#inputVeld");
+
 createProjectBTN.addEventListener("click",toggleInputProjectName);
 
 

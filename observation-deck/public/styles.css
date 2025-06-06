@@ -132,7 +132,7 @@ tbody tr:nth-child(even) {
   border-collapse: collapse;
 }
 
-.button, .dropbtn {
+.button {
   margin-left: 80px;
   margin-bottom: 20px;
   height: fit-content;
@@ -169,7 +169,7 @@ tbody tr:nth-child(even) {
 .dashboard {
   border: 2px solid #000000;
   max-width: 1000px;
-  margin: 20px;
+  margin: 0 auto;
   padding: 20px;
   font-family: Arial, Helvetica, sans-serif;
   text-align: center;
@@ -255,10 +255,6 @@ tbody tr:nth-child(even) {
   z-index: 10;
 }
 
-.actions-dropdown.hidden {
-  display: none;
-}
-
 .actions-dropdown button {
   display: block;
   padding: 10px;
@@ -279,23 +275,7 @@ tbody tr:nth-child(even) {
   font-weight: bold;
 }
 
-
-/* The search field */
-#myInput {
-  box-sizing: border-box;
-  background-position: 14px 12px;
-  background-repeat: no-repeat;
-  font-size: 16px;
-  padding: 14px 20px 12px 45px;
-  border: none;
-  border-bottom: 1px solid #ddd;
-}
-
-/* The search field when it gets focus/clicked on */
-#myInput:focus {outline: 3px solid #ddd;}
-
-/* The container <div> - needed to position the dropdown content */
-.dropdown {
+.filter {
   position: relative;
   display: inline-block;
 }
@@ -366,36 +346,32 @@ input[type="date"]:focus {
 /* Buttons */
 
 button {
-  border: 2px solid var(--color-accent-blue);
+  border: 2px solid var(--color-accent-orange);
   border-radius: 12px;
   padding: 0.5rem 1rem;
   margin: 0.5rem 0 0.5rem 0;
   font-weight: 600;
   font-size: 0.8rem;
   cursor: pointer;
-  transition: background 0.4s, color 0.4s, border 0.4s;
-  color: var(--color-accent-blue);
+  transition: background 0.4s, color 0.4s;
+  background-color: var(--color-background);
 }
 
 button:hover {
-  border: 2px solid var(--color-accent-orange);
   background: var(--color-button-hover);
-  color: var(--color-accent-orange);
+  color: #fff;
 }
 
-.entrySection {
-  max-width: 940px;
-  margin: 2rem auto;
-  padding: 1.5rem 2.5rem;
-  border-color: var(--color-accent-blue);
-  border-radius: 22px;
-  border: 20px;
-}
+select {
+  background-color:#ee8f00;
+  font: Arial, sans-serif;
+  color: white;
+    padding: 10px 20px;
+  border: none;
+   border-radius: 50px;
+   }
 
-.searchSection {
-  max-width: 940px;
-  margin: 2rem auto;
-  padding: 1.5rem 2.5rem;
-  background: var(--color-panel);
-  border-radius: 22px;
+.box {
+  width: 200px;
+  margin-left: 73%; /* 30% van de breedte van de ouder/container */
 }

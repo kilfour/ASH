@@ -27,18 +27,10 @@
             </div>
         </div>
     </div>
-    <!-- filter -->
-    <!-- <div class="dropdown"> 
-        <button id="open-filter" class="button">Filter</button>
-        <div id="myDropdown" class="dropdown-content hidden">
-            <input type="text" placeholder="Search.." id="myInput" onkeyup="filterFunction()">
-            <a>New</a>
-            <a>In Progress</a>
-            <a>Done</a>
-        </div>
-    </div> -->
 
   <!-- Dropdown Filter met select -->
+  <div class="box">  
+  <div class = "Filter">
     <label for="open-filter">Filter by status:</label>
     <select id="open-filter">
         <option value="all">All</option>
@@ -46,7 +38,8 @@
         <option value="inProgress">In Progress</option>
         <option value="done">Done</option>
     </select>
-
+    </div>
+</div>
     <!-- PopUp overlay / forms -->
     <form id="story-form"> 
         <div id="popup-overlay" class="overlay hidden">
@@ -88,6 +81,13 @@
                         <button type="button" id="modal-no">No</button>
                     </div>
                 </div>
+                <div id="delete-confirm" class="hidden">
+                    <div class="delete-content">
+                        <p>Are you sure you want to delete?</p>
+                        <button type="button" id="delete-yes">Yes</button>
+                        <button type="button" id="delete-no">No</button>
+                    </div>
+                </div>
             </div>
         </div>
     </form>
@@ -124,7 +124,6 @@
             <input type="hidden" id="edit-index" />
         </div>
     </div>
-
 
 </body>
 </html>
