@@ -394,6 +394,22 @@ select {
   border-radius: 22px;
 }
 
+.searchSection {
+  max-width: 940px;
+  margin: 2rem auto;
+  padding: 1.5rem 2.5rem;
+  background: var(--color-panel);
+  border-radius: 22px;
+}
+
+.deletedSection {
+  max-width: 940px;
+  margin: 2rem auto;
+  padding: 1.5rem 2.5rem;
+  background: var(--color-panel);
+  border-radius: 22px;
+}
+
 #story-title-name {
   margin: 0 0 1rem 0;
   width: 100%;
