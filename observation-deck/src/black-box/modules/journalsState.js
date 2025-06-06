@@ -49,7 +49,6 @@ if(!state){  //G, if no initial state in storage, set it to default
   state = {
     journals: journalData || [],
     deleted: [],
-    versions: []
   };
   localStorage.setItem(KEY, JSON.stringify(state));  //G, steekt state in localstorage in stringvorm
 }
@@ -91,7 +90,6 @@ function getJournals() {  //G, export const { journals } = state;  -> leest maar
 }
 
 function getDeleted() {  //G, voor prullenmand
-
   return state.deleted;
 }
 

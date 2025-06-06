@@ -7,6 +7,7 @@ const journalList = document.querySelector(".journals");
 const delButton = document.querySelector(".btn-delete");
 const searchfield1 = document.querySelector(".searchbar-content");
 const searchfield2 = document.querySelector(".searchbar-tags");
+const searchfield3 = document.querySelector(".datumSearch")
 const editButton = document.querySelector(".btn-edit");
 const editArea = document.querySelector(".EditArea");
 const errArea = document.querySelector(".ErrorArea");
@@ -148,42 +149,10 @@ taglistButton.addEventListener('click', () => {
   upDateUi();
 });
 
-/*
-function highlightTrefwoord(journal, trefwoord){
-  const query = trefwoord.trim().toLowerCase();
-  const t = document.querySelector("h2.titel");
-  const torigin = t.textContent;
-  const c = document.querySelector("p.content");
-  const corigin = c.textContent;
-  if(query === ""){  //to reset
-    t.innerHTML = torigin;
-    c.innerHTML = corigin;
-    return;
-  }
+searchfield3.addEventListener("submit", function (e) {
+  e.preventDefault();
 
-  const twords = torigin.split(/(\s+)/); //split and keep spaces
-  const cwords = corigin.split(/(\s+)/);
-  const HLtwords = twords
-          .map(word => {
-            if(word.toLowerCase().includes(query)){
-              return `<span class="highlighted">${word}</span>`;
-            }
-            return word;
-          })
-          .join("");
-  const HLcwords = cwords
-          .map(word => {
-            if(word.toLowerCase().includes(query)){
-              return `<span class="highlighted">${word}</span>`;
-            }
-            return word;
-          })
-          .join("");
-  console.log(HLtwords);
-  console.log(HLcwords);
-  t.innerHTML = HLtwords;
-  c.innerHTML = HLcwords;
-  console.log(t);
-  console.log(c);
-}
-  */
+  const datum = document.getElementById("searchfield3").value
+  const zoekjournals = zoekDatumInJournals(getJournals(), datum);
+  displayJournals(zoekjournals, "journals");
+})
