@@ -1,21 +1,22 @@
-import { 
+import {
   getStories,
   storeUserStory,
   updateUserStory,
   deleteUserStory
 } from "../../Storage/localStorage.js"
 import elements, { formStory } from "../UserStoryForm/domElements.js"
-import { show, hide, showAll, hideAll} from "../../../aperture-core/utils.js"
+import { show, hide, showAll, hideAll } from "../../../aperture-core/utils.js"
 import { getUserStory } from "../../Entities/userStory.js"
 import { resetStory } from "../UserStoryForm/eventHandelers.js"
-import { getProjectNameById } from "./newProject.js" 
+import { getProjectNameById } from "./newProject.js"
+import { fillDropdownWithProjectNames } from '../UserStoryForm/showProjecten.js';
 
 const tbody = document.getElementById("story-table-body");
 const addStoryBTN = document.getElementById("create-story-button");
 
 function createStoryRowHTML(story) {
-    const projectName= getProjectNameById(story.projectId);
-    return`
+  const projectName = getProjectNameById(story.projectId);
+  return `
     <td>${story.title}</td>
     <td>${story.description}</td>
     <td>${projectName}</td>
@@ -56,32 +57,34 @@ function storyDelete(index) {
 }
 
 function storyEdit(index) {
-    const s = getStories()[index];
-    elements.title.value = s.title;
-    elements.desc.value = s.description;
-    elements.editIndex.value = s.status;;
-    show(elements.overlay);
-    showAll(formStory); 
-    hide(document.querySelector(".actions-dropdown"));
+  fillDropdownWithProjectNames();
+  const s = getStories()[index];
+  elements.title.value = s.title;
+  elements.desc.value = s.description;
+  elements.editIndex.value = s.status;
+  elements.projectList.value = s.projectId;
+  show(elements.overlay);
+  showAll(formStory);
+  hide(document.querySelector(".actions-dropdown"));
 }
 
 
 function dropButtons(row) {
-    const dropdown = row.querySelector(".actions-dropdown");
-    row.querySelector(".dots-button").onclick = () => {
+  const dropdown = row.querySelector(".actions-dropdown");
+  row.querySelector(".dots-button").onclick = () => {
     dropdown.classList.toggle("hidden");
   };
 
 
   //checking features
-    document.addEventListener("click", (event) => {
+  document.addEventListener("click", (event) => {
     if (!row.contains(event.target)) {
       dropdown.classList.add("hidden");
-      }
-    });
+    }
+  });
   //cheking features
-  }
-  
+}
+
 
 function updateRow(index, story) {
   const row = document.querySelector(`tr[data-index='${index}']`);
@@ -92,14 +95,14 @@ function updateRow(index, story) {
 }
 
 window.addEventListener("DOMContentLoaded", () => {
-    renderStories();
+  renderStories();
 });
 
 export function addStoryRow(story, index) {
   const row = document.createElement("tr");
   row.classList.add("story-list-row");
   row.setAttribute("data-index", index);
-  row.setAttribute("data-status", story.status); 
+  row.setAttribute("data-status", story.status);
   row.innerHTML = createStoryRowHTML(story);
 
   dropButtons(row);
@@ -113,8 +116,8 @@ export function addStoryRow(story, index) {
 export function onSaveButtonClick() {
 
   const projectId = document.getElementById('projectList').value;
-  const statusStory = document.querySelector('input[name="status"]:checked').value;
-  const story = getUserStory(elements.title, elements.desc);
+  const status = document.querySelector('input[name="status"]:checked').value;
+  const story = getUserStory(elements.title, elements.desc, status, projectId);
   if (!story) return;
 
   const index = elements.editIndex.value;

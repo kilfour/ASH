@@ -14,6 +14,7 @@ const elements = {
   editIndex: document.getElementById("edit-index"),
   formStatus: document.getElementById("formStatus"),
   newStatus: document.getElementById("statusNew"),
+  projectList: document.getElementById("projectList"),
   projectChoice: document.getElementById("chooseProject"),
   deleteStory: document.getElementById("delete-confirm"),
   deleteStoryYes: document.getElementById("delete-yes"),
@@ -24,15 +25,15 @@ const elements = {
  * StoryForm List of Dom elements to manipulate between Show and Hide
  */
 const formStory = [
-    elements.saveBTN,
-    elements.closeBTN,
-    elements.desc,
-    elements.title,
-    elements.formStatus,
-    elements.projectChoice
+  elements.saveBTN,
+  elements.closeBTN,
+  elements.desc,
+  elements.title,
+  elements.formStatus,
+  elements.projectChoice
 ]
 
-export {formStory};
+export { formStory };
 export default elements;
 /**
  * EDUCATION PERPOSE

@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <link rel="stylesheet" href="../styles.css">
     <meta charset="UTF-8">
@@ -8,7 +9,9 @@
     <title>Document</title>
 </head>
 
-<header class="McTitle"><h1>Mission Control</h1></header>
+<header class="McTitle">
+    <h1>Mission Control</h1>
+</header>
 
 <body>
     <div class="dashboard">DASHBOARD
@@ -28,53 +31,51 @@
         </div>
     </div>
 
-  <!-- Dropdown Filter met select -->
-  <div class="box">  
-  <div class = "Filter">
-    <label for="open-filter">Filter by status:</label>
-    <select id="open-filter">
-        <option value="all">All</option>
-        <option value="new">New</option>
-        <option value="inProgress">In Progress</option>
-        <option value="done">Done</option>
-    </select>
+    <!-- Dropdown Filter met select -->
+    <div class="box">
+        <div class="Filter">
+            <label for="open-filter">Filter by status:</label>
+            <select id="open-filter">
+                <option value="all">All</option>
+                <option value="new">New</option>
+                <option value="inProgress">In Progress</option>
+                <option value="done">Done</option>
+            </select>
+        </div>
     </div>
-</div>
     <!-- PopUp overlay / forms -->
-    <form id="story-form"> 
+    <form id="story-form">
         <div id="popup-overlay" class="overlay hidden">
             <div class="popup">
                 <h2>Add Story</h2>
                 <input type="text" id="story-title-name" placeholder="Title" />
                 <p></p>
                 <textarea id="story-description" placeholder="Description"></textarea>
-                 <!--project kiezen-->
-                <div class= "center" id="chooseProject">
+
+                <!--project kiezen-->
+                <div class="center" id="chooseProject">
                     <label for="projectLijst">Choose a project</label>
-                        <select id="projectList">
-                            <option id="option1" value="">none</option>
-                        </select>
-                <div>
+                    <select id="projectList"></select>
+                    <div>
+                        <button type="button" id="save-story">Save</button>
+                        <button type="button" id="close-popup">Close</button>
+                    </div>
 
-                <button type="button" id="save-story">Save</button>
-                <button type="button" id="close-popup">Close</button>
-            </div>
+                </div>
 
-        </div>
-    
-       
-            <!--status-->
-                 <div id="formStatus">
+
+                <!--status-->
+                <div id="formStatus">
                     <input type="radio" name="status" value="new" id="statusNew" checked>
                     <label for="statusNew">New</label>
-            
-                    <input type="radio" name="status" value="inProgress" id="statusInProgress"  >
+
+                    <input type="radio" name="status" value="inProgress" id="statusInProgress">
                     <label for="statusInProgress">In Progress</label>
-            
-                    <input type="radio" name="status" value="done" id="statusDone" >
+
+                    <input type="radio" name="status" value="done" id="statusDone">
                     <label for="statusDone">Done</label>
                 </div>
-                
+
                 <div id="modal-confirm" class="hidden">
                     <div class="modal-content">
                         <p>Are you sure you want to close?</p>
@@ -94,7 +95,6 @@
     </form>
 
     <div class="header">
-        <!-- MME: Malformed Html -->
         <div class="table-button-wrapper">
             <table>
                 <thead>
@@ -108,18 +108,18 @@
                     <!-- Stories worden hier toegevoegd -->
                 </tbody>
             </table>
-<!--story button en project button-->
+            <!--story button en project button-->
             <div class="center">
                 <button id="create-story-button" class="button">Add story</button>
-            
+
                 <button id="project-button" class="button">Add project</button>
-            
+
                 <div id="inputVeld" class="hidden">
-                    <input type="text" id="naamProject" placeholder="Naam project"> 
-                    <button id="saveBTN">Save</button>  
-                    <button id="closeBTN">Close</button>             
+                    <input type="text" id="naamProject" placeholder="Naam project">
+                    <button id="saveBTN">Save</button>
+                    <button id="closeBTN">Close</button>
                 </div>
-    
+
             </div>
 
             <input type="hidden" id="edit-index" />
@@ -127,4 +127,5 @@
     </div>
 
 </body>
+
 </html>
